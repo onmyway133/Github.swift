@@ -8,7 +8,7 @@
 
 ## Description
 
-**GithubSwift** description.
+Github API client in Swift, inspired by [octokit.objc](https://github.com/octokit/octokit.objc), using RxSwift
 
 ## Usage
 
