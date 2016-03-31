@@ -1,0 +1,14 @@
+PODS:
+  - GithubSwift (0.1.0)
+
+DEPENDENCIES:
+  - GithubSwift (from `../../`)
+
+EXTERNAL SOURCES:
+  GithubSwift:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  GithubSwift: 1c3d02b59a7eca66e2d768d1584027ea9639e1f4
+
+COCOAPODS: 0.39.0
