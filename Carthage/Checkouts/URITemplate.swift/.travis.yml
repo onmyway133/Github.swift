@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode7.1
+script:
+- set -o pipefail
+- xcodebuild -project URITemplate.xcodeproj -scheme URITemplate test -sdk macosx | xcpretty -c
+- pod lib lint
