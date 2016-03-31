@@ -101,15 +101,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D5B2E8951C3A780C00C0327D = {
+		D21D1AC51CADAF8200BD068E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D500FD111C3AABED00782D78 /* Playground-iOS.playground */,
-				D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */,
 				D5C629791C3A879F007F7B7C /* Quick.framework */,
 				D5C6297A1C3A879F007F7B7C /* Nimble.framework */,
 				D5C629751C3A878E007F7B7C /* Quick.framework */,
 				D5C629761C3A878E007F7B7C /* Nimble.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5B2E8951C3A780C00C0327D = {
+			isa = PBXGroup;
+			children = (
+				D21D1AC51CADAF8200BD068E /* Frameworks */,
+				D500FD111C3AABED00782D78 /* Playground-iOS.playground */,
+				D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */,
 				D5C629691C3A809D007F7B7C /* Sources */,
 				D5C6295C1C3A800E007F7B7C /* GithubSwift */,
 				D5C6298F1C3A8BDA007F7B7C /* GithubSwiftTests */,
@@ -309,7 +317,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = "Hyper Interaktiv AS";
+				ORGANIZATIONNAME = Fantageek;
 				TargetAttributes = {
 					D5B2E89E1C3A780C00C0327D = {
 						CreatedOnToolsVersion = 7.2;
