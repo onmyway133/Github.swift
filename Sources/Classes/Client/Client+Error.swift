@@ -3,7 +3,7 @@
 //  GithubSwift
 //
 //  Created by Khoa Pham on 27/03/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
+//  Copyright © 2016 Fantageek. All rights reserved.
 //
 
 import Foundation

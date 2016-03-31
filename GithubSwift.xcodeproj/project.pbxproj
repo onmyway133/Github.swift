@@ -31,8 +31,8 @@
 		D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B111CADC5A400BD068E /* Client+Request.swift */; };
 		D21D1B301CADC5A400BD068E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B121CADC5A400BD068E /* Client.swift */; };
 		D21D1B311CADC5A400BD068E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B121CADC5A400BD068E /* Client.swift */; };
-		D21D1B321CADC5A400BD068E /* RequestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B131CADC5A400BD068E /* RequestObject.swift */; };
-		D21D1B331CADC5A400BD068E /* RequestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B131CADC5A400BD068E /* RequestObject.swift */; };
+		D21D1B321CADC5A400BD068E /* RequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B131CADC5A400BD068E /* RequestDescriptor.swift */; };
+		D21D1B331CADC5A400BD068E /* RequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B131CADC5A400BD068E /* RequestDescriptor.swift */; };
 		D21D1B341CADC5A400BD068E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B151CADC5A400BD068E /* Entity.swift */; };
 		D21D1B351CADC5A400BD068E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B151CADC5A400BD068E /* Entity.swift */; };
 		D21D1B361CADC5A400BD068E /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B161CADC5A400BD068E /* Organization.swift */; };
@@ -99,6 +99,8 @@
 		D21D1B8A1CADCFD600BD068E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AFA1CADC3BE00BD068E /* RxSwift.framework */; };
 		D21D1B8B1CADCFD700BD068E /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AFB1CADC3BE00BD068E /* Sugar.framework */; };
 		D21D1B8C1CADCFD900BD068E /* Tailor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AFC1CADC3BE00BD068E /* Tailor.framework */; };
+		D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013491CAFAD7F00EFADE5 /* Response.swift */; };
+		D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013491CAFAD7F00EFADE5 /* Response.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -136,7 +138,7 @@
 		D21D1B101CADC5A400BD068E /* Client+Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Password.swift"; sourceTree = "<group>"; };
 		D21D1B111CADC5A400BD068E /* Client+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Request.swift"; sourceTree = "<group>"; };
 		D21D1B121CADC5A400BD068E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		D21D1B131CADC5A400BD068E /* RequestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestObject.swift; sourceTree = "<group>"; };
+		D21D1B131CADC5A400BD068E /* RequestDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDescriptor.swift; sourceTree = "<group>"; };
 		D21D1B151CADC5A400BD068E /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		D21D1B161CADC5A400BD068E /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		D21D1B171CADC5A400BD068E /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		D21D1B5C1CADC5CF00BD068E /* tree.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tree.json; sourceTree = "<group>"; };
 		D21D1B5D1CADC5CF00BD068E /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		D21D1B5E1CADC5CF00BD068E /* user_starred.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_starred.json; sourceTree = "<group>"; };
+		D29013491CAFAD7F00EFADE5 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,7 +279,8 @@
 				D21D1B101CADC5A400BD068E /* Client+Password.swift */,
 				D21D1B111CADC5A400BD068E /* Client+Request.swift */,
 				D21D1B121CADC5A400BD068E /* Client.swift */,
-				D21D1B131CADC5A400BD068E /* RequestObject.swift */,
+				D21D1B131CADC5A400BD068E /* RequestDescriptor.swift */,
+				D29013491CAFAD7F00EFADE5 /* Response.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -641,10 +645,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mockingjay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/URITemplate.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Sugar.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Tailor.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
 			name = "Copy frameworks with Carthage";
 			outputPaths = (
@@ -681,6 +681,7 @@
 				D21D1B461CADC5A400BD068E /* Transformer.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D21D1B441CADC5A400BD068E /* ServerMetadata.swift in Sources */,
+				D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */,
 				D21D1B2A1CADC5A400BD068E /* Client+Error.swift in Sources */,
 				D21D1B381CADC5A400BD068E /* Plan.swift in Sources */,
 				D21D1B241CADC5A400BD068E /* Object.swift in Sources */,
@@ -690,7 +691,7 @@
 				D21D1B281CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B341CADC5A400BD068E /* Entity.swift in Sources */,
 				D21D1B3E1CADC5A400BD068E /* Repository.swift in Sources */,
-				D21D1B321CADC5A400BD068E /* RequestObject.swift in Sources */,
+				D21D1B321CADC5A400BD068E /* RequestDescriptor.swift in Sources */,
 				D21D1B361CADC5A400BD068E /* Organization.swift in Sources */,
 				D21D1B421CADC5A400BD068E /* Server.swift in Sources */,
 				D21D1B301CADC5A400BD068E /* Client.swift in Sources */,
@@ -715,6 +716,7 @@
 				D21D1B471CADC5A400BD068E /* Transformer.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D21D1B451CADC5A400BD068E /* ServerMetadata.swift in Sources */,
+				D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */,
 				D21D1B2B1CADC5A400BD068E /* Client+Error.swift in Sources */,
 				D21D1B391CADC5A400BD068E /* Plan.swift in Sources */,
 				D21D1B251CADC5A400BD068E /* Object.swift in Sources */,
@@ -724,7 +726,7 @@
 				D21D1B291CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B351CADC5A400BD068E /* Entity.swift in Sources */,
 				D21D1B3F1CADC5A400BD068E /* Repository.swift in Sources */,
-				D21D1B331CADC5A400BD068E /* RequestObject.swift in Sources */,
+				D21D1B331CADC5A400BD068E /* RequestDescriptor.swift in Sources */,
 				D21D1B371CADC5A400BD068E /* Organization.swift in Sources */,
 				D21D1B431CADC5A400BD068E /* Server.swift in Sources */,
 				D21D1B311CADC5A400BD068E /* Client.swift in Sources */,
@@ -899,7 +901,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GithubSwiftTests/Info-iOS.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.GithubSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -915,7 +917,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GithubSwiftTests/Info-iOS.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.GithubSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -984,7 +986,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GithubSwiftTests/Info-Mac.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.GithubSwift-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1002,7 +1004,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/GithubSwiftTests/Info-Mac.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.GithubSwift-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

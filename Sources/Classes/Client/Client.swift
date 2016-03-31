@@ -31,7 +31,7 @@ public class Client {
   // unauthenticated, and will control which username is used for endpoints
   // that require one. For example, this user's login will be used with
   // -fetchUserEventsNotMatchingEtag:.
-  private(set) var user: User?
+  public private(set) var user: User?
   
   // The OAuth access token that the client was initialized with.
   //
@@ -48,7 +48,7 @@ public class Client {
   // authenticated with the server — only whether it will attempt to.
   //
   // This will be NO when `token` is `nil`.
-  var isAuthenticated: Bool {
+  public var isAuthenticated: Bool {
     return token != nil
   }
   

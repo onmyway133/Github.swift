@@ -3,7 +3,7 @@
 //  GithubSwift
 //
 //  Created by Khoa Pham on 25/03/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
+//  Copyright © 2016 Fantageek. All rights reserved.
 //
 
 import Foundation
@@ -33,19 +33,19 @@ public extension Client {
   //
   // Returns an NSMutableURLRequest that you can enqueue using
   // -enqueueRequest:resultClass:.
-  public func makeRequest(requestObject: RequestObject) -> Request {
+  public func makeRequest(requestDescriptor: RequestDescriptor) -> Request {
     
     // Parameter
-    var parameters = requestObject.parameters
+    var parameters = requestDescriptor.parameters
     
-    if requestObject.method == .GET && !parameters.keys.contains("per_page") {
+    if requestDescriptor.method == .GET && !parameters.keys.contains("per_page") {
       parameters["per_page"] = 100
     }
     
-    let mutableURLRequest = NSMutableURLRequest(URL: requestObject.URLString(baseURL))
+    let mutableURLRequest = NSMutableURLRequest(URL: requestDescriptor.URLString(baseURL))
     
     // Header
-    if let etag = requestObject.etag {
+    if let etag = requestDescriptor.etag {
       mutableURLRequest.setValue(etag, forHTTPHeaderField: "If-None-Match")
       
       // If an etag is specified, we want 304 responses to be treated as 304s,
@@ -74,8 +74,8 @@ public extension Client {
   // Returns a signal which will send an instance of `OCTResponse` for each parsed
   // JSON object, then complete. If an error occurs at any point, the returned
   // signal will send it immediately, then terminate.
-  public func enqueue(requestObject: RequestObject) -> Observable<JSONDictionary> {
-    let request = self.makeRequest(requestObject)
+  public func enqueue(requestDescriptor: RequestDescriptor) -> Observable<Response> {
+    let request = self.makeRequest(requestDescriptor)
     
     return Observable.create({ (observer) -> Disposable in
       request.responseJSON { response in
@@ -90,8 +90,9 @@ public extension Client {
           return
         }
         
-        if let value = response.result.value as? JSONDictionary {
-          observer.onNext(value)
+        if let json = response.result.value as? JSONDictionary,
+          urlResponse = response.response {
+          observer.onNext(Response(urlResponse: urlResponse, json: json))
           observer.onCompleted()
         } else if let error = response.result.error {
           observer.onError(error)
@@ -101,7 +102,7 @@ public extension Client {
       return AnonymousDisposable {
         request.cancel()
       }
-    }).debug("-enqueueRequest: \(request) fetchAllPages: \(requestObject.fetchAllPages)")
+    }).debug("-enqueueRequest: \(request) fetchAllPages: \(requestDescriptor.fetchAllPages)")
   }
   
   func nextPageURL(response: NSHTTPURLResponse) -> NSURL? {

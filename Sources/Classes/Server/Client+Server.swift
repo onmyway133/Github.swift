@@ -3,7 +3,7 @@
 //  GithubSwift
 //
 //  Created by Khoa Pham on 25/03/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
+//  Copyright © 2016 Fantageek. All rights reserved.
 //
 
 import Foundation
@@ -20,13 +20,13 @@ public extension Client {
   // an error will be sent with code `OCTClientErrorUnsupportedServer`.
   public static func fetchMetadata(server: Server) -> Observable<ServerMetadata> {
     let client = Client(server: server)
-    let request = RequestObject().then {
+    let request = RequestDescriptor().then {
       $0.path = "meta"
     }
     
     return client.enqueue(request)
       .map {
-        return ServerMetadata($0)
+        return ServerMetadata($0.json)
       }.catchError { _ in 
         let secureServer = Server.HTTPSEnterpriseServer(server)
         // if (error.code == OCTClientErrorUnsupportedServerScheme)

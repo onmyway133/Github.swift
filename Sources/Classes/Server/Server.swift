@@ -74,7 +74,7 @@ public class Server: Mappable {
   }
   
   // Returns the github.com server instance
-  static let dotComServer = Server()
+  public static let dotComServer = Server()
     
   public static func HTTPSEnterpriseServer(server: Server) -> Server {
     if let URL = server.baseURL,

@@ -3,7 +3,7 @@
 //  GithubSwift
 //
 //  Created by Khoa Pham on 29/03/16.
-//  Copyright © 2016 Hyper Interaktiv AS. All rights reserved.
+//  Copyright © 2016 Fantageek. All rights reserved.
 //
 
 import Foundation
@@ -24,6 +24,6 @@ public extension XCTestCase {
     
     action(expectation)
     
-    self.waitForExpectationsWithTimeout(5, handler: nil)
+    self.waitForExpectationsWithTimeout(0.5, handler: nil)
   }
 }
