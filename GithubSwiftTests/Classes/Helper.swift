@@ -17,3 +17,13 @@ struct Helper {
     return NSData(contentsOfFile: path)!
   }
 }
+
+public extension XCTestCase {
+  public func async(action: (XCTestExpectation) -> Void) {
+    let expectation = self.expectationWithDescription("")
+    
+    action(expectation)
+    
+    self.waitForExpectationsWithTimeout(5, handler: nil)
+  }
+}

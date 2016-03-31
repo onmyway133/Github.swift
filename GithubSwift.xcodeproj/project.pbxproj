@@ -95,6 +95,10 @@
 		D21D1B861CADC5CF00BD068E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D21D1B5D1CADC5CF00BD068E /* user.json */; };
 		D21D1B871CADC5CF00BD068E /* user_starred.json in Resources */ = {isa = PBXBuildFile; fileRef = D21D1B5E1CADC5CF00BD068E /* user_starred.json */; };
 		D21D1B881CADC5CF00BD068E /* user_starred.json in Resources */ = {isa = PBXBuildFile; fileRef = D21D1B5E1CADC5CF00BD068E /* user_starred.json */; };
+		D21D1B891CADCFD400BD068E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AF91CADC3BE00BD068E /* Alamofire.framework */; };
+		D21D1B8A1CADCFD600BD068E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AFA1CADC3BE00BD068E /* RxSwift.framework */; };
+		D21D1B8B1CADCFD700BD068E /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AFB1CADC3BE00BD068E /* Sugar.framework */; };
+		D21D1B8C1CADCFD900BD068E /* Tailor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AFC1CADC3BE00BD068E /* Tailor.framework */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -195,8 +199,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D1AE11CADBC9100BD068E /* Mockingjay.framework in Frameworks */,
+				D21D1B891CADCFD400BD068E /* Alamofire.framework in Frameworks */,
+				D21D1B8A1CADCFD600BD068E /* RxSwift.framework in Frameworks */,
 				D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */,
+				D21D1B8C1CADCFD900BD068E /* Tailor.framework in Frameworks */,
 				D5C629781C3A878E007F7B7C /* Nimble.framework in Frameworks */,
+				D21D1B8B1CADCFD700BD068E /* Sugar.framework in Frameworks */,
 				D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */,
 				D21D1AE31CADC06E00BD068E /* URITemplate.framework in Frameworks */,
 			);
@@ -633,6 +641,10 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mockingjay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/URITemplate.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Sugar.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Tailor.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
 			name = "Copy frameworks with Carthage";
 			outputPaths = (
