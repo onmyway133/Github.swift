@@ -182,7 +182,8 @@ class ClientSpec: QuickSpec {
           var items: [Int] = []
           
           let _ = observable.subscribeNext { response in
-            
+          
+
 //            expect(response.json).to(beAKindOf(JSONDictionary))
 //            expect(response.json["items"]).toNot(beNil())
             
