@@ -152,6 +152,22 @@ class ClientRepositorySpec: QuickSpec {
         }
       }
       
+      it("should return nothing if user starred repositories are unmodified") {
+        self.stub(uri("/user/starred"), builder: http(304))
+        
+        let observable = client.fetchUserStarredRepositories()
+        
+        self.async { expectation in
+          let _ = observable.subscribe { event in
+            switch(event) {
+            case .Completed:
+              expectation.fulfill()
+            default:
+              fail()
+            }
+          }
+        }
+      }
       
     }
   }
