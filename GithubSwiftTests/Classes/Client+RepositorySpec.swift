@@ -15,6 +15,7 @@ import RxSwift
 
 class ClientRepositorySpec: QuickSpec {
   override func spec() {
+    
     describe("without a user") {
       var client: Client!
     
@@ -113,6 +114,44 @@ class ClientRepositorySpec: QuickSpec {
           }
         }
       }
+    }
+    
+    describe("authenticated") {
+      var client: Client!
+      var user: User!
+      
+      beforeEach {
+        user = User(rawLogin: "octokit-testing-user", server: Server.dotComServer)
+        client = Client(authenticatedUser: user, token: "")
+      }
+      
+      it("should fetch user starred repositories") {
+        self.stub(uri("/user/starred"), builder: jsonData(Helper.read("user_starred")))
+
+        let observable = client.fetchUserStarredRepositories()
+        
+        self.async { expectation in
+          let _ = observable.subscribeNext { repositories in
+            
+            let repository = repositories[0]
+            
+            expect(repository.objectID).to(equal("3654804"))
+            expect(repository.name).to(equal("ThisIsATest"))
+            expect(repository.ownerLogin).to(equal("octocat"))
+            expect(repository.repoDescription).to(beEmpty())
+            expect(repository.defaultBranch).to(equal("master"))
+            expect((repository.isPrivate)).to(beFalse())
+            expect(repository.datePushed).to(equal(Formatter.date(string: "2013-03-26T08:31:42Z")))
+            expect(repository.SSHURLString).to(equal("git@github.com:octocat/ThisIsATest.git"))
+            expect(repository.HTTPSURL).to(equal(NSURL(string: "https://github.com/octocat/ThisIsATest.git")))
+            expect(repository.gitURL).to(equal(NSURL(string: "git://github.com/octocat/ThisIsATest.git")))
+            expect(repository.htmlURL).to(equal(NSURL(string: "https://github.com/octocat/ThisIsATest")))
+            
+            expectation.fulfill()
+          }
+        }
+      }
+      
       
     }
   }

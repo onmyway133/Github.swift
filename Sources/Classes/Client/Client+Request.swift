@@ -108,7 +108,7 @@ public extension Client {
         // Next
         var nextPageObservable = Observable<Response>.empty()
 
-        if let nextPageURL = self.nextPageURL(response),
+        if let nextPageURL = Helper.nextPageURL(response),
           path = nextPageURL.path where requestDescriptor.fetchAllPages {
          
            // If we got this far, the etag is out of date, so don't pass it on.
@@ -144,22 +144,32 @@ public extension Client {
     }).debug("-enqueueRequest: \(request) fetchAllPages: \(requestDescriptor.fetchAllPages)")
   }
   
-  func nextPageURL(response: NSHTTPURLResponse) -> NSURL? {
-    guard let linksString = response.allHeaderFields["Link"] as? String where !linksString.isEmpty else { return nil }
+  // Enqueues a request to fetch information about the current user by accessing
+  // a path relative to the user object.
+  //
+  // method       - The HTTP method to use.
+  // relativePath - The path to fetch, relative to the user object. For example,
+  //                to request `user/orgs` or `users/:user/orgs`, simply pass in
+  //                `/orgs`. This may not be nil, and must either start with a '/'
+  //                or be an empty string.
+  // parameters   - HTTP parameters to encode and send with the request.
+  // resultClass  - The class that response data should be returned as.
+  //
+  // Returns a signal which will send an instance of `resultClass` for each parsed
+  // JSON object, then complete. If no `user` is set on the receiver, the signal
+  // will error immediately.
+  public func enqueueUser(requestDescriptor: RequestDescriptor) -> Observable<Response> {
+    requestDescriptor.then {
 
-    let set = NSMutableCharacterSet(charactersInString: "<>")
-    set.formUnionWithCharacterSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-    
-    for link in linksString.split(",") {
-      guard let semicolonRange = link.rangeOfString(";") else { return nil }
-      
-      let URLString = link.substringToIndex(semicolonRange.startIndex).stringByTrimmingCharactersInSet(set)
-      
-      guard !link.isEmpty && link.contains("next") else { return nil }
-      
-      return NSURL(string: URLString)
+      if isAuthenticated {
+        $0.path = "user/\($0.path)"
+      } else if let user = user {
+        $0.path = "users/\(user.login)/\($0.path)"
+      } else {
+        assertionFailure()
+      }
     }
     
-    return nil
+    return enqueue(requestDescriptor)
   }
 }

@@ -27,4 +27,19 @@ public extension Client {
       return Parser.one($0.jsonArray)
     }
   }
+  
+  // Fetches the starred repositories of the current `user`.
+  //
+  // Returns a signal which sends zero or more OCTRepository objects. Private
+  // repositories will only be included if the client is `authenticated`. If no
+  // `user` is set, the signal will error immediately.
+  public func fetchUserStarredRepositories() -> Observable<[Repository]> {
+    let requestDecriptor = RequestDescriptor().then {
+      $0.path = "starred"
+    }
+    
+    return enqueueUser(requestDecriptor).map {
+      return Parser.all($0.jsonArray)
+    }
+  }
 }

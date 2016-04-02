@@ -124,6 +124,8 @@
 		D29013731CB066FC00EFADE5 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013711CB066FC00EFADE5 /* Password.swift */; };
 		D29013761CB06B3300EFADE5 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013751CB06B3300EFADE5 /* Parser.swift */; };
 		D29013771CB06B3300EFADE5 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013751CB06B3300EFADE5 /* Parser.swift */; };
+		D29013791CB06F6700EFADE5 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013781CB06F6700EFADE5 /* Helper.swift */; };
+		D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013781CB06F6700EFADE5 /* Helper.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -206,6 +208,7 @@
 		D290136E1CB0591300EFADE5 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D29013711CB066FC00EFADE5 /* Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		D29013751CB06B3300EFADE5 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		D29013781CB06F6700EFADE5 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -372,6 +375,7 @@
 				D29013741CB06B2D00EFADE5 /* Parser */,
 				D29013551CB0136C00EFADE5 /* Formatter */,
 				D21D1B221CADC5A400BD068E /* Transformer */,
+				D29013781CB06F6700EFADE5 /* Helper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -755,6 +759,7 @@
 				D29013691CB0507300EFADE5 /* Notification.swift in Sources */,
 				D29013571CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D29013761CB06B3300EFADE5 /* Parser.swift in Sources */,
+				D29013791CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D21D1B441CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */,
@@ -800,6 +805,7 @@
 				D290136A1CB0507300EFADE5 /* Notification.swift in Sources */,
 				D29013581CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D29013771CB06B3300EFADE5 /* Parser.swift in Sources */,
+				D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D21D1B451CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */,
