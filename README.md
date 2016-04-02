@@ -1,4 +1,4 @@
-# GithubSwift
+# Github.swift
 
 [![CI Status](http://img.shields.io/travis/onmyway133/GithubSwift.svg?style=flat)](https://travis-ci.org/onmyway133/GithubSwift)
 [![Version](https://img.shields.io/cocoapods/v/GithubSwift.svg?style=flat)](http://cocoadocs.org/docsets/GithubSwift)
@@ -26,14 +26,14 @@ Khoa Pham, onmyway133@gmail.com
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'GithubSwift'
+pod 'Github.swift'
 ```
 
 **GithubSwift** is also available through [Carthage](https://github.com/Carthage/Carthage).
 To install just write into your Cartfile:
 
 ```ruby
-github "onmyway133/GithubSwift"
+github "onmyway133/Github.swift"
 ```
 
 ## Author
