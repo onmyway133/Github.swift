@@ -23,10 +23,8 @@
 		D21D1B271CADC5A400BD068E /* Client+Authorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B0D1CADC5A400BD068E /* Client+Authorize.swift */; };
 		D21D1B281CADC5A400BD068E /* Client+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B0E1CADC5A400BD068E /* Client+Config.swift */; };
 		D21D1B291CADC5A400BD068E /* Client+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B0E1CADC5A400BD068E /* Client+Config.swift */; };
-		D21D1B2A1CADC5A400BD068E /* Client+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B0F1CADC5A400BD068E /* Client+Error.swift */; };
-		D21D1B2B1CADC5A400BD068E /* Client+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B0F1CADC5A400BD068E /* Client+Error.swift */; };
-		D21D1B2C1CADC5A400BD068E /* Client+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B101CADC5A400BD068E /* Client+Password.swift */; };
-		D21D1B2D1CADC5A400BD068E /* Client+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B101CADC5A400BD068E /* Client+Password.swift */; };
+		D21D1B2A1CADC5A400BD068E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B0F1CADC5A400BD068E /* Error.swift */; };
+		D21D1B2B1CADC5A400BD068E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B0F1CADC5A400BD068E /* Error.swift */; };
 		D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B111CADC5A400BD068E /* Client+Request.swift */; };
 		D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B111CADC5A400BD068E /* Client+Request.swift */; };
 		D21D1B301CADC5A400BD068E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B121CADC5A400BD068E /* Client.swift */; };
@@ -114,6 +112,18 @@
 		D290135E1CB0446C00EFADE5 /* Client+RepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290135C1CB0446C00EFADE5 /* Client+RepositorySpec.swift */; };
 		D29013621CB04A9100EFADE5 /* Client+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290135F1CB04A3E00EFADE5 /* Client+Constant.swift */; };
 		D29013631CB04A9200EFADE5 /* Client+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290135F1CB04A3E00EFADE5 /* Client+Constant.swift */; };
+		D29013651CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013641CB04FBE00EFADE5 /* Client+NotificationSpec.swift */; };
+		D29013661CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013641CB04FBE00EFADE5 /* Client+NotificationSpec.swift */; };
+		D29013691CB0507300EFADE5 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013681CB0507300EFADE5 /* Notification.swift */; };
+		D290136A1CB0507300EFADE5 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013681CB0507300EFADE5 /* Notification.swift */; };
+		D290136C1CB0507B00EFADE5 /* Client+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290136B1CB0507B00EFADE5 /* Client+Notification.swift */; };
+		D290136D1CB0507B00EFADE5 /* Client+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290136B1CB0507B00EFADE5 /* Client+Notification.swift */; };
+		D290136F1CB0591300EFADE5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290136E1CB0591300EFADE5 /* String+Extensions.swift */; };
+		D29013701CB0591300EFADE5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290136E1CB0591300EFADE5 /* String+Extensions.swift */; };
+		D29013721CB066FC00EFADE5 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013711CB066FC00EFADE5 /* Password.swift */; };
+		D29013731CB066FC00EFADE5 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013711CB066FC00EFADE5 /* Password.swift */; };
+		D29013761CB06B3300EFADE5 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013751CB06B3300EFADE5 /* Parser.swift */; };
+		D29013771CB06B3300EFADE5 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013751CB06B3300EFADE5 /* Parser.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -147,8 +157,7 @@
 		D21D1B0B1CADC5A400BD068E /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		D21D1B0D1CADC5A400BD068E /* Client+Authorize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Authorize.swift"; sourceTree = "<group>"; };
 		D21D1B0E1CADC5A400BD068E /* Client+Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Config.swift"; sourceTree = "<group>"; };
-		D21D1B0F1CADC5A400BD068E /* Client+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Error.swift"; sourceTree = "<group>"; };
-		D21D1B101CADC5A400BD068E /* Client+Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Password.swift"; sourceTree = "<group>"; };
+		D21D1B0F1CADC5A400BD068E /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		D21D1B111CADC5A400BD068E /* Client+Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Request.swift"; sourceTree = "<group>"; };
 		D21D1B121CADC5A400BD068E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D21D1B131CADC5A400BD068E /* RequestDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDescriptor.swift; sourceTree = "<group>"; };
@@ -191,6 +200,12 @@
 		D29013591CB0446100EFADE5 /* Client+RequestSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+RequestSpec.swift"; sourceTree = "<group>"; };
 		D290135C1CB0446C00EFADE5 /* Client+RepositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+RepositorySpec.swift"; sourceTree = "<group>"; };
 		D290135F1CB04A3E00EFADE5 /* Client+Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Constant.swift"; sourceTree = "<group>"; };
+		D29013641CB04FBE00EFADE5 /* Client+NotificationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+NotificationSpec.swift"; sourceTree = "<group>"; };
+		D29013681CB0507300EFADE5 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		D290136B1CB0507B00EFADE5 /* Client+Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Notification.swift"; sourceTree = "<group>"; };
+		D290136E1CB0591300EFADE5 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		D29013711CB066FC00EFADE5 /* Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
+		D29013751CB06B3300EFADE5 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +293,7 @@
 		D21D1B091CADC5A400BD068E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D29013671CB0506C00EFADE5 /* Notification */,
 				D21D1B0A1CADC5A400BD068E /* BaseModel */,
 				D21D1B0C1CADC5A400BD068E /* Client */,
 				D21D1B141CADC5A400BD068E /* Entity */,
@@ -300,13 +316,13 @@
 			children = (
 				D21D1B0D1CADC5A400BD068E /* Client+Authorize.swift */,
 				D21D1B0E1CADC5A400BD068E /* Client+Config.swift */,
-				D21D1B0F1CADC5A400BD068E /* Client+Error.swift */,
-				D21D1B101CADC5A400BD068E /* Client+Password.swift */,
+				D21D1B0F1CADC5A400BD068E /* Error.swift */,
 				D21D1B111CADC5A400BD068E /* Client+Request.swift */,
 				D21D1B121CADC5A400BD068E /* Client.swift */,
 				D21D1B131CADC5A400BD068E /* RequestDescriptor.swift */,
 				D29013491CAFAD7F00EFADE5 /* Response.swift */,
 				D290135F1CB04A3E00EFADE5 /* Client+Constant.swift */,
+				D29013711CB066FC00EFADE5 /* Password.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -345,6 +361,7 @@
 		D21D1B201CADC5A400BD068E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D290136E1CB0591300EFADE5 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +369,7 @@
 		D21D1B211CADC5A400BD068E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				D29013741CB06B2D00EFADE5 /* Parser */,
 				D29013551CB0136C00EFADE5 /* Formatter */,
 				D21D1B221CADC5A400BD068E /* Transformer */,
 			);
@@ -373,6 +391,7 @@
 				D21D1B4A1CADC5CF00BD068E /* Helper.swift */,
 				D29013591CB0446100EFADE5 /* Client+RequestSpec.swift */,
 				D290135C1CB0446C00EFADE5 /* Client+RepositorySpec.swift */,
+				D29013641CB04FBE00EFADE5 /* Client+NotificationSpec.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -409,6 +428,23 @@
 				D29013561CB0137600EFADE5 /* Formatter.swift */,
 			);
 			path = Formatter;
+			sourceTree = "<group>";
+		};
+		D29013671CB0506C00EFADE5 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				D29013681CB0507300EFADE5 /* Notification.swift */,
+				D290136B1CB0507B00EFADE5 /* Client+Notification.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		D29013741CB06B2D00EFADE5 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				D29013751CB06B3300EFADE5 /* Parser.swift */,
+			);
+			path = Parser;
 			sourceTree = "<group>";
 		};
 		D5B2E8951C3A780C00C0327D = {
@@ -714,19 +750,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21D1B2C1CADC5A400BD068E /* Client+Password.swift in Sources */,
 				D21D1B3A1CADC5A400BD068E /* Team.swift in Sources */,
 				D21D1B461CADC5A400BD068E /* Transformer.swift in Sources */,
+				D29013691CB0507300EFADE5 /* Notification.swift in Sources */,
 				D29013571CB0137600EFADE5 /* Formatter.swift in Sources */,
+				D29013761CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D21D1B441CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */,
-				D21D1B2A1CADC5A400BD068E /* Client+Error.swift in Sources */,
+				D21D1B2A1CADC5A400BD068E /* Error.swift in Sources */,
 				D21D1B381CADC5A400BD068E /* Plan.swift in Sources */,
 				D21D1B241CADC5A400BD068E /* Object.swift in Sources */,
 				D21D1B401CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D21D1B261CADC5A400BD068E /* Client+Authorize.swift in Sources */,
+				D290136C1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
 				D21D1B3C1CADC5A400BD068E /* User.swift in Sources */,
+				D290136F1CB0591300EFADE5 /* String+Extensions.swift in Sources */,
+				D29013721CB066FC00EFADE5 /* Password.swift in Sources */,
 				D21D1B281CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B341CADC5A400BD068E /* Entity.swift in Sources */,
 				D21D1B3E1CADC5A400BD068E /* Repository.swift in Sources */,
@@ -744,6 +784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D1B5F1CADC5CF00BD068E /* ClientSpec.swift in Sources */,
+				D29013651CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */,
 				D21D1B611CADC5CF00BD068E /* Helper.swift in Sources */,
 				D290135A1CB0446100EFADE5 /* Client+RequestSpec.swift in Sources */,
 				D290135D1CB0446C00EFADE5 /* Client+RepositorySpec.swift in Sources */,
@@ -754,19 +795,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21D1B2D1CADC5A400BD068E /* Client+Password.swift in Sources */,
 				D21D1B3B1CADC5A400BD068E /* Team.swift in Sources */,
 				D21D1B471CADC5A400BD068E /* Transformer.swift in Sources */,
+				D290136A1CB0507300EFADE5 /* Notification.swift in Sources */,
 				D29013581CB0137600EFADE5 /* Formatter.swift in Sources */,
+				D29013771CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D21D1B451CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */,
-				D21D1B2B1CADC5A400BD068E /* Client+Error.swift in Sources */,
+				D21D1B2B1CADC5A400BD068E /* Error.swift in Sources */,
 				D21D1B391CADC5A400BD068E /* Plan.swift in Sources */,
 				D21D1B251CADC5A400BD068E /* Object.swift in Sources */,
 				D21D1B411CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D21D1B271CADC5A400BD068E /* Client+Authorize.swift in Sources */,
+				D290136D1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
 				D21D1B3D1CADC5A400BD068E /* User.swift in Sources */,
+				D29013701CB0591300EFADE5 /* String+Extensions.swift in Sources */,
+				D29013731CB066FC00EFADE5 /* Password.swift in Sources */,
 				D21D1B291CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B351CADC5A400BD068E /* Entity.swift in Sources */,
 				D21D1B3F1CADC5A400BD068E /* Repository.swift in Sources */,
@@ -784,6 +829,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D1B601CADC5CF00BD068E /* ClientSpec.swift in Sources */,
+				D29013661CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */,
 				D21D1B621CADC5CF00BD068E /* Helper.swift in Sources */,
 				D290135B1CB0446100EFADE5 /* Client+RequestSpec.swift in Sources */,
 				D290135E1CB0446C00EFADE5 /* Client+RepositorySpec.swift in Sources */,

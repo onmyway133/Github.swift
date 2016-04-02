@@ -26,7 +26,7 @@ public extension Client {
     
     return client.enqueue(request)
       .map {
-        return ServerMetadata($0.json)
+        return Parser.one($0.jsonArray)
       }.catchError { _ in 
         let secureServer = Server.HTTPSEnterpriseServer(server)
         // if (error.code == OCTClientErrorUnsupportedServerScheme)

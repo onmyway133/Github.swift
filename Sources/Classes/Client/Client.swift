@@ -99,10 +99,9 @@ public class Client {
   //        set to this object. This must not be nil.
   //
   // Returns a new client.
-  public convenience init?(unauthenticatedUser: User) {
-    guard let server = unauthenticatedUser.server else { return nil }
-    
-    self.init(server: server)
+  public convenience init(unauthenticatedUser: User) {
+    self.init(server: unauthenticatedUser.server)
+    self.user = unauthenticatedUser
   }
   
   // Creates a client which will authenticate as the given user, using the given
@@ -116,11 +115,10 @@ public class Client {
   // token - An OAuth token for the given user. This must not be nil.
   //
   // Returns a new client.
-  public convenience init?(authenticatedUser: User, token: String) {
-    guard let server = authenticatedUser.server else { return nil }
-    
-    self.init(server: server)
+  public convenience init(authenticatedUser: User, token: String) {
+    self.init(server: authenticatedUser.server)
     self.token = token
+    self.user = authenticatedUser
   }
 }
 

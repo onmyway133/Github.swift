@@ -91,22 +91,24 @@ public extension Client {
           return
         }
         
+        // Data
         guard let data = data,
+          response = response,
           json = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
           else {
             if let error = error {
               observer.onError(error)
             } else {
-              observer.onError(NSError(domain: Client.Constant.errorDomain, code: 404, userInfo: nil))
+              observer.onError(NSError(domain: Client.Constant.errorDomain, code: ErrorCode.NotFound.rawValue, userInfo: nil))
             }
             
             return
         }
         
+        // Next
         var nextPageObservable = Observable<Response>.empty()
-        
-        if let response = response,
-          nextPageURL = self.nextPageURL(response),
+
+        if let nextPageURL = self.nextPageURL(response),
           path = nextPageURL.path where requestDescriptor.fetchAllPages {
          
            // If we got this far, the etag is out of date, so don't pass it on.
@@ -117,12 +119,23 @@ public extension Client {
           nextPageObservable = self.enqueue(nextRequestDescriptor)
         }
         
-        if let response = response,
-          json = json as? JSONDictionary {
-          Observable.just(Response(urlResponse: response, json: json))
-            .concat(nextPageObservable)
-            .subscribe(observer)
+        // JSON
+        var jsonArray: JSONArray = []
+          
+        if let json = json as? JSONArray {
+          jsonArray = json
+        } else if let json = json as? JSONDictionary {
+          jsonArray = [json]
         }
+          
+        guard !jsonArray.isEmpty else {
+          observer.onError(NSError(domain: Client.Constant.errorDomain, code: ErrorCode.JSONParsingFailed.rawValue, userInfo: nil))
+          return
+        }
+          
+        Observable.just(Response(urlResponse: response, jsonArray: jsonArray))
+          .concat(nextPageObservable)
+          .subscribe(observer)
       }
       
       return AnonymousDisposable {

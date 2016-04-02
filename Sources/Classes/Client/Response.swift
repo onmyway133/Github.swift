@@ -14,7 +14,7 @@ import Sugar
 public class Response {
   
   // The parsed MTLModel object corresponding to the API response.
-  public let json: JSONDictionary
+  public let jsonArray: JSONArray
   
   // The etag uniquely identifying this response data.
   public var etag: String {
@@ -53,8 +53,8 @@ public class Response {
   
   // Initializes the receiver with the headers from the given response, and the
   // given parsed model object(s).
-  public init(urlResponse: NSHTTPURLResponse, json: JSONDictionary) {
+  public init(urlResponse: NSHTTPURLResponse, jsonArray: JSONArray) {
     self.urlResponse = urlResponse
-    self.json = json
+    self.jsonArray = jsonArray
   }
 }

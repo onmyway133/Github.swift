@@ -24,7 +24,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Repository($0.json)
+      return Parser.one($0.jsonArray)
     }
   }
 }

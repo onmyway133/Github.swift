@@ -86,7 +86,7 @@ class ClientRequestSpec: QuickSpec {
                 ]
               ]
               
-              expect(NSDictionary(dictionary: response.json)).to(equal(NSDictionary(dictionary: expected)))
+              expect(NSDictionary(dictionary: response.jsonArray[0])).to(equal(NSDictionary(dictionary: expected)))
               expectation.fulfill()
             default:
               break;
@@ -118,7 +118,7 @@ class ClientRequestSpec: QuickSpec {
               ]
               
               expect(response.etag).to(equal(etag))
-              expect(NSDictionary(dictionary: response.json)).to(equal(NSDictionary(dictionary: expected)))
+              expect(NSDictionary(dictionary: response.jsonArray[0])).to(equal(NSDictionary(dictionary: expected)))
               expectation.fulfill()
             default:
               break
@@ -172,9 +172,9 @@ class ClientRequestSpec: QuickSpec {
           let _ = client.enqueue(requestDescriptor)
             .subscribeNext { response in
               
-              expect(response.json.array("items")).toNot(beNil())
+              expect(response.jsonArray[0].array("items")).toNot(beNil())
               
-              if let array = response.json.array("items") {
+              if let array = response.jsonArray[0].array("items") {
                 items.appendContentsOf(array.map({$0["item"] as! Int}))
               }
               

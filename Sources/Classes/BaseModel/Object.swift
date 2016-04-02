@@ -24,7 +24,7 @@ public class Object: Mappable, Hashable, Equatable {
   // The server this object is associated with.
   //
   // This object is not encoded into JSON.
-  public var server: Server?
+  public var server: Server = Server.dotComServer
   
   public required init(_ map: JSONDictionary) {
     objectID <- map.transform("id", transformer: Transformer.numberToString)
@@ -32,7 +32,7 @@ public class Object: Mappable, Hashable, Equatable {
   
   // MARK: - Hash
   public var hashValue: Int {
-    return server?.hashValue ?? 0 ^ objectID.hashValue
+    return server.hashValue ^ objectID.hashValue
   }
 }
 

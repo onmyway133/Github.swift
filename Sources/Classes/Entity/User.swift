@@ -37,12 +37,10 @@ public class User: Entity {
 
   // Returns a user with the given username and OCTServer instance.
   public convenience init(rawLogin: String, server: Server) {
-    let map = [
-      "server": server
-    ]
+    self.init([:])
     
-    self.init(map)
     self.rawLogin = rawLogin
+    self.server = server
   }
   
   // MARK: - Hash
