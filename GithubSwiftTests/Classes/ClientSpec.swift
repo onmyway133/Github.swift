@@ -176,18 +176,25 @@ class ClientSpec: QuickSpec {
           $0.path = "items1"
         }
         
-        let observable = client.enqueue(requestDescriptor)
+        let expected = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         self.async { expectation in
+
           var items: [Int] = []
           
-          let _ = observable.subscribeNext { response in
+          let _ = client.enqueue(requestDescriptor)
+            .subscribeNext { response in
           
-
-//            expect(response.json).to(beAKindOf(JSONDictionary))
-//            expect(response.json["items"]).toNot(beNil())
-            
-            expectation.fulfill()
+              expect(response.json.array("items")).toNot(beNil())
+              
+              if let array = response.json.array("items") {
+                items.appendContentsOf(array.map({$0["item"] as! Int}))
+              }
+              
+              if items.count == expected.count {
+                expect(items).to(equal(expected))
+                expectation.fulfill()
+              }
           }
         }
       }

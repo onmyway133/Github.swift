@@ -16,7 +16,7 @@ public class RequestDescriptor {
   public var parameters: [String: AnyObject] = [:]
   public var headers: [String: String] = [:]
   public var etag: String?
-  public var fetchAllPages: Bool = false
+  public var fetchAllPages: Bool = true
   
   public func URLString(baseURL: NSURL) -> NSURL {
     let escapedPath = path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())

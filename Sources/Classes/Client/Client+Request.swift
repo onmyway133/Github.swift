@@ -89,11 +89,26 @@ public extension Client {
           observer.onCompleted()
           return
         }
+       
+        var nextPageObservable = Observable<Response>.empty()
+        
+        if let urlResponse = response.response,
+          nextPageURL = self.nextPageURL(urlResponse),
+          path = nextPageURL.path where requestDescriptor.fetchAllPages {
+         
+           // If we got this far, the etag is out of date, so don't pass it on.
+          
+          let nextRequestDescriptor = requestDescriptor
+          nextRequestDescriptor.path = path
+          
+          nextPageObservable = self.enqueue(nextRequestDescriptor)
+        }
         
         if let json = response.result.value as? JSONDictionary,
           urlResponse = response.response {
-          observer.onNext(Response(urlResponse: urlResponse, json: json))
-          observer.onCompleted()
+          Observable.just(Response(urlResponse: urlResponse, json: json))
+            .concat(nextPageObservable)
+            .subscribe(observer)
         } else if let error = response.result.error {
           observer.onError(error)
         }
@@ -106,43 +121,21 @@ public extension Client {
   }
   
   func nextPageURL(response: NSHTTPURLResponse) -> NSURL? {
-    guard let linksString = response.allHeaderFields["Link"] as? String where linksString.isEmpty else { return nil }
-    guard let regex = try? NSRegularExpression(pattern: "rel=\\\"?([^\\\"]+)\\\"?", options: .CaseInsensitive) else { return nil }
-   
+    guard let linksString = response.allHeaderFields["Link"] as? String where !linksString.isEmpty else { return nil }
+
     let set = NSMutableCharacterSet(charactersInString: "<>")
     set.formUnionWithCharacterSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     
     for link in linksString.split(",") {
-      guard let semicolonRange = link.rangeOfString(";") else { continue }
-  
+      guard let semicolonRange = link.rangeOfString(";") else { return nil }
+      
       let URLString = link.substringToIndex(semicolonRange.startIndex).stringByTrimmingCharactersInSet(set)
       
-      guard !URLString.isEmpty else { continue }
+      guard !link.isEmpty && link.contains("next") else { return nil }
       
-      guard let result = regex.firstMatchInString(link, options: .Anchored, range: NSMakeRange(0, link.length)) else { continue }
-      
-      guard let range = link.rangeFromNSRange(result.rangeAtIndex(1)) else { continue }
-      
-      let type = link.substringWithRange(range)
-      
-      if type == "next" {
-        return NSURL(string: URLString)
-      }
-
+      return NSURL(string: URLString)
     }
     
-    return nil
-  }
-}
-
-extension String {
-  func rangeFromNSRange(nsRange : NSRange) -> Range<String.Index>? {
-    let from16 = utf16.startIndex.advancedBy(nsRange.location, limit: utf16.endIndex)
-    let to16 = from16.advancedBy(nsRange.length, limit: utf16.endIndex)
-    if let from = String.Index(from16, within: self),
-      let to = String.Index(to16, within: self) {
-      return from ..< to
-    }
     return nil
   }
 }
