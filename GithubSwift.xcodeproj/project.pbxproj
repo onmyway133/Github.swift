@@ -126,6 +126,8 @@
 		D29013771CB06B3300EFADE5 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013751CB06B3300EFADE5 /* Parser.swift */; };
 		D29013791CB06F6700EFADE5 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013781CB06F6700EFADE5 /* Helper.swift */; };
 		D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013781CB06F6700EFADE5 /* Helper.swift */; };
+		D290137C1CB0793A00EFADE5 /* FormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290137B1CB0793A00EFADE5 /* FormatterSpec.swift */; };
+		D290137D1CB0793A00EFADE5 /* FormatterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290137B1CB0793A00EFADE5 /* FormatterSpec.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -209,6 +211,7 @@
 		D29013711CB066FC00EFADE5 /* Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		D29013751CB06B3300EFADE5 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D29013781CB06F6700EFADE5 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		D290137B1CB0793A00EFADE5 /* FormatterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterSpec.swift; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,6 +399,7 @@
 				D29013591CB0446100EFADE5 /* Client+RequestSpec.swift */,
 				D290135C1CB0446C00EFADE5 /* Client+RepositorySpec.swift */,
 				D29013641CB04FBE00EFADE5 /* Client+NotificationSpec.swift */,
+				D290137B1CB0793A00EFADE5 /* FormatterSpec.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -789,6 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D1B5F1CADC5CF00BD068E /* ClientSpec.swift in Sources */,
+				D290137C1CB0793A00EFADE5 /* FormatterSpec.swift in Sources */,
 				D29013651CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */,
 				D21D1B611CADC5CF00BD068E /* Helper.swift in Sources */,
 				D290135A1CB0446100EFADE5 /* Client+RequestSpec.swift in Sources */,
@@ -835,6 +840,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D1B601CADC5CF00BD068E /* ClientSpec.swift in Sources */,
+				D290137D1CB0793A00EFADE5 /* FormatterSpec.swift in Sources */,
 				D29013661CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */,
 				D21D1B621CADC5CF00BD068E /* Helper.swift in Sources */,
 				D290135B1CB0446100EFADE5 /* Client+RequestSpec.swift in Sources */,
