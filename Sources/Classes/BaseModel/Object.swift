@@ -19,12 +19,12 @@ public class Object: Mappable, Hashable, Equatable {
   // By default, the JSON representation for this property assumes a numeric
   // representation (which is the case for most API objects). Subclasses may
   // override the `+objectIDJSONTransformer` method to change this behavior.
-  var objectID: String = ""
+  public var objectID: String = ""
   
   // The server this object is associated with.
   //
   // This object is not encoded into JSON.
-  var server: Server?
+  public var server: Server?
   
   public required init(_ map: JSONDictionary) {
     objectID <- map.transform("id", transformer: Transformer.numberToString)

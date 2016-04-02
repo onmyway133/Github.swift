@@ -18,4 +18,10 @@ public struct Transformer {
     
     return NSURL(string: string)
   }
+  
+  public static func stringToDate(string: String?) -> NSDate? {
+    guard let string = string else { return nil }
+    
+    return Formatter.date(string: string)
+  }
 }

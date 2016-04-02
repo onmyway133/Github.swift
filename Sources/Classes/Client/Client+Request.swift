@@ -78,22 +78,35 @@ public extension Client {
     let request = self.makeRequest(requestDescriptor)
     
     return Observable.create({ (observer) -> Disposable in
-      request.responseJSON { response in
+      request
+        .response { request, response, data, error in
         
         if NSProcessInfo.processInfo().environment[Client.Constant.responseLoggingEnvironmentKey] != nil {
-          print("\(request.request?.URL)")
+          print("\(request?.URL)")
         }
-        
-        if let statusCode = response.response?.statusCode where statusCode == Client.Constant.notModifiedStatusCode {
+       
+        if let statusCode = response?.statusCode where statusCode == Client.Constant.notModifiedStatusCode {
           // No change in the data.
           observer.onCompleted()
           return
         }
-       
+        
+        guard let data = data,
+          json = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
+          else {
+            if let error = error {
+              observer.onError(error)
+            } else {
+              observer.onError(NSError(domain: Client.Constant.errorDomain, code: 404, userInfo: nil))
+            }
+            
+            return
+        }
+        
         var nextPageObservable = Observable<Response>.empty()
         
-        if let urlResponse = response.response,
-          nextPageURL = self.nextPageURL(urlResponse),
+        if let response = response,
+          nextPageURL = self.nextPageURL(response),
           path = nextPageURL.path where requestDescriptor.fetchAllPages {
          
            // If we got this far, the etag is out of date, so don't pass it on.
@@ -104,13 +117,11 @@ public extension Client {
           nextPageObservable = self.enqueue(nextRequestDescriptor)
         }
         
-        if let json = response.result.value as? JSONDictionary,
-          urlResponse = response.response {
-          Observable.just(Response(urlResponse: urlResponse, json: json))
+        if let response = response,
+          json = json as? JSONDictionary {
+          Observable.just(Response(urlResponse: response, json: json))
             .concat(nextPageObservable)
             .subscribe(observer)
-        } else if let error = response.result.error {
-          observer.onError(error)
         }
       }
       
