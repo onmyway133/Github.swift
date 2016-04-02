@@ -48,5 +48,22 @@ class ClientSpec: QuickSpec {
         expect(client.isAuthenticated).to(beTrue())
       }
     }
+    
+    describe("unauthenticated") {
+      var client: Client!
+      var user: User!
+      
+      beforeEach {
+        user = User(rawLogin: "octokit-testing-user", server: Server.dotComServer)
+        client = Client(unauthenticatedUser: user)
+      }
+      
+      it("should create client") {
+        expect(client).toNot(beNil())
+        expect(user).toNot(beNil())
+        expect(client.user).to(equal(user))
+        expect(client.isAuthenticated).to(beFalse())
+      }
+    }
   }
 }

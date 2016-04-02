@@ -164,7 +164,7 @@ public extension Client {
       if isAuthenticated {
         $0.path = "user/\($0.path)"
       } else if let user = user {
-        $0.path = "users/\(user.login)/\($0.path)"
+        $0.path = "users/\(user.rawLogin)/\($0.path)"
       } else {
         assertionFailure()
       }
