@@ -27,4 +27,11 @@ public struct Helper {
     
     return nil
   }
+  
+  static func authorizationHeader(username: String, password: String) -> (key: String, value: String)? {
+    guard let data = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding) else { return nil }
+    
+    let base64 = data.base64EncodedStringWithOptions([])
+    return (key: "Authorization", value: "Basic \(base64)")
+  }
 }

@@ -40,7 +40,7 @@ public class Client {
   //
   // This will be `nil` when the client is created using
   // +unauthenticatedClientWithUser:.
-  private(set) var token: String?
+  public internal(set) var token: String?
   
   // Whether this client supports authenticated endpoints.
   //
