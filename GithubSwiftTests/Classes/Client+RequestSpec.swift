@@ -107,7 +107,7 @@ class ClientRequestSpec: QuickSpec {
         self.async { expectation in
           let _ = observable.subscribe { event in
             switch(event) {
-            case .Error(_):
+            case .Error:
               fail()
             case let .Next(response):
               let expected = [
