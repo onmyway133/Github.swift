@@ -43,6 +43,7 @@ public extension Client {
     }
     
     let mutableURLRequest = NSMutableURLRequest(URL: requestDescriptor.URLString(baseURL))
+    mutableURLRequest.HTTPMethod = requestDescriptor.method.rawValue
     
     // Header
     if let etag = requestDescriptor.etag {
