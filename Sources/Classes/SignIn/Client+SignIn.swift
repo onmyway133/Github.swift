@@ -55,7 +55,8 @@ public extension Client {
   // else error. If the server is too old to support this request, an error will
   // be sent with code `OCTClientErrorUnsupportedServer`.
   public static func signIn(user user: User, password: String,
-                                 oneTimePassword: String?, scopes: AuthorizationScopes,
+                                 scopes: AuthorizationScopes,
+                                 oneTimePassword: String? = nil,
                                  note: String? = nil, noteURL: NSURL? = nil,
                                  fingerprint: String? = nil) -> Observable<Client> {
     
@@ -64,17 +65,25 @@ public extension Client {
     
     assert(!clientID.isEmpty)
     assert(!clientSecret.isEmpty)
-    assert(!password.isEmpty)
     
     // Request Descriptor
     let path = "authorizations/clients/\(clientID)"
-    let params = [
+    var params = [
       "scopes": scopes.values.joinWithSeparator(","),
       "client_secret": clientSecret,
-      "note": note ?? "",
-      "note_url": noteURL?.absoluteString ?? "",
-      "fingerprint": fingerprint ?? ""
     ]
+    
+    if let note = note {
+      params["note"] = note
+    }
+    
+    if let noteURLString = noteURL?.absoluteString {
+      params["note_url"] = noteURLString
+    }
+    
+    if let fingerprint = fingerprint {
+      params["fingerprint"] = fingerprint
+    }
     
     let requestDescriptor = RequestDescriptor().then {
       $0.method = .PUT
@@ -104,39 +113,64 @@ public extension Client {
       }
     }
     
+    func reauthorizeIfNeeded(client: Client, authorization: Authorization) -> Observable<(Client, Authorization)> {
+      // To increase security, tokens are no longer returned when the authorization
+      // already exists. If that happens, we need to delete the existing
+      // authorization for this app and create a new one, so we end up with a token
+      // of our own.
+      //
+      // The `fingerprint` field provided will be used to ensure uniqueness and
+      // avoid deleting unrelated tokens.
+      if authorization.token.isEmpty {
+        let requestDescriptor = requestDescriptor
+        requestDescriptor.then {
+          $0.path = "authorizations/\(authorization.objectID)"
+          $0.method = .DELETE
+          
+          if let oneTimePassword = oneTimePassword {
+            $0.headers[Client.Constant.oneTimePasswordHeaderField] = oneTimePassword
+          }
+        }
+        
+        return client.enqueue(requestDescriptor).flatMap { _ in
+          return authorize(user)
+        }
+      } else {
+        return Observable<(Client, Authorization)>.just((client, authorization))
+      }
+    }
+    
+    func handleError(error: NSError) -> Observable<(Client, Authorization)> {
+      if error.code == ErrorCode.UnsupportedServerScheme.rawValue {
+        let secureServer = Server.HTTPSEnterpriseServer(user.server)
+        let secureUser = User(rawLogin: user.rawLogin, server: secureServer)
+        
+        return authorize(secureUser)
+      }
+     
+      var error = error
+      
+      if let statusCode = error.userInfo[ErrorKey.HTTPStatusCodeKey.rawValue] as? Int {
+        if statusCode == ErrorCode.NotFound.rawValue {
+          if error.userInfo[ErrorKey.OAuthScopesStringKey.rawValue] != nil {
+            error = Error.tokenUnsupportedError()
+          } else {
+            error = Error.unsupportedVersionError()
+          }
+        }
+      }
+      
+      return Observable<(Client, Authorization)>.error(error)
+    }
+    
     return
       authorize(user)
       .flatMap { (client: Client, authorization: Authorization) in
-      
-        // To increase security, tokens are no longer returned when the authorization
-        // already exists. If that happens, we need to delete the existing
-        // authorization for this app and create a new one, so we end up with a token
-        // of our own.
-        //
-        // The `fingerprint` field provided will be used to ensure uniqueness and
-        // avoid deleting unrelated tokens.
-        if authorization.token.isEmpty {
-          var requestDescriptor = requestDescriptor
-          requestDescriptor.then {
-            $0.path = "authorizations/\(authorization.objectID)"
-            $0.method = .DELETE
-            
-            if let oneTimePassword = oneTimePassword {
-              $0.headers[Client.Constant.oneTimePasswordHeaderField] = oneTimePassword
-            }
-          }
-          
-          return client.enqueue(requestDescriptor).flatMap { _ in
-            return authorize(user)
-          }
-        } else {
-          return Observable<(Client, Authorization)>.just((client, authorization))
-        }
+        return reauthorizeIfNeeded(client, authorization: authorization)
       }
       .catchError { error in
         let error = error as NSError
-        
-        return Observable<(Client, Authorization)>.error(error)
+        return handleError(error)
       }
       .map { (client: Client, authorization: Authorization) in
         client.token = authorization.token

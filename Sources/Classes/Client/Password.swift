@@ -12,7 +12,7 @@ import Foundation
 //
 // OCTClientOneTimePasswordMediumSMS - Delivered via SMS.
 // OCTClientOneTimePasswordMediumApp - Delivered via an app.
-public enum OneTimePasswordMedium {
-  case SMS
-  case App
+public enum OneTimePasswordMedium: String {
+  case SMS = "sms"
+  case App = "app"
 }

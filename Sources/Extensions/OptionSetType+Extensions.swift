@@ -1,5 +1,5 @@
 //
-//  OptionSetType.swift
+//  OptionSetType+Extensions.swift
 //  GithubSwift
 //
 //  Created by Khoa Pham on 03/04/16.

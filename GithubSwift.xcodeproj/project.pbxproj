@@ -136,8 +136,10 @@
 		D290138B1CB154DC00EFADE5 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013891CB154DC00EFADE5 /* AccessToken.swift */; };
 		D290138D1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290138C1CB158E600EFADE5 /* AuthorizationScopes.swift */; };
 		D290138E1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290138C1CB158E600EFADE5 /* AuthorizationScopes.swift */; };
-		D29013901CB159B100EFADE5 /* OptionSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290138F1CB159B100EFADE5 /* OptionSetType.swift */; };
-		D29013911CB159B100EFADE5 /* OptionSetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290138F1CB159B100EFADE5 /* OptionSetType.swift */; };
+		D29013901CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290138F1CB159B100EFADE5 /* OptionSetType+Extensions.swift */; };
+		D29013911CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290138F1CB159B100EFADE5 /* OptionSetType+Extensions.swift */; };
+		D29013931CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013921CB1965800EFADE5 /* Dictionary+Extensions.swift */; };
+		D29013941CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013921CB1965800EFADE5 /* Dictionary+Extensions.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -226,7 +228,8 @@
 		D29013861CB154D500EFADE5 /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		D29013891CB154DC00EFADE5 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		D290138C1CB158E600EFADE5 /* AuthorizationScopes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationScopes.swift; sourceTree = "<group>"; };
-		D290138F1CB159B100EFADE5 /* OptionSetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionSetType.swift; sourceTree = "<group>"; };
+		D290138F1CB159B100EFADE5 /* OptionSetType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OptionSetType+Extensions.swift"; sourceTree = "<group>"; };
+		D29013921CB1965800EFADE5 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,7 +387,8 @@
 			isa = PBXGroup;
 			children = (
 				D290136E1CB0591300EFADE5 /* String+Extensions.swift */,
-				D290138F1CB159B100EFADE5 /* OptionSetType.swift */,
+				D290138F1CB159B100EFADE5 /* OptionSetType+Extensions.swift */,
+				D29013921CB1965800EFADE5 /* Dictionary+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -801,8 +805,9 @@
 				D290138D1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
 				D29013761CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D29013791CB06F6700EFADE5 /* Helper.swift in Sources */,
+				D29013931CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
-				D29013901CB159B100EFADE5 /* OptionSetType.swift in Sources */,
+				D29013901CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
 				D21D1B441CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */,
 				D21D1B2A1CADC5A400BD068E /* Error.swift in Sources */,
@@ -853,8 +858,9 @@
 				D290138E1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
 				D29013771CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */,
+				D29013941CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
-				D29013911CB159B100EFADE5 /* OptionSetType.swift in Sources */,
+				D29013911CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
 				D21D1B451CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */,
 				D21D1B2B1CADC5A400BD068E /* Error.swift in Sources */,

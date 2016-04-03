@@ -79,6 +79,7 @@ public extension Client {
     
     return Observable.create({ (observer) -> Disposable in
       request
+        .validate(statusCode: 200..<400)
         .response { request, response, data, error in
         
         if NSProcessInfo.processInfo().environment[Client.Constant.responseLoggingEnvironmentKey] != nil {
@@ -90,20 +91,21 @@ public extension Client {
           observer.onCompleted()
           return
         }
+          
+        // Error
+        if let error = error {
+          observer.onError(Error.transform(error, response: response))
+          return
+        }
         
         // Data
         guard let data = data,
           response = response,
           json = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
           else {
-            if let error = error {
-              observer.onError(error)
-            } else {
-              observer.onError(NSError(domain: Client.Constant.errorDomain, code: ErrorCode.NotFound.rawValue, userInfo: nil))
-            }
-            
+            observer.onError(Error.unsupportedVersionError())
             return
-        }
+          }
         
         // Next
         var nextPageObservable = Observable<Response>.empty()
@@ -129,7 +131,7 @@ public extension Client {
         }
           
         guard !jsonArray.isEmpty else {
-          observer.onError(NSError(domain: Client.Constant.errorDomain, code: ErrorCode.JSONParsingFailed.rawValue, userInfo: nil))
+          observer.onError(Error.unsupportedVersionError())
           return
         }
           

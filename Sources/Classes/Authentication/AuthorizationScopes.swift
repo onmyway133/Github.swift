@@ -49,24 +49,24 @@ public struct AuthorizationScopes: OptionSetType {
     self.rawValue = rawValue
   }
   
-  static let PublicReadOnly = AuthorizationScopes(rawValue: 1 << 0)
+  public static let PublicReadOnly = AuthorizationScopes(rawValue: 1 << 0)
   
-  static let UserEmail = AuthorizationScopes(rawValue: 1 << 1)
-  static let UserFollow = AuthorizationScopes(rawValue: 1 << 2)
-  static let User = AuthorizationScopes(rawValue: 1 << 3)
+  public static let UserEmail = AuthorizationScopes(rawValue: 1 << 1)
+  public static let UserFollow = AuthorizationScopes(rawValue: 1 << 2)
+  public static let User = AuthorizationScopes(rawValue: 1 << 3)
   
-  static let RepositoryStatus = AuthorizationScopes(rawValue: 1 << 4)
-  static let PublicRepository = AuthorizationScopes(rawValue: 1 << 5)
-  static let Repository = AuthorizationScopes(rawValue: 1 << 6)
-  static let RepositoryDelete = AuthorizationScopes(rawValue: 1 << 7)
+  public static let RepositoryStatus = AuthorizationScopes(rawValue: 1 << 4)
+  public static let PublicRepository = AuthorizationScopes(rawValue: 1 << 5)
+  public static let Repository = AuthorizationScopes(rawValue: 1 << 6)
+  public static let RepositoryDelete = AuthorizationScopes(rawValue: 1 << 7)
   
-  static let Notifications = AuthorizationScopes(rawValue: 1 << 8)
+  public static let Notifications = AuthorizationScopes(rawValue: 1 << 8)
   
-  static let Gist = AuthorizationScopes(rawValue: 1 << 9)
+  public static let Gist = AuthorizationScopes(rawValue: 1 << 9)
   
-  static let PublicKeyRead = AuthorizationScopes(rawValue: 1 << 10)
-  static let PublicKeyWrite = AuthorizationScopes(rawValue: 1 << 11)
-  static let PublicKeyAdmin = AuthorizationScopes(rawValue: 1 << 12)
+  public static let PublicKeyRead = AuthorizationScopes(rawValue: 1 << 10)
+  public static let PublicKeyWrite = AuthorizationScopes(rawValue: 1 << 11)
+  public static let PublicKeyAdmin = AuthorizationScopes(rawValue: 1 << 12)
 }
 
 extension AuthorizationScopes: Hashable {
