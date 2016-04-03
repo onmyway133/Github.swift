@@ -60,6 +60,31 @@ class ClientSignInSpec: QuickSpec {
           }
         }
       }
+     
+      it("should request authorization") {
+        self.stub(uri("/authorizations/clients/\(clientID)"), builder: jsonData(Helper.read("authorizations"), status: 201))
+
+        let observable = Client.signIn(user: user, password: "", scopes: .Repository)
+        
+        self.async { expectation in
+          let _ = observable.subscribe { event in
+            switch(event) {
+            case let .Next(client):
+              expect(client).notTo(beNil())
+              expect(client.user).to(equal(user))
+              expect(client.token).to(equal("abc123"))
+              expect((client.isAuthenticated)).to(beTrue())
+              
+              expectation.fulfill()
+            case .Completed:
+              break
+            default:
+              fail()
+            }
+          }
+        }
+      }
+      
       
       
     }
