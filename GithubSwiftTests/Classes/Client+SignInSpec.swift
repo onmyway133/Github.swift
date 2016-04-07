@@ -120,6 +120,31 @@ class ClientSignInSpec: QuickSpec {
           }
         }
       }
+     
+      it("should detect old server versions") {
+        self.stub(uri("/authorizations/clients/\(clientID)"), builder: http(404))
+  
+        let observable = Client.signIn(user: user, password: "", scopes: .Repository)
+        
+        self.async { expectation in
+          let _ = observable.subscribe { event in
+            switch(event) {
+            case let .Error(error):
+              let error = error as NSError
+              expect(error.domain).to(equal(Client.Constant.errorDomain))
+              expect(error.code).to(equal(ErrorCode.UnsupportedServer.rawValue))
+              
+              if let message = error.userInfo[ErrorKey.OneTimePasswordMediumKey.rawValue] as? String {
+                expect(message).to(equal(OneTimePasswordMedium.SMS.rawValue))
+              }
+              
+              expectation.fulfill()
+            default:
+              fail()
+            }
+          }
+        }
+      }
       
       
     }
