@@ -71,11 +71,20 @@ public class Client {
     
     // Headers
     configuration.HTTPAdditionalHeaders = headers
+    
+    // Delegate
+    let sessionDelegate = Manager.SessionDelegate()
+    sessionDelegate.taskWillPerformHTTPRedirectionWithCompletion = {
+      (session: NSURLSession, task: NSURLSessionTask, response: NSHTTPURLResponse,
+      newRequest: NSURLRequest, completionHandler: NSURLRequest? -> Void) in
+      
+      completionHandler(newRequest)
+    }
   
-    return Manager(configuration: configuration)
+    return Manager(configuration: configuration, delegate: sessionDelegate)
     
   }()
-  
+
   let baseURL: NSURL
   
   

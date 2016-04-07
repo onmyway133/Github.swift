@@ -80,7 +80,7 @@ public extension Client {
     
     return Observable.create({ (observer) -> Disposable in
       request
-        .validate(statusCode: 200..<400)
+        .validate()
         .response { request, response, data, error in
         
         if NSProcessInfo.processInfo().environment[Client.Constant.responseLoggingEnvironmentKey] != nil {

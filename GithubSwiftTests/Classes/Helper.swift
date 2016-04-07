@@ -8,6 +8,7 @@
 
 import Foundation
 import Quick
+import Mockingjay
 
 class DummySpec: QuickSpec {}
 
@@ -25,5 +26,18 @@ public extension XCTestCase {
     action(expectation)
     
     self.waitForExpectationsWithTimeout(0.5, handler: nil)
+  }
+}
+
+extension XCTest {
+  func stubRedirect(url: NSURL, statusCode: Int, redirectURL: NSURL) {
+    
+    func matcher(request: NSURLRequest) -> Bool {
+      guard request.URL?.scheme == url.scheme && request.URL?.path == url.path else { return false }
+
+      return true
+    }
+    
+    self.stub(matcher, builder: http(statusCode, headers: ["Location": redirectURL.absoluteString]))
   }
 }

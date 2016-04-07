@@ -84,7 +84,42 @@ class ClientSignInSpec: QuickSpec {
           }
         }
       }
-      
+     
+      it("requests authorization through redirects") {
+        let baseURL = NSURL(string: "http://enterprise.github.com")!
+        let path = "api/v3/authorizations/clients/\(clientID)"
+        
+        let httpURL = baseURL.URLByAppendingPathComponent(path)
+        let httpsURL = NSURLComponents().then {
+          $0.scheme = "https"
+          $0.host = httpURL.host
+          $0.path = httpURL.path
+        }.URL!
+        
+        self.stub(uri(httpsURL.absoluteString), builder: jsonData(Helper.read("authorizations"), status: 201))
+        self.stubRedirect(httpURL, statusCode: 301, redirectURL: httpsURL)
+        
+        let enterpriseServer = Server(baseURL: baseURL)
+        let enterpriseUser = User(rawLogin: user.rawLogin, server: enterpriseServer)
+        
+        let observable = Client.signIn(user: enterpriseUser, password: "", scopes: .Repository)
+        
+        self.async { expectation in
+          let _ = observable.subscribe { event in
+            switch(event) {
+            case let .Next(client):
+              expect(client).notTo(beNil())
+              expect((client.isAuthenticated)).to(beTrue())
+              
+              expectation.fulfill()
+            case .Completed:
+              break
+            default:
+              fail()
+            }
+          }
+        }
+      }
       
       
     }
