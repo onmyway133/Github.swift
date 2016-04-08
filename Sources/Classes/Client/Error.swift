@@ -72,6 +72,16 @@ public struct Error {
     return NSError(domain: Client.Constant.errorDomain, code: ErrorCode.AuthenticationFailed.rawValue, userInfo: userInfo)
   }
   
+  public static func openingBrowserError(url: NSURL) -> NSError {
+    let userInfo = [
+      NSLocalizedDescriptionKey: "Could not open web browser".localized,
+      NSLocalizedRecoverySuggestionErrorKey: "Please make sure you have a default web browser set.".localized,
+      NSURLErrorKey: url
+    ]
+    
+    return NSError(domain: Client.Constant.errorDomain, code: ErrorCode.OpeningBrowserFailed.rawValue, userInfo: userInfo)
+  }
+  
   internal static func transform(error: NSError, response: NSHTTPURLResponse?) -> NSError {
     guard let response = response else { return error }
     

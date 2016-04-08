@@ -11,6 +11,9 @@ import RxSwift
 
 public extension Client {
   
+  public static var callBackURLVariable: Variable<NSURL?> = Variable(nil)
+  public static var urlOpener: URLOpenerType = URLOpener()
+  
   // Attempts to authenticate as the given user.
   //
   // Authentication is done using a native OAuth flow. This allows apps to avoid
@@ -178,5 +181,53 @@ public extension Client {
         return client
       }
       .debug("+signInAsUser: \(user) password:oneTimePassword:scopes:")
+  }
+  
+  public static func authorizeUsingWebBrowser(server: Server, scopes: AuthorizationScopes) -> Observable<String> {
+    let clientID = Client.Config.clientID
+    
+    assert(!clientID.isEmpty)
+    
+    let observable = Observable<String>.create({ (observer) -> Disposable in
+      let uuid = NSUUID().UUIDString
+      
+      // For any matching callback URL, send the temporary code to our
+      // subscriber.
+      //
+      // This should be set up before opening the URL below, or we may
+      // miss values on self.callbackURLs.
+      let disposable =
+        callBackURLVariable
+          .asObservable()
+          .flatMap { (url: NSURL?) -> Observable<String> in
+            let queryArguments = url?.queryArguments ?? [:]
+            
+            if queryArguments["state"] == uuid {
+              return Observable<String>.just(queryArguments["code"] ?? "")
+            } else {
+              return Observable<String>.empty()
+            }
+          }
+          .take(1)
+          .subscribe(observer)
+      
+      let scope = scopes.values.joinWithSeparator(",")
+      
+      // Trim trailing slashes from URL entered by the user, so we don't open
+      // their web browser to a URL that contains empty path components.
+      let slashSet = NSCharacterSet(charactersInString: "/")
+      let baseURLString = server.baseWebURL.absoluteString.stringByTrimmingCharactersInSet(slashSet)
+      let URLString = "\(baseURLString)/login/oauth/authorize?client_id=\(clientID)&scope=\(scope)&state=\(uuid)"
+      
+      if let webURL = NSURL(string: URLString) {
+        if !urlOpener.openURL(webURL) {
+          observer.onError(Error.openingBrowserError(webURL))
+        }
+      }
+      
+      return disposable
+    }).debug("+authorizeWithServerUsingWebBrowser: \(server) scopes:")
+    
+    return observable
   }
 }

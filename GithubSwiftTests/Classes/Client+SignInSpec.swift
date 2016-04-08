@@ -17,7 +17,7 @@ import Sugar
 class ClientSignInSpec: QuickSpec {
   override func spec() {
     describe("sign in") {
-      let dotComLoginURL = NSURL(string: "https://github.com/login/oauth/authorize")
+      let dotComLoginURL = NSURL(string: "https://github.com/login/oauth/authorize")!
       
       let clientID = "deadbeef"
       let clientSecret = "itsasekret"
@@ -146,7 +146,64 @@ class ClientSignInSpec: QuickSpec {
         }
       }
       
+      it("should delete an existing authorization") {
+        var deleted = false
+        
+        func matcher(request: NSURLRequest) -> Bool {
+          guard let path = request.URL?.path
+            where path == "/authorizations/1" && request.HTTPMethod == "DELETE" else { return false }
+         
+          deleted = true
+          return true
+        }
+        
+        self.stub(uri("/authorizations/clients/\(clientID)"), builder: jsonData(Helper.read("authorizations_existing"), status: 200))
+        self.stub(matcher, builder: jsonData(NSData(), status: 204))
+       
+        let observable = Client.signIn(user: user, password: "", scopes: .Repository)
+        self.async { expectation in
+          let _ = observable.subscribe { a in
+            expect(deleted).to(beTrue())
+            expectation.fulfill()
+          }
+        }
+      }
       
+      describe("+authorizeWithServerUsingWebBrowser:scopes:") {
+        let testURLOpener = TestURLOpener()
+        var openedURL: NSURL?
+        var disposable: Disposable!
+        
+        beforeEach {
+          testURLOpener.shouldSucceedOpeningURL = true
+          Client.urlOpener = testURLOpener
+          disposable = testURLOpener.openedURLsVariable.asObservable().subscribeNext { url in
+            if !(url?.absoluteString.isEmpty ?? false) {
+              openedURL = url
+            }
+          }
+        }
+        
+        afterEach {
+          Client.urlOpener = URLOpener()
+          disposable!.dispose()
+        }
+        
+        it("should open the login URL") {
+          let _ = Client.authorizeUsingWebBrowser(Server.dotComServer, scopes: .Repository).subscribe { _ in }
+          
+          self.async { expectation in
+            delay(0.1) {
+              expect(openedURL).toNot(beNil())
+              expect(openedURL?.scheme).to(equal(dotComLoginURL.scheme))
+              expect(openedURL?.host).to(equal(dotComLoginURL.host))
+              expect(openedURL?.path).to(equal(dotComLoginURL.path))
+              
+              expectation.fulfill()
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import Quick
 import Mockingjay
+import RxSwift
 
 class DummySpec: QuickSpec {}
 
@@ -25,7 +26,7 @@ public extension XCTestCase {
     
     action(expectation)
     
-    self.waitForExpectationsWithTimeout(0.5, handler: nil)
+    self.waitForExpectationsWithTimeout(1, handler: nil)
   }
 }
 
