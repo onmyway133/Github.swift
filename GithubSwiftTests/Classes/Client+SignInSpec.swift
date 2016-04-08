@@ -203,6 +203,40 @@ class ClientSignInSpec: QuickSpec {
             }
           }
         }
+        
+        it("should only complete after a matching URL is passed to +completeSignInWithCallbackURL:") {
+          var code = ""
+          
+          let _ = Client.authorizeUsingWebBrowser(Server.dotComServer, scopes: .Repository)
+            .subscribeNext {
+              code = $0
+            }
+          
+          self.async { expectation in
+            delay(0.1) {
+              guard let openedURL = openedURL else { return }
+              
+              expect(openedURL).toNot(beNil());
+              
+              let queryArguments = openedURL.queryArguments
+              expect(queryArguments["client_id"]).to(equal(clientID))
+              expect(queryArguments["scope"]).notTo(beNil())
+              
+              let state = queryArguments["state"]
+              expect(state).notTo(beNil())
+              
+              let differentURL = NSURL(string: "?state=foobar&code=12345", relativeToURL: dotComLoginURL)!
+              Client.completeSignIn(callbackURL: differentURL)
+              
+              expect(code.isEmpty).to(beTrue())
+              
+              let matchingURL = NSURL(string: "?state=\(state!)&code=12345", relativeToURL: dotComLoginURL)!
+              Client.completeSignIn(callbackURL: matchingURL)
+              
+              expect(code).to(equal("12345"));
+            }
+          }
+        }
       }
     }
   }

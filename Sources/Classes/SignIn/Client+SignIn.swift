@@ -230,4 +230,16 @@ public extension Client {
     
     return observable
   }
+  
+  // Notifies any waiting login processes that authentication has completed.
+  //
+  // This only affects authentication started with
+  // +signInToServerUsingWebBrowser:scopes:. Invoking this method will allow
+  // the originating login process to continue. If `callbackURL` does not
+  // correspond to any in-progress logins, nothing will happen.
+  //
+  // callbackURL - The URL that the app was opened with. This must not be nil.
+  public static func completeSignIn(callbackURL url: NSURL) {
+    callBackURLVariable.value = url
+  }
 }
