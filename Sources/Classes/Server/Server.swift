@@ -18,7 +18,7 @@ public class Server: Mappable {
   static let dotComAPIEndpoint = "https://api.github.com"
   
   // The full URL String for the github.com homepage
-  static let dotcomBaseWebURL = "https://api.github.com"
+  static let dotcomBaseWebURL = "https://github.com"
   
   // The path to the API for an Enterprise instance
   // (relative to the baseURL).
