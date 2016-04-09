@@ -99,6 +99,8 @@
 		D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
 		D24FD8601CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
+		D24FD8621CB9A271008C4EEC /* AuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */; };
+		D24FD8631CB9A271008C4EEC /* AuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */; };
 		D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013491CAFAD7F00EFADE5 /* Response.swift */; };
 		D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013491CAFAD7F00EFADE5 /* Response.swift */; };
 		D290134E1CAFF9FE00EFADE5 /* Client+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290134D1CAFF9FE00EFADE5 /* Client+Repository.swift */; };
@@ -219,6 +221,7 @@
 		D21D1B5E1CADC5CF00BD068E /* user_starred.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_starred.json; sourceTree = "<group>"; };
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
+		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
 		D29013491CAFAD7F00EFADE5 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		D290134D1CAFF9FE00EFADE5 /* Client+Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Repository.swift"; sourceTree = "<group>"; };
 		D29013501CB0129A00EFADE5 /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
@@ -442,6 +445,7 @@
 				D290137E1CB07D3600EFADE5 /* Client+SignInSpec.swift */,
 				D2A0651A1CB8698E005A0AC7 /* TestURLOpener.swift */,
 				D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */,
+				D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -868,6 +872,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24FD8621CB9A271008C4EEC /* AuthorizationSpec.swift in Sources */,
 				D21D1B5F1CADC5CF00BD068E /* ClientSpec.swift in Sources */,
 				D290137C1CB0793A00EFADE5 /* FormatterSpec.swift in Sources */,
 				D2A0651B1CB8698E005A0AC7 /* TestURLOpener.swift in Sources */,
@@ -926,6 +931,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24FD8631CB9A271008C4EEC /* AuthorizationSpec.swift in Sources */,
 				D21D1B601CADC5CF00BD068E /* ClientSpec.swift in Sources */,
 				D290137D1CB0793A00EFADE5 /* FormatterSpec.swift in Sources */,
 				D2A0651C1CB8698E005A0AC7 /* TestURLOpener.swift in Sources */,
