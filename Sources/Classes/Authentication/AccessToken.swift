@@ -23,6 +23,6 @@ public class AccessToken: Object {
   public required init(_ map: JSONDictionary) {
     super.init(map)
     
-    self.token <- map.property("token")
+    self.token <- map.property("access_token")
   }
 }

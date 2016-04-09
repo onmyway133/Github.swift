@@ -171,6 +171,10 @@ public extension Client {
       } else {
         assertionFailure()
       }
+      
+      if let last = $0.path.characters.last where last == "/" {
+        $0.path.removeAtIndex($0.path.endIndex.predecessor())
+      }
     }
     
     return enqueue(requestDescriptor)

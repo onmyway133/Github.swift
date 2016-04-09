@@ -242,4 +242,127 @@ public extension Client {
   public static func completeSignIn(callbackURL url: NSURL) {
     callBackURLVariable.value = url
   }
+  
+  // Opens the default web browser to the given GitHub server, and prompts the
+  // user to sign in.
+  //
+  // Your app must be the preferred application for handling its URL callback, as set
+  // in your OAuth Application Settings). When the callback URL is opened using
+  // your app, you must invoke +completeSignInWithCallbackURL: in order for this
+  // authentication method to complete successfully.
+  //
+  // **NOTE:** You must invoke +setClientID:clientSecret: before using this
+  // method.
+  //
+  // server - The server that the user should sign in to. This must not be
+  //          nil.
+  // scopes - The scopes to request access to. These values can be
+  //          bitwise OR'd together to request multiple scopes.
+  //
+  // Returns a signal which will send an OCTClient then complete on success, or
+  // else error. If +completeSignInWithCallbackURL: is never invoked, the returned
+  // signal will never complete.
+  public static func signInUsingWebBrowser(server: Server, scopes: AuthorizationScopes) -> Observable<Client> {
+    let clientID = Client.Config.clientID
+    let clientSecret = Client.Config.clientSecret
+    
+    assert(!clientID.isEmpty)
+    assert(!clientSecret.isEmpty)
+    
+    func clientAndToken(authorizationCode: String, server: Server) -> Observable<(Client, AccessToken)> {
+      let params = [
+        "client_id": clientID,
+        "client_secret": clientSecret,
+        "code": authorizationCode
+      ]
+      
+      let client = Client(server: server)
+      
+      // We're using -requestWithMethod: for its parameter encoding and
+      // User-Agent behavior, but we'll replace the key properties so we
+      // can POST to another host.
+      let requestDescriptor = RequestDescriptor().then {
+        $0.method = .POST
+        $0.path = "login/oauth/access_token"
+        $0.parameters = params
+        
+        // The `Accept` string we normally use (where we specify the beta
+        // version of the API) doesn't work for this endpoint. Just plain
+        // JSON.
+        $0.headers = [
+          "Accept": "application/json"
+        ]
+      }
+      
+      let tokenObservable = client.enqueue(requestDescriptor).map {
+        return Parser.one($0.jsonArray) as AccessToken
+      }
+      
+      return
+        Observable<(Client, AccessToken)>.combineLatest(Observable<Client>.just(client), tokenObservable) {
+          return ($0, $1)
+        }
+    }
+    
+    func postProcess(client: Client) -> Observable<Client> {
+      return
+        client.fetchUserInfo()
+        .doOnNext { user in
+          // FIXME
+          /*
+           NSMutableDictionary *userDict = [user.dictionaryValue mutableCopy] ?: [NSMutableDictionary dictionary];
+           if (user.rawLogin == nil) userDict[@keypath(user.rawLogin)] = user.login;
+           OCTUser *userWithRawLogin = [OCTUser modelWithDictionary:userDict error:NULL];
+          */
+          
+          client.user = user
+        }
+        .flatMap { _ in
+          return Observable<Client>.just(client)
+        }
+    }
+    
+    let observable: Observable<Client> =
+      Client.authorizeUsingWebBrowser(server, scopes: scopes)
+      .withLatestFrom(Observable<Server>.just(server), resultSelector: { (authorizationCode: String, server: Server) in
+        return (authorizationCode, server)
+      })
+      .catchError { error in
+        let error = error as NSError
+        
+        if error.code == ErrorCode.UnsupportedServerScheme.rawValue {
+          let secureServer = Server.HTTPSEnterpriseServer(server)
+          return
+            Client.authorizeUsingWebBrowser(secureServer, scopes: scopes)
+            .withLatestFrom(Observable<Server>.just(server), resultSelector: { (authorizationCode: String, server: Server) in
+              return (authorizationCode, server)
+            })
+        } else {
+          return Observable<(String, Server)>.error(error)
+        }
+      }
+      .flatMap { (authorizationCode: String, server: Server) in
+        return
+          clientAndToken(authorizationCode, server: server)
+          .catchError { error in
+            let error = error as NSError
+            if error.code == ErrorCode.UnsupportedServerScheme.rawValue {
+              let secureServer = Server.HTTPSEnterpriseServer(server)
+              return clientAndToken(authorizationCode, server: secureServer)
+            } else {
+              return Observable<(Client, AccessToken)>.error(error)
+            }
+          }
+      }
+      .map { (client: Client, accessToken: AccessToken) in
+        client.token = accessToken.token
+        
+        return client
+      }
+      .flatMap { (client: Client) in
+        return postProcess(client)
+      }.debug("+signInToServerUsingWebBrowser: \(server) scopes:")
+    
+    return observable
+  }
 }

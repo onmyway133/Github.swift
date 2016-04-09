@@ -102,22 +102,16 @@ class ClientSignInSpec: QuickSpec {
         let enterpriseServer = Server(baseURL: baseURL)
         let enterpriseUser = User(rawLogin: user.rawLogin, server: enterpriseServer)
         
-        let observable = Client.signIn(user: enterpriseUser, password: "", scopes: .Repository)
+        let event = Client.signIn(user: enterpriseUser, password: "", scopes: .Repository).subscribeSync()
         
-        self.async { expectation in
-          let _ = observable.subscribe { event in
-            switch(event) {
-            case let .Next(client):
-              expect(client).notTo(beNil())
-              expect((client.isAuthenticated)).to(beTrue())
-              
-              expectation.fulfill()
-            case .Completed:
-              break
-            default:
-              fail()
-            }
-          }
+        switch event {
+        case let .Next(client)?:
+          expect(client).notTo(beNil())
+          expect((client.isAuthenticated)).to(beTrue())
+        case .Completed?:
+          break
+        default:
+          fail()
         }
       }
      
@@ -233,6 +227,96 @@ class ClientSignInSpec: QuickSpec {
             expect(code).to(equal("12345"))
             
             expectation.fulfill()
+          }
+        }
+        
+        it("should error when the browser cannot be opened") {
+          testURLOpener.shouldSucceedOpeningURL = false;
+          
+          let event = Client.authorizeUsingWebBrowser(Server.dotComServer, scopes: .Repository).subscribeSync()
+          
+          if case let .Error(error)? = event {
+            let error = error as NSError
+            expect(error.domain).to(equal(Client.Constant.errorDomain))
+            expect(error.code).to(equal(ErrorCode.OpeningBrowserFailed.rawValue))
+          } else {
+            fail()
+          }
+        }
+      }
+      
+      describe("+signInToServerUsingWebBrowser:scopes:") {
+        let token = "e72e16c7e42f292c6912e7710c838347ae178b4a"
+        let testURLOpener = TestURLOpener()
+        
+        func signInAndCallback() -> Observable<Client> {
+          var openedURL: NSURL?
+         
+          let _ = testURLOpener.openedURLsVariable.asObservable().subscribeNext { url in
+            if !(url?.absoluteString.isEmpty ?? false) {
+              openedURL = url
+              
+              guard let openedURL = openedURL else { return }
+              
+              let state = openedURL.queryArguments["state"] ?? ""
+              let matchingURL = NSURL(string: "?state=\(state)&code=12345", relativeToURL:dotComLoginURL)!
+              Client.completeSignIn(callbackURL: matchingURL)
+            }
+          }
+          
+          return Client.signInUsingWebBrowser(Server.dotComServer, scopes: .Repository)
+        }
+        
+        beforeEach {
+          testURLOpener.shouldSucceedOpeningURL = true
+          Client.urlOpener = testURLOpener
+          
+          self.stub(uri("/user"), builder: jsonData(Helper.read("user")))
+          
+          // Stub the access_token response (which is from a different host
+          // than the API).
+          func matcher(request: NSURLRequest) -> Bool {
+            guard request.HTTPMethod == "POST"
+              && request.URL?.host == "api.github.com" // FIXME: It was github.com
+              && request.URL?.path == "/login/oauth/access_token"
+              else { return false }
+            
+            if let body = request.HTTPBody,
+              json = try? NSJSONSerialization.JSONObjectWithData(body, options: .AllowFragments),
+              params = json as? [String: String] {
+             
+              expect(params["client_id"]).to(equal(clientID))
+              expect(params["client_secret"]).to(equal(clientSecret))
+              expect(params["code"]).to(equal("12345"))
+            }
+            
+            return true
+          }
+          
+          let headers = [
+            "Content-Type": "application/json"
+          ]
+          
+          self.stub(matcher, builder: jsonData(Helper.read("access_token"), status: 200, headers: headers))
+        }
+        
+        afterEach {
+          Client.urlOpener = URLOpener()
+        }
+
+        
+        it("should create an authenticated OCTClient with the received access token") {
+          let event = signInAndCallback().subscribeSync()
+          
+          if case let .Next(client)? = event {
+            expect(client).notTo(beNil());
+            
+            expect(client.user).notTo(beNil())
+            expect(client.user!.rawLogin).to(equal(user.rawLogin))
+            expect(client.token).to(equal(token))
+            expect((client.isAuthenticated)).to(beTrue())
+          } else {
+            fail()
           }
         }
       }

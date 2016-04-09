@@ -31,7 +31,7 @@ public class Client {
   // unauthenticated, and will control which username is used for endpoints
   // that require one. For example, this user's login will be used with
   // -fetchUserEventsNotMatchingEtag:.
-  public private(set) var user: User?
+  public internal(set) var user: User?
   
   // The OAuth access token that the client was initialized with.
   //
