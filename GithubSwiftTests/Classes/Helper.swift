@@ -10,6 +10,7 @@ import Foundation
 import Quick
 import Mockingjay
 import RxSwift
+import Sugar
 
 class DummySpec: QuickSpec {}
 
@@ -44,5 +45,33 @@ extension XCTest {
     }
     
     self.stub(matcher, builder: http(statusCode, headers: ["Location": redirectURL.absoluteString]))
+  }
+}
+
+extension ObservableType {
+  func subscribeSync() -> Event<E>? {
+    var event: Event<E>?
+    var done = false
+    
+    let _ = self.subscribe { e in
+      event = e
+      
+      switch e {
+      case .Error, .Completed:
+        done = true
+      default:
+        break
+      }
+    }
+    
+    delay(1) {
+      done = true
+    }
+    
+    repeat {
+      NSRunLoop.mainRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 0.1))
+    } while (!done)
+    
+    return event
   }
 }
