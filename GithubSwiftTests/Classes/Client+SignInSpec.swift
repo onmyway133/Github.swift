@@ -230,7 +230,9 @@ class ClientSignInSpec: QuickSpec {
             let matchingURL = NSURL(string: "?state=\(state!)&code=12345", relativeToURL: dotComLoginURL)!
             Client.completeSignIn(callbackURL: matchingURL)
             
-            expect(code).to(equal("12345"));
+            expect(code).to(equal("12345"))
+            
+            expectation.fulfill()
           }
         }
       }
