@@ -21,12 +21,16 @@ struct Helper {
 }
 
 public extension XCTestCase {
-  public func async(action: (XCTestExpectation) -> Void) {
+  public func async(file: String = #file, line: UInt = #line, action: (XCTestExpectation) -> Void) {
     let expectation = self.expectationWithDescription("")
     
     action(expectation)
     
-    self.waitForExpectationsWithTimeout(1, handler: nil)
+    self.waitForExpectationsWithTimeout(1) { error in
+      if error != nil {
+        self.recordFailureWithDescription("fail", inFile: file, atLine: line, expected: true)
+      }
+    }
   }
 }
 
