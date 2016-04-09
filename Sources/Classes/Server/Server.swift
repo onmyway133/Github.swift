@@ -15,34 +15,34 @@ import Sugar
 public class Server: Mappable {
   
   // The full URL String for the github.com API
-  static let dotComAPIEndpoint = "https://api.github.com"
+  public static let dotComAPIEndpoint = "https://api.github.com"
   
   // The full URL String for the github.com homepage
-  static let dotcomBaseWebURL = "https://github.com"
+  public static let dotcomBaseWebURL = "https://github.com"
   
   // The path to the API for an Enterprise instance
   // (relative to the baseURL).
-  static let enterpriseAPIEndpointPathComponent = "api/v3"
+  public static let enterpriseAPIEndpointPathComponent = "api/v3"
   
   // Enterprise defaults to HTTP, and not all instances have HTTPS set up.
-  static let defaultEnterpriseScheme = "http"
+  public static let defaultEnterpriseScheme = "http"
   
   // Expose Enterprise HTTPS scheme for clients.
-  static let httpsEnterpriseScheme = "https"
+  public static let httpsEnterpriseScheme = "https"
  
   // Returns YES if this is an Enterprise instance
-  var isEnterprise: Bool {
+  public var isEnterprise: Bool {
     return baseURL != nil
   }
   
   // The base URL to the instance associated with this server
-  private(set) var baseURL: NSURL?
+  public private(set) var baseURL: NSURL?
   
   // The base URL to the API we should use for requests to this server
   // (i.e., Enterprise or github.com).
   //
   // This URL is constructed from the baseURL.
-  var APIEndpoint: NSURL {
+  public var APIEndpoint: NSURL {
     if let url = baseURL {
       return url.URLByAppendingPathComponent(Server.enterpriseAPIEndpointPathComponent, isDirectory: true)
     } else if let endpoint = NSProcessInfo.processInfo().environment["API_ENDPOINT"] {
@@ -58,7 +58,7 @@ public class Server: Mappable {
   // Enterprise landing page or github.com).
   //
   // This URL is constructed from the baseURL.
-  var baseWebURL: NSURL {
+  public var baseWebURL: NSURL {
     return baseURL ?? NSURL(string: Server.dotcomBaseWebURL)!
   }
   
