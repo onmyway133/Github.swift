@@ -55,20 +55,12 @@ class ClientNotificationSpec: QuickSpec {
       it("should return nothing if notifications are unmodified") {
         self.stub(uri("/notifications"), builder: http(304))
         
-        let observable = client.fetchNotifications(etag: nil, includeRead: false, updatedSince: nil)
+        let event = client.fetchNotifications(etag: nil, includeRead: false, updatedSince: nil).subscribeSync()
         
-        self.async { expectation in
-          let _ = observable.subscribe { event in
-            switch event {
-            case .Completed:
-              expectation.fulfill()
-            default:
-              fail()
-            }
-          }
+        guard case .Completed? = event else {
+          fail()
+          return
         }
-        
-        
       }
     }
   }
