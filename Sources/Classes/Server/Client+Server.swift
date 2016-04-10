@@ -27,10 +27,17 @@ public extension Client {
     return client.enqueue(request)
       .map {
         return Parser.one($0.jsonArray)
-      }.catchError { _ in 
-        let secureServer = Server.HTTPSEnterpriseServer(server)
-        // if (error.code == OCTClientErrorUnsupportedServerScheme)
-        return Client.fetchMetadata(secureServer)
+      }.catchError { error in
+        let error = error as NSError
+        if error.code == ErrorCode.UnsupportedServerScheme.rawValue {
+          let secureServer = Server.HTTPSEnterpriseServer(server)
+          return Client.fetchMetadata(secureServer)
+        } else if let statusCode = error.userInfo[ErrorKey.HTTPStatusCodeKey.rawValue] as? Int
+          where statusCode == ErrorCode.NotFound.rawValue {
+          return Observable<ServerMetadata>.error(Error.unsupportedVersionError())
+        } else {
+          return Observable<ServerMetadata>.error(error)
+        }
       }.debug("+fetchMetadataForServer: \(server)")
   }
 }
