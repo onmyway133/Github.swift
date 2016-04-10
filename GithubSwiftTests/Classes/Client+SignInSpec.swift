@@ -102,15 +102,12 @@ class ClientSignInSpec: QuickSpec {
         let enterpriseServer = Server(baseURL: baseURL)
         let enterpriseUser = User(rawLogin: user.rawLogin, server: enterpriseServer)
         
-        let event = Client.signIn(user: enterpriseUser, password: "", scopes: .Repository).subscribeSync()
+        let result = Client.signIn(user: enterpriseUser, password: "", scopes: .Repository).subscribeSync()
         
-        switch event {
-        case let .Next(client)?:
+        if let client = result.next {
           expect(client).notTo(beNil())
           expect((client.isAuthenticated)).to(beTrue())
-        case .Completed?:
-          break
-        default:
+        } else if result.error != nil {
           fail()
         }
       }
@@ -233,10 +230,9 @@ class ClientSignInSpec: QuickSpec {
         it("should error when the browser cannot be opened") {
           testURLOpener.shouldSucceedOpeningURL = false;
           
-          let event = Client.authorizeUsingWebBrowser(Server.dotComServer, scopes: .Repository).subscribeSync()
+          let result = Client.authorizeUsingWebBrowser(Server.dotComServer, scopes: .Repository).subscribeSync()
           
-          if case let .Error(error)? = event {
-            let error = error as NSError
+          if let error = result.error {
             expect(error.domain).to(equal(Client.Constant.errorDomain))
             expect(error.code).to(equal(ErrorCode.OpeningBrowserFailed.rawValue))
           } else {
@@ -306,16 +302,16 @@ class ClientSignInSpec: QuickSpec {
 
         
         it("should create an authenticated OCTClient with the received access token") {
-          let event = signInAndCallback().subscribeSync()
+          let result = signInAndCallback().subscribeSync()
           
-          if case let .Next(client)? = event {
+          if let client = result.next {
             expect(client).notTo(beNil());
             
             expect(client.user).notTo(beNil())
             expect(client.user!.rawLogin).to(equal(user.rawLogin))
             expect(client.token).to(equal(token))
             expect((client.isAuthenticated)).to(beTrue())
-          } else {
+          } else if result.error != nil {
             fail()
           }
         }

@@ -21,12 +21,12 @@ class ClientServerSpec: QuickSpec {
       it("should successfully fetch metadata") {
         self.stub(uri("/meta"), builder: jsonData(Helper.read("meta")))
 
-        let event = Client.fetchMetadata(Server.dotComServer).subscribeSync()
+        let result = Client.fetchMetadata(Server.dotComServer).subscribeSync()
         
-        if case let .Next(meta)? = event {
+        if let meta = result.next {
           expect(meta).notTo(beNil())
           expect(meta.supportsPasswordAuthentication).to(beTrue())
-        } else {
+        } else if result.error != nil {
           fail()
         }
       }
@@ -36,8 +36,7 @@ class ClientServerSpec: QuickSpec {
         
         let event = Client.fetchMetadata(Server.dotComServer).subscribeSync()
         
-        if case let .Error(error)? = event {
-          let error = error as NSError
+        if let error = event.error {
           expect(error.domain).to(equal(Client.Constant.errorDomain))
           expect(error.code).to(equal(ErrorCode.UnsupportedServer.rawValue))
         } else {
@@ -57,9 +56,9 @@ class ClientServerSpec: QuickSpec {
       
         let event = Client.fetchMetadata(server).subscribeSync()
         
-        if case let .Next(meta)? = event {
+        if let meta = event.next {
           expect(meta).notTo(beNil())
-        } else {
+        } else if event.error != nil {
           fail()
         }
       }

@@ -49,18 +49,23 @@ extension XCTest {
 }
 
 extension ObservableType {
-  func subscribeSync() -> Event<E>? {
-    var event: Event<E>?
+  func subscribeSync() -> (next: E?, error: NSError?, completed: Bool) {
+    var next: E?
+    var error: NSError?
+    var completed: Bool = false
     var done = false
     
-    let _ = self.subscribe { e in
-      event = e
+    let _ = self.subscribe { event in
       
-      switch e {
-      case .Error, .Completed:
+      switch event {
+      case let .Next(value):
+        next = value
+      case let .Error(e):
+        error = e as NSError
         done = true
-      default:
-        break
+      case .Completed:
+        completed = true
+        done = true
       }
     }
     
@@ -72,6 +77,7 @@ extension ObservableType {
       NSRunLoop.mainRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 0.1))
     } while (!done)
     
-    return event
+    return (next: next, error: error, completed: completed)
   }
 }
+
