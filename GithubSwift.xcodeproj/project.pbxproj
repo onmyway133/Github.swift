@@ -101,6 +101,8 @@
 		D24FD8601CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
 		D24FD8621CB9A271008C4EEC /* AuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */; };
 		D24FD8631CB9A271008C4EEC /* AuthorizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */; };
+		D24FD8661CBA3323008C4EEC /* Client+ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD8651CBA3323008C4EEC /* Client+ServerSpec.swift */; };
+		D24FD8671CBA3323008C4EEC /* Client+ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD8651CBA3323008C4EEC /* Client+ServerSpec.swift */; };
 		D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013491CAFAD7F00EFADE5 /* Response.swift */; };
 		D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29013491CAFAD7F00EFADE5 /* Response.swift */; };
 		D290134E1CAFF9FE00EFADE5 /* Client+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290134D1CAFF9FE00EFADE5 /* Client+Repository.swift */; };
@@ -222,6 +224,7 @@
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
 		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
+		D24FD8651CBA3323008C4EEC /* Client+ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+ServerSpec.swift"; sourceTree = "<group>"; };
 		D29013491CAFAD7F00EFADE5 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		D290134D1CAFF9FE00EFADE5 /* Client+Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Repository.swift"; sourceTree = "<group>"; };
 		D29013501CB0129A00EFADE5 /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
@@ -446,6 +449,7 @@
 				D2A0651A1CB8698E005A0AC7 /* TestURLOpener.swift */,
 				D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */,
 				D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */,
+				D24FD8651CBA3323008C4EEC /* Client+ServerSpec.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -880,6 +884,7 @@
 				D29013651CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */,
 				D21D1B611CADC5CF00BD068E /* Helper.swift in Sources */,
 				D290135A1CB0446100EFADE5 /* Client+RequestSpec.swift in Sources */,
+				D24FD8661CBA3323008C4EEC /* Client+ServerSpec.swift in Sources */,
 				D290135D1CB0446C00EFADE5 /* Client+RepositorySpec.swift in Sources */,
 				D290137F1CB07D3600EFADE5 /* Client+SignInSpec.swift in Sources */,
 			);
@@ -939,6 +944,7 @@
 				D29013661CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */,
 				D21D1B621CADC5CF00BD068E /* Helper.swift in Sources */,
 				D290135B1CB0446100EFADE5 /* Client+RequestSpec.swift in Sources */,
+				D24FD8671CBA3323008C4EEC /* Client+ServerSpec.swift in Sources */,
 				D290135E1CB0446C00EFADE5 /* Client+RepositorySpec.swift in Sources */,
 				D29013801CB07D3600EFADE5 /* Client+SignInSpec.swift in Sources */,
 			);

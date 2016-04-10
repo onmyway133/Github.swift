@@ -17,7 +17,7 @@ public class ServerMetadata: Object {
   //
   // If this is NO, you must invoke +[OCTClient signInToServerUsingWebBrowser:] to
   // log in to this server.
-  private(set) var supportsPasswordAuthentication: Bool = false
+  public private(set) var supportsPasswordAuthentication: Bool = false
   
   public required init(_ map: JSONDictionary) {
     super.init(map)
