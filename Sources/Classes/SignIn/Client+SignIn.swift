@@ -308,13 +308,7 @@ public extension Client {
       return
         client.fetchUserInfo()
         .doOnNext { user in
-          // FIXME
-          /*
-           NSMutableDictionary *userDict = [user.dictionaryValue mutableCopy] ?: [NSMutableDictionary dictionary];
-           if (user.rawLogin == nil) userDict[@keypath(user.rawLogin)] = user.login;
-           OCTUser *userWithRawLogin = [OCTUser modelWithDictionary:userDict error:NULL];
-          */
-          
+          user.rawLogin = !user.rawLogin.isEmpty ? user.rawLogin : user.login
           client.user = user
         }
         .flatMap { _ in

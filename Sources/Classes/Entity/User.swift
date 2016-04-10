@@ -23,7 +23,7 @@ public class User: Entity {
   // systems like LDAP and CAS may have different username requirements than
   // GitHub, meaning that the `login` may not work directly for authentication,
   // or the `rawLogin` may not work directly with the API.
-  public private(set) var rawLogin: String = ""
+  public internal(set) var rawLogin: String = ""
   
   // Returns a user that has the given name and email address.
   public convenience init(name: String, email: String) {
