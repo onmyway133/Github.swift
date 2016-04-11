@@ -8,13 +8,99 @@
 
 ## Description
 
-A Swift implementation of [octokit.objc](https://github.com/octokit/octokit.objc), using [RxSwift](https://github.com/ReactiveX/RxSwift)
+- A Swift implementation of [octokit.objc](https://github.com/octokit/octokit.objc), using [RxSwift](https://github.com/ReactiveX/RxSwift) and [Tailor](https://github.com/zenangst/Tailor)
+- Hope it is useful to you, as it is to me
+- Try to use more Swift style
 
 ## Usage
 
+- User: identify a user
+- Server: identify server (Github or Github Enterprise)
+- Client: make request. If associated with a valid token, it is considered authenticated client
+
 ```swift
-<API>
+let user = User(rawLogin: "onmyway133", server: Server.dotComServer)
+let client = Client(unauthenticatedUser: user)
+
+client.fetchUserStarredRepositories().subscribeNext { repositories in
+  print(repositories)
+}
 ```
+
+Make your own request using `RequestDescriptor`
+
+```swift
+let requestDescriptor = RequestDescriptor().then {
+  $0.path = "repos/\(owner)/\(name)"
+  $0.etag = "12345"  
+}
+
+return enqueue(requestDescriptor).map {
+  return Parser.one($0.jsonArray)
+}
+```
+
+## Features
+
+#### Metadata
+
+- Fetch server metadata
+
+#### Sign in
+
+- Native flow
+- OAuth flow
+
+#### User (in progress)
+
+- Follow
+- Unfollow
+- Fetch user info
+
+#### Repository
+
+- Fetch repositories
+- Create repository
+- Fetch commits
+- Fetch pull requests
+- Fetch issues
+- Watch
+
+#### Pull request (in progress)
+
+- Make pull requests
+
+#### Organization (in progress)
+
+- Fetch organizations
+- Fetch teams
+
+#### Search (in progress)
+
+- Search repositories
+
+#### Event (in progress)
+
+- Fetch user events
+
+#### Gists (in progress)
+
+- Fetch gists
+
+#### Git (in progress)
+
+- Create tree
+- Create blob
+- Create commit
+
+#### Activity (in progress)
+
+- Star
+- Unstar
+
+#### Notification
+
+- Fetch notifications
 
 ## Installation
 
