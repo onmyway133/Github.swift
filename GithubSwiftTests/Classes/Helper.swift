@@ -19,6 +19,11 @@ struct Helper {
     let path = NSBundle(forClass: DummySpec().dynamicType).pathForResource(fileName, ofType: "json")!
     return NSData(contentsOfFile: path)!
   }
+  
+  static func readJSON(fileName: String) -> [String: AnyObject] {
+    let data = Helper.read(fileName)
+    return try! NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! [String : AnyObject]
+  }
 }
 
 public extension XCTestCase {

@@ -131,4 +131,11 @@ public class Repository: Object {
     self.forkParent <- map.relation("parent")
     self.forkSource <- map.relation("source")
   }
+  
+  public override var baseURL: NSURL? {
+    didSet {
+      forkParent?.baseURL = baseURL
+      forkSource?.baseURL = baseURL
+    }
+  }
 }

@@ -21,6 +21,32 @@ public class Object: Mappable, Hashable, Equatable {
   // override the `+objectIDJSONTransformer` method to change this behavior.
   public var objectID: String = ""
   
+  // The URL of the API endpoint from which the receiver came. This should only be
+  // set at the time of initialization, and is responsible for filling in the
+  // `server` property.
+  public var baseURL: NSURL? {
+    get {
+      return server.baseURL
+    }
+    set {
+      guard let url = newValue else {
+        server = Server.dotComServer
+        return
+      }
+      
+      if url.host == "api.github.com" {
+        server = Server.dotComServer
+        return
+      }
+      
+      let baseURLString = "\(url.scheme)://\(url.host ?? "")"
+      server = Server(baseURL: NSURL(string: baseURLString)!)
+      
+      // FiXME
+      // Also set the base URL for any nested objects.
+    }
+  }
+  
   // The server this object is associated with.
   //
   // This object is not encoded into JSON.
