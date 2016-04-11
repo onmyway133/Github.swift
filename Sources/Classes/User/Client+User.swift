@@ -25,4 +25,19 @@ public extension Client {
       return Parser.one($0.jsonArray) as User
     }
   }
+  
+  /// Fetches the full information for the specified `user`.
+  ///
+  /// user - The specified user. This must not be nil.
+  ///
+  /// Returns a signal which sends a new OCTUser.
+  public func fetchUserInfo(user: User) -> Observable<User> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "/users/\(user.login)"
+    }
+    
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray) as User
+    }
+  }
 }
