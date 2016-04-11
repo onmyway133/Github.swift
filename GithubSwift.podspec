@@ -15,11 +15,15 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.9'
 
   s.requires_arc = true
-  s.ios.source_files = 'Sources/{iOS,Shared}/**/*'
-  s.osx.source_files = 'Sources/{Mac,Shared}/**/*'
+  s.ios.source_files = 'Sources/**/*'
+  s.osx.source_files = 'Sources/**/*'
 
   # s.ios.frameworks = 'UIKit', 'Foundation'
   # s.osx.frameworks = 'Cocoa', 'Foundation'
 
-  # s.dependency 'Whisper', '~> 1.0'
+  s.dependency 'Tailor', '~> 0.7'
+  s.dependency 'RxSwift', '~> 2.4'
+  s.dependency 'Alamofire', '~> 3.3'
+  s.dependency 'ISO8601', '~> 0.5'
+
 end
