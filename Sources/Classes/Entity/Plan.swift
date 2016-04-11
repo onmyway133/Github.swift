@@ -14,16 +14,16 @@ import Sugar
 public class Plan: Object {
   
   // The name of this plan.
-  private(set) var name: String = ""
+  public private(set) var name: String = ""
   
   // The number of collaborators allowed by this plan.
-  private(set) var collaborators: Int = 0
+  public private(set) var collaborators: Int = 0
   
   // The number of kilobytes of disk space allowed by this plan.
-  private(set) var space: Int = 0
+  public private(set) var space: Int = 0
   
   // The number of private repositories allowed by this plan.
-  private(set) var privateRepos: Int = 0
+  public private(set) var privateRepos: Int = 0
   
   public required init(_ map: JSONDictionary) {
     super.init(map)

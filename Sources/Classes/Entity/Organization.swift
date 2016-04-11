@@ -17,7 +17,7 @@ public class Organization: Entity {
   //
   // OCTClient endpoints do not actually set this property. It is provided as
   // a convenience for persistence and model merging.
-  var teams: [Team] = []
+  public var teams: [Team] = []
   
   public required init(_ map: JSONDictionary) {
     super.init(map)

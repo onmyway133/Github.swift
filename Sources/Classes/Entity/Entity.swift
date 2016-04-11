@@ -14,66 +14,66 @@ import Sugar
 public class Entity: Object {
   
   // The unique name for this entity, used in GitHub URLs.
-  private(set) var login: String = ""
+  public private(set) var login: String = ""
   
   // The full name of this entity.
   //
   // Returns `login` if no name is explicitly set.
-  private(set) var name: String = ""
+  public private(set) var name: String = ""
   
   // The short biography associated with this account.
-  private(set) var bio: String = ""
+  public private(set) var bio: String = ""
   
   // The OCTRepository objects associated with this entity.
   //
   // OCTClient endpoints do not actually set this property. It is provided as
   // a convenience for persistence and model merging.
-  var repositories: [Repository] = []
+  public var repositories: [Repository] = []
   
   // The email address for this account.
-  private(set) var email: String = ""
+  public private(set) var email: String = ""
   
   // The URL for any avatar image.
-  private(set) var avatarURL: NSURL?
+  public private(set) var avatarURL: NSURL?
   
   // The web URL for this account.
-  private(set) var htmlURL: NSURL?
+  public private(set) var htmlURL: NSURL?
   
   // A reference to a blog associated with this account.
-  private(set) var blog: String = ""
+  public private(set) var blog: String = ""
   
   // The name of a company associated with this account.
-  private(set) var company: String = ""
+  public private(set) var company: String = ""
   
   // The location associated with this account.
-  private(set) var location: String = ""
+  public private(set) var location: String = ""
   
   // The total number of collaborators that this account has on their private repositories.
-  private(set) var collaborators: Int = 0
+  public private(set) var collaborators: Int = 0
   
   // The number of public repositories owned by this account.
-  private(set) var publicRepoCount: Int = 0
+  public private(set) var publicRepoCount: Int = 0
   
   // The number of private repositories owned by this account.
-  private(set) var privateRepoCount: Int = 0
+  public private(set) var privateRepoCount: Int = 0
   
   // The number of public gists owned by this account.
-  private(set) var publicGistCount: Int = 0
+  public private(set) var publicGistCount: Int = 0
   
   // The number of private gists owned by this account.
-  private(set) var privateGistCount: Int = 0
+  public private(set) var privateGistCount: Int = 0
   
   // The number of followers for this account.
-  private(set) var followers: Int = 0
+  public private(set) var followers: Int = 0
   
   // The number of following for this account.
-  private(set) var following: Int = 0
+  public private(set) var following: Int = 0
   
   // The number of kilobytes occupied by this account's repositories on disk.
-  private(set) var diskUsage: Int = 0
+  public private(set) var diskUsage: Int = 0
   
   // The plan that this account is on.
-  private(set) var plan: Plan?
+  public private(set) var plan: Plan?
   
   public required init(_ map: JSONDictionary) {
     super.init(map)
@@ -97,5 +97,9 @@ public class Entity: Object {
     following <- map.property("following")
     diskUsage <- map.property("disk_usage")
     plan <- map.relation("plan")
+    
+    if name.isEmpty {
+      name = login
+    }
   }
 }
