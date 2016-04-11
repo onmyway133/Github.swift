@@ -12,6 +12,21 @@ import Sugar
 
 public extension Client {
   
+  // Fetches the repositories of the current `user`.
+  //
+  // Returns a signal which sends zero or more OCTRepository objects. Private
+  // repositories will only be included if the client is `authenticated`. If no
+  // `user` is set, the signal will error immediately.
+  public func fetchUserRepositories() -> Observable<[Repository]> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "/repos"
+    }
+    
+    return enqueueUser(requestDescriptor).map {
+      return Parser.all($0.jsonArray)
+    }
+  }
+  
   // Fetches a specific repository owned by the given `owner` and named `name`.
   //
   // name  - The name of the repository, must be a non-empty string.
