@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20617CB1CBC358700B738F8 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617CA1CBC358700B738F8 /* Content.swift */; };
+		D20617CC1CBC358700B738F8 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617CA1CBC358700B738F8 /* Content.swift */; };
+		D20617CE1CBC364B00B738F8 /* DirectoryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617CD1CBC364B00B738F8 /* DirectoryContent.swift */; };
+		D20617CF1CBC364B00B738F8 /* DirectoryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617CD1CBC364B00B738F8 /* DirectoryContent.swift */; };
+		D20617D11CBC365000B738F8 /* FileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617D01CBC365000B738F8 /* FileContent.swift */; };
+		D20617D21CBC365000B738F8 /* FileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617D01CBC365000B738F8 /* FileContent.swift */; };
+		D20617D41CBC365600B738F8 /* SymlinkContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617D31CBC365600B738F8 /* SymlinkContent.swift */; };
+		D20617D51CBC365600B738F8 /* SymlinkContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617D31CBC365600B738F8 /* SymlinkContent.swift */; };
+		D20617D71CBC366200B738F8 /* SubmoduleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617D61CBC366200B738F8 /* SubmoduleContent.swift */; };
+		D20617D81CBC366200B738F8 /* SubmoduleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20617D61CBC366200B738F8 /* SubmoduleContent.swift */; };
 		D21D1AE11CADBC9100BD068E /* Mockingjay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AE01CADBC9100BD068E /* Mockingjay.framework */; };
 		D21D1AE31CADC06E00BD068E /* URITemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AE21CADC06E00BD068E /* URITemplate.framework */; };
 		D21D1AFD1CADC3BE00BD068E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AF91CADC3BE00BD068E /* Alamofire.framework */; };
@@ -186,6 +196,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20617CA1CBC358700B738F8 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		D20617CD1CBC364B00B738F8 /* DirectoryContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryContent.swift; sourceTree = "<group>"; };
+		D20617D01CBC365000B738F8 /* FileContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileContent.swift; sourceTree = "<group>"; };
+		D20617D31CBC365600B738F8 /* SymlinkContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymlinkContent.swift; sourceTree = "<group>"; };
+		D20617D61CBC366200B738F8 /* SubmoduleContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmoduleContent.swift; sourceTree = "<group>"; };
 		D21D1AE01CADBC9100BD068E /* Mockingjay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mockingjay.framework; path = Carthage/Build/iOS/Mockingjay.framework; sourceTree = "<group>"; };
 		D21D1AE21CADC06E00BD068E /* URITemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URITemplate.framework; path = Carthage/Build/iOS/URITemplate.framework; sourceTree = "<group>"; };
 		D21D1AF91CADC3BE00BD068E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -330,6 +345,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D20617C91CBC357800B738F8 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				D20617CA1CBC358700B738F8 /* Content.swift */,
+				D20617CD1CBC364B00B738F8 /* DirectoryContent.swift */,
+				D20617D01CBC365000B738F8 /* FileContent.swift */,
+				D20617D31CBC365600B738F8 /* SymlinkContent.swift */,
+				D20617D61CBC366200B738F8 /* SubmoduleContent.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
 		D21D1AC51CADAF8200BD068E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +377,7 @@
 		D21D1B091CADC5A400BD068E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D20617C91CBC357800B738F8 /* Content */,
 				D24FD85A1CB97A66008C4EEC /* User */,
 				D29013851CB1546D00EFADE5 /* Authentication */,
 				D29013811CB07D6C00EFADE5 /* SignIn */,
@@ -855,17 +883,21 @@
 				D21D1B3A1CADC5A400BD068E /* Team.swift in Sources */,
 				D21D1B461CADC5A400BD068E /* Transformer.swift in Sources */,
 				D29013691CB0507300EFADE5 /* Notification.swift in Sources */,
+				D20617D41CBC365600B738F8 /* SymlinkContent.swift in Sources */,
 				D29013571CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138D1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
 				D29013761CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D29013791CB06F6700EFADE5 /* Helper.swift in Sources */,
+				D20617CE1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
 				D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */,
 				D29013931CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
+				D20617D71CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
 				D29013901CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
 				D21D1B441CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */,
 				D2A065181CB868FB005A0AC7 /* URLOpener.swift in Sources */,
+				D20617D11CBC365000B738F8 /* FileContent.swift in Sources */,
 				D21D1B2A1CADC5A400BD068E /* Error.swift in Sources */,
 				D21D1B381CADC5A400BD068E /* Plan.swift in Sources */,
 				D21D1B241CADC5A400BD068E /* Object.swift in Sources */,
@@ -875,6 +907,7 @@
 				D29013871CB154D500EFADE5 /* Authorization.swift in Sources */,
 				D29013831CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
 				D290136F1CB0591300EFADE5 /* String+Extensions.swift in Sources */,
+				D20617CB1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013721CB066FC00EFADE5 /* Password.swift in Sources */,
 				D21D1B281CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B341CADC5A400BD068E /* Entity.swift in Sources */,
@@ -918,17 +951,21 @@
 				D21D1B3B1CADC5A400BD068E /* Team.swift in Sources */,
 				D21D1B471CADC5A400BD068E /* Transformer.swift in Sources */,
 				D290136A1CB0507300EFADE5 /* Notification.swift in Sources */,
+				D20617D51CBC365600B738F8 /* SymlinkContent.swift in Sources */,
 				D29013581CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138E1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
 				D29013771CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */,
+				D20617CF1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
 				D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */,
 				D29013941CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
+				D20617D81CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
 				D29013911CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
 				D21D1B451CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */,
 				D2A065191CB868FB005A0AC7 /* URLOpener.swift in Sources */,
+				D20617D21CBC365000B738F8 /* FileContent.swift in Sources */,
 				D21D1B2B1CADC5A400BD068E /* Error.swift in Sources */,
 				D21D1B391CADC5A400BD068E /* Plan.swift in Sources */,
 				D21D1B251CADC5A400BD068E /* Object.swift in Sources */,
@@ -938,6 +975,7 @@
 				D29013881CB154D500EFADE5 /* Authorization.swift in Sources */,
 				D29013841CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
 				D29013701CB0591300EFADE5 /* String+Extensions.swift in Sources */,
+				D20617CC1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013731CB066FC00EFADE5 /* Password.swift in Sources */,
 				D21D1B291CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B351CADC5A400BD068E /* Entity.swift in Sources */,
