@@ -8,17 +8,13 @@
 
 ## Description
 
-Github API client in Swift, inspired by [octokit.objc](https://github.com/octokit/octokit.objc), using RxSwift
+A Swift implementation of [octokit.objc](https://github.com/octokit/octokit.objc), using [RxSwift](https://github.com/ReactiveX/RxSwift)
 
 ## Usage
 
 ```swift
 <API>
 ```
-
-## Author
-
-Khoa Pham, onmyway133@gmail.com
 
 ## Installation
 
