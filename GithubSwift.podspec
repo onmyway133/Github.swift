@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "GithubSwift"
-  s.summary          = "A short description of GithubSwift."
+  s.summary          = "Unofficial Github API client in Swift"
   s.version          = "0.1.0"
   s.homepage         = "https://github.com/onmyway133/GithubSwift"
   s.license          = 'MIT'
