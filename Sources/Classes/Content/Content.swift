@@ -26,7 +26,7 @@ public class Content: Object {
   // The sha reference of the item.
   public private(set) var SHA: String = ""
   
-  // The type of content which the reciever represents.
+  // The type of content which the receiver represents.
   public private(set) var type: String = ""
   
   public required init(_ map: JSONDictionary) {
@@ -36,5 +36,22 @@ public class Content: Object {
     name <- map.property("name")
     path <- map.property("path")
     SHA <- map.property("sha")
+    type <- map.property("type")
+  }
+  
+  public static func make(map: JSONDictionary) -> Content {
+    let mapping: [String: Content.Type] = [
+      "file": FileContent.self,
+      "dir": DirectoryContent.self,
+      "symlink": SymlinkContent.self,
+      "submodule": SubmoduleContent.self,
+    ]
+    
+    if let type = map["type"] as? String,
+      contentClass = mapping[type] {
+      return contentClass.init(map)
+    } else {
+      fatalError()
+    }
   }
 }

@@ -9,3 +9,22 @@
 import Foundation
 import Sugar
 import Tailor
+
+// A file in a git repository.
+public class FileContent: Content {
+  
+  // The encoding of the file content.
+  public private(set) var encoding: String = ""
+  
+  // The raw, encoded, content of the file.
+  //
+  // See `encoding` for the encoding used.
+  public private(set) var content: String = ""
+  
+  public required init(_ map: JSONDictionary) {
+    super.init(map)
+    
+    encoding <- map.property("encoding")
+    content <- map.property("content")
+  }
+}

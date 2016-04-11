@@ -9,3 +9,10 @@
 import Foundation
 import Sugar
 import Tailor
+
+// A symlink in a git repository.
+public class SymlinkContent: Content {
+  
+  // The path to the symlink target.
+  public private(set) var target: String = ""
+}

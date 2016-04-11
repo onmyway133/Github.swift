@@ -9,3 +9,8 @@
 import Foundation
 import Sugar
 import Tailor
+
+// A directory in a git repository.
+public class DirectoryContent: Content {
+  
+}
