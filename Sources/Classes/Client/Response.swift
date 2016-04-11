@@ -31,22 +31,21 @@ public class Response {
   //
   // This is used with the events and notifications APIs to support server-driven
   // polling rates.
-  public var pollInterval: Int? {
-    let intervalString = urlResponse.allHeaderFields["X-Poll-Interval"] as? String
-    return Int(intervalString ?? "")
+  public var pollInterval: Float? {
+    return Float(urlResponse.allHeaderFields["X-Poll-Interval"] as? String ?? "")
   }
   
   // Set to the X-RateLimit-Limit header sent by the server, indicating how many
   // unconditional requests the user is allowed to make per hour.
   public var maximumRequestsPerHour: Int {
-    return urlResponse.allHeaderFields["X-RateLimit-Limit"] as? Int ?? 0
+    return Int(urlResponse.allHeaderFields["X-RateLimit-Limit"] as? String ?? "") ?? 0
   }
  
   // Set to the X-RateLimit-Remaining header sent by the server, indicating how
   // many remaining unconditional requests the user can make this hour (in server
   // time).
   public var remainingRequests: Int {
-    return urlResponse.allHeaderFields["X-RateLimit-Remaining"] as? Int ?? 0
+    return Int(urlResponse.allHeaderFields["X-RateLimit-Remaining"] as? String ?? "")  ?? 0
   }
   
   private let urlResponse: NSHTTPURLResponse
