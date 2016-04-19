@@ -51,7 +51,7 @@ return enqueue(requestDescriptor).map {
 - Native flow
 - OAuth flow
 
-#### User (in progress)
+#### User
 
 - Follow
 - Unfollow

@@ -59,13 +59,13 @@ public class Client {
     var headers = Manager.defaultHTTPHeaders
     
     // User Agent
-    headers["User-Agent"] = Client.Config.userAgent
+    headers["User-Agent"] = Config.userAgent
     
     // Content Type
     let baseContentType = "application/vnd.github.%@+json"
-    let stableContentType =  String(format: baseContentType, Client.Constant.apiVersion)
-    let previewContentType = String(format: baseContentType, Client.Constant.miragePreviewAPIVersion)
-    let moondragonPreviewContentType = String(format: baseContentType, Client.Constant.moondragonPreviewAPIVersion)
+    let stableContentType =  String(format: baseContentType, Constant.apiVersion)
+    let previewContentType = String(format: baseContentType, Constant.miragePreviewAPIVersion)
+    let moondragonPreviewContentType = String(format: baseContentType, Constant.moondragonPreviewAPIVersion)
     
     headers["Accept"] = [stableContentType, previewContentType, moondragonPreviewContentType].joinWithSeparator(",")
     

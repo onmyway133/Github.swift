@@ -37,7 +37,7 @@ class ClientServerSpec: QuickSpec {
         let event = Client.fetchMetadata(Server.dotComServer).subscribeSync()
         
         if let error = event.error {
-          expect(error.domain).to(equal(Client.Constant.errorDomain))
+          expect(error.domain).to(equal(Constant.errorDomain))
           expect(error.code).to(equal(ErrorCode.UnsupportedServer.rawValue))
         } else {
           fail()

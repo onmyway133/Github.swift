@@ -104,7 +104,7 @@ class ClientRepositorySpec: QuickSpec {
             case let .Error(error):
               let error = error as NSError
               expect(error.code).to(equal(ErrorCode.NotFound.rawValue))
-              expect(error.domain).to(equal(Client.Constant.errorDomain))
+              expect(error.domain).to(equal(Constant.errorDomain))
               expectation.fulfill()
             case .Next:
               fail()

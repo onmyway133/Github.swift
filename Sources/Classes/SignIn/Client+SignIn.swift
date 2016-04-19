@@ -63,8 +63,8 @@ public extension Client {
                                  note: String? = nil, noteURL: NSURL? = nil,
                                  fingerprint: String? = nil) -> Observable<Client> {
     
-    let clientID = Client.Config.clientID
-    let clientSecret = Client.Config.clientSecret
+    let clientID = Config.clientID
+    let clientSecret = Config.clientSecret
     
     assert(!clientID.isEmpty)
     assert(!clientSecret.isEmpty)
@@ -93,7 +93,7 @@ public extension Client {
       $0.path = path
       $0.parameters = params
       $0.headers = [
-        "Accept": "application/vnd.github.\(Client.Constant.miragePreviewAPIVersion)+json"
+        "Accept": "application/vnd.github.\(Constant.miragePreviewAPIVersion)+json"
       ]
       
       if let (key, value) = Helper.authorizationHeader(user.rawLogin, password: password) {
@@ -131,7 +131,7 @@ public extension Client {
           $0.method = .DELETE
           
           if let oneTimePassword = oneTimePassword {
-            $0.headers[Client.Constant.oneTimePasswordHeaderField] = oneTimePassword
+            $0.headers[Constant.oneTimePasswordHeaderField] = oneTimePassword
           }
         }
         
@@ -184,7 +184,7 @@ public extension Client {
   }
   
   public static func authorizeUsingWebBrowser(server: Server, scopes: AuthorizationScopes) -> Observable<String> {
-    let clientID = Client.Config.clientID
+    let clientID = Config.clientID
     
     assert(!clientID.isEmpty)
     
@@ -263,8 +263,8 @@ public extension Client {
   // else error. If +completeSignInWithCallbackURL: is never invoked, the returned
   // signal will never complete.
   public static func signInUsingWebBrowser(server: Server, scopes: AuthorizationScopes) -> Observable<Client> {
-    let clientID = Client.Config.clientID
-    let clientSecret = Client.Config.clientSecret
+    let clientID = Config.clientID
+    let clientSecret = Config.clientSecret
     
     assert(!clientID.isEmpty)
     assert(!clientSecret.isEmpty)

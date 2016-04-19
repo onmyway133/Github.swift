@@ -37,21 +37,15 @@ public extension Client {
   ///
   /// Returns a signal which sends zero or more OCTRepository objects. Private
   /// repositories will not be included.
-  public func fetchPublicRepositories(user user: User, offset: Int, perPage: Int) -> Observable<[Repository]> {
-    let perPage = Helper.perPage(perPage)
-    
-    let page = Helper.page(offset: offset, perPage: perPage)
-    let pageOffset = Helper.pageOffset(offset: offset, perPage: perPage)
-    
+  public func fetchPublicRepositories(user user: User, offset: Int = 0, perPage: Int = Constant.defaultPerPage) -> Observable<[Repository]> {
+
     let requestDescriptor = RequestDescriptor().then {
       $0.path = "/users/\(user.login)/repos"
-      $0.parameters = [
-        "page": page,
-        "per_page": perPage
-      ]
+      $0.offset = offset
+      $0.perPage = perPage
     }
     
-    return enqueue(requestDescriptor).skip(pageOffset).map {
+    return enqueue(requestDescriptor).map {
       return Parser.all($0.jsonArray)
     }
   }

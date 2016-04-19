@@ -17,6 +17,17 @@ public class RequestDescriptor {
   public var headers: [String: String] = [:]
   public var etag: String?
   public var fetchAllPages: Bool = true
+
+  /// offset  - Allows you to specify an offset at which items will begin being returned.
+  public var offset: Int = 0
+
+  /// Retrieves the valid perPage according to the original perPage.
+  public var perPage: Int = Constant.defaultPerPage {
+    didSet {
+      perPage = max(0, perPage)
+      perPage = min(perPage, Constant.defaultPerPage)
+    }
+  }
   
   public func URLString(baseURL: NSURL) -> NSURL {
     let escapedPath = path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
@@ -24,6 +35,17 @@ public class RequestDescriptor {
   }
   
   public init() {}
+}
+
+public extension RequestDescriptor {
+  /// Retrieves the corresponding page according to the offset and the valid perPage.
+  var page: Int {
+    return offset / perPage + 1
+  }
+
+  var pageOffset: Int {
+    return offset % perPage
+  }
 }
 
 extension RequestDescriptor: Then {}

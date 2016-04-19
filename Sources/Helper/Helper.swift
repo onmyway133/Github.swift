@@ -34,42 +34,4 @@ public struct Helper {
     let base64 = data.base64EncodedStringWithOptions([])
     return (key: "Authorization", value: "Basic \(base64)")
   }
-  
-  /// Retrieves the valid perPage according to the original perPage.
-  ///
-  /// perPage - The perPage parameter. You can set a custom page size up to 100 and
-  ///           the default value 30 will be used if you pass 0 or greater than 100.
-  ///
-  /// Returns the valid perPage.
-  static func perPage(perPage: Int) -> Int {
-    if perPage == 0 || perPage > 100 {
-      return 30
-    }
-    
-    return perPage
-  }
-  
-  /// Retrieves the corresponding page according to the offset and the valid perPage.
-  ///
-  /// offset  - Allows you to specify an offset at which items will begin being
-  ///           returned.
-  /// perPage - The perPage parameter. You can set a custom page size up to 100 and
-  ///           the default value 30 will be used if you pass 0 or greater than 100.
-  ///
-  /// Returns the corresponding page.
-  static func page(offset offset: Int, perPage: Int) -> Int {
-    return offset / perPage + 1
-  }
-
-  /// Retrieves the corresponding pageOffset according to the offset and the valid perPage.
-  ///
-  /// offset  - Allows you to specify an offset at which items will begin being
-  ///           returned.
-  /// perPage - The perPage parameter. You can set a custom page size up to 100 and
-  ///           the default value 30 will be used if you pass 0 or greater than 100.
-  ///
-  /// Returns the corresponding pageOffset
-  static func pageOffset(offset offset: Int, perPage: Int) -> Int {
-    return offset % perPage
-  }
 }

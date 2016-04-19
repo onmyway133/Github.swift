@@ -38,8 +38,9 @@ public extension Client {
     // Parameter
     var parameters = requestDescriptor.parameters
     
-    if requestDescriptor.method == .GET && !parameters.keys.contains("per_page") {
-      parameters["per_page"] = 100
+    if requestDescriptor.method == .GET {
+      parameters["page"] = requestDescriptor.page
+      parameters["per_page"] = requestDescriptor.perPage
     }
     
     let mutableURLRequest = NSMutableURLRequest(URL: requestDescriptor.URLString(baseURL))
@@ -78,16 +79,16 @@ public extension Client {
   public func enqueue(requestDescriptor: RequestDescriptor) -> Observable<Response> {
     let request = self.makeRequest(requestDescriptor)
     
-    return Observable.create({ (observer) -> Disposable in
+    let observable: Observable<Response> = Observable.create({ (observer) -> Disposable in
       request
         .validate()
         .response { request, response, data, error in
         
-        if NSProcessInfo.processInfo().environment[Client.Constant.responseLoggingEnvironmentKey] != nil {
+        if NSProcessInfo.processInfo().environment[Constant.responseLoggingEnvironmentKey] != nil {
           print("\(request?.URL)")
         }
        
-        if let statusCode = response?.statusCode where statusCode == Client.Constant.notModifiedStatusCode {
+        if let statusCode = response?.statusCode where statusCode == Constant.notModifiedStatusCode {
           // No change in the data.
           observer.onCompleted()
           return
@@ -145,6 +146,10 @@ public extension Client {
         request.cancel()
       }
     }).debug("-enqueueRequest: \(request) fetchAllPages: \(requestDescriptor.fetchAllPages)")
+
+    return requestDescriptor.pageOffset > 0
+    ? observable.skip(requestDescriptor.pageOffset)
+    : observable
   }
   
   // Enqueues a request to fetch information about the current user by accessing

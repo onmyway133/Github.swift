@@ -25,8 +25,8 @@ class ClientSignInSpec: QuickSpec {
       let user = User(rawLogin: "octokit-testing-user", server: Server.dotComServer)
 
       beforeEach {
-        Client.Config.clientID = clientID
-        Client.Config.clientSecret = clientSecret
+        Config.clientID = clientID
+        Config.clientSecret = clientSecret
       }
       
       it("should send the appropriate error when requesting authorization with 2FA on") {
@@ -46,7 +46,7 @@ class ClientSignInSpec: QuickSpec {
             switch(event) {
             case let .Error(error):
               let error = error as NSError
-              expect(error.domain).to(equal(Client.Constant.errorDomain))
+              expect(error.domain).to(equal(Constant.errorDomain))
               expect(error.code).to(equal(ErrorCode.TwoFactorAuthenticationOneTimePasswordRequired.rawValue))
               
               if let message = error.userInfo[ErrorKey.OneTimePasswordMediumKey.rawValue] as? String {
@@ -122,7 +122,7 @@ class ClientSignInSpec: QuickSpec {
             switch(event) {
             case let .Error(error):
               let error = error as NSError
-              expect(error.domain).to(equal(Client.Constant.errorDomain))
+              expect(error.domain).to(equal(Constant.errorDomain))
               expect(error.code).to(equal(ErrorCode.UnsupportedServer.rawValue))
               
               if let message = error.userInfo[ErrorKey.OneTimePasswordMediumKey.rawValue] as? String {
@@ -233,7 +233,7 @@ class ClientSignInSpec: QuickSpec {
           let result = Client.authorizeUsingWebBrowser(Server.dotComServer, scopes: .Repository).subscribeSync()
           
           if let error = result.error {
-            expect(error.domain).to(equal(Client.Constant.errorDomain))
+            expect(error.domain).to(equal(Constant.errorDomain))
             expect(error.code).to(equal(ErrorCode.OpeningBrowserFailed.rawValue))
           } else {
             fail()

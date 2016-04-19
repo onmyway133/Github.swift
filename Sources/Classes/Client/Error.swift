@@ -42,7 +42,7 @@ public struct Error {
       NSLocalizedFailureReasonErrorKey: "You must sign in to access user information.".localized
     ]
     
-    return NSError(domain: Client.Constant.errorDomain, code: ErrorCode.AuthenticationFailed.rawValue, userInfo: userInfo)
+    return NSError(domain: Constant.errorDomain, code: ErrorCode.AuthenticationFailed.rawValue, userInfo: userInfo)
   }
   
   public static func tokenUnsupportedError() -> NSError {
@@ -51,7 +51,7 @@ public struct Error {
       NSLocalizedFailureReasonErrorKey: "You must sign in with a password. Token authentication is not supported.".localized
     ]
     
-    return NSError(domain: Client.Constant.errorDomain, code:ErrorCode.TokenAuthenticationUnsupported.rawValue, userInfo: userInfo)
+    return NSError(domain: Constant.errorDomain, code:ErrorCode.TokenAuthenticationUnsupported.rawValue, userInfo: userInfo)
   }
   
   public static func unsupportedVersionError() -> NSError {
@@ -60,7 +60,7 @@ public struct Error {
       NSLocalizedFailureReasonErrorKey: "The request failed because the server is out of date.".localized
     ]
     
-    return NSError(domain: Client.Constant.errorDomain, code: ErrorCode.UnsupportedServer.rawValue, userInfo: userInfo)
+    return NSError(domain: Constant.errorDomain, code: ErrorCode.UnsupportedServer.rawValue, userInfo: userInfo)
   }
   
   public static func userRequiredError() -> NSError {
@@ -69,7 +69,7 @@ public struct Error {
       NSLocalizedFailureReasonErrorKey: "No username was provided for getting user information.".localized
     ]
   
-    return NSError(domain: Client.Constant.errorDomain, code: ErrorCode.AuthenticationFailed.rawValue, userInfo: userInfo)
+    return NSError(domain: Constant.errorDomain, code: ErrorCode.AuthenticationFailed.rawValue, userInfo: userInfo)
   }
   
   public static func openingBrowserError(url: NSURL) -> NSError {
@@ -79,7 +79,7 @@ public struct Error {
       NSURLErrorKey: url
     ]
     
-    return NSError(domain: Client.Constant.errorDomain, code: ErrorCode.OpeningBrowserFailed.rawValue, userInfo: userInfo)
+    return NSError(domain: Constant.errorDomain, code: ErrorCode.OpeningBrowserFailed.rawValue, userInfo: userInfo)
   }
   
   internal static func transform(error: NSError, response: NSHTTPURLResponse?) -> NSError {
@@ -101,7 +101,7 @@ public struct Error {
         userInfo.update(info)
       }
       
-      if let oneTimePassword = response.allHeaderFields[Client.Constant.oneTimePasswordHeaderField] as? String,
+      if let oneTimePassword = response.allHeaderFields[Constant.oneTimePasswordHeaderField] as? String,
         medium = oneTimePasswordMedium(oneTimePassword) {
         
         errorCode = ErrorCode.TwoFactorAuthenticationOneTimePasswordRequired.rawValue
@@ -143,11 +143,11 @@ public struct Error {
 //    if (operation.request.URL != nil) userInfo[OCTClientErrorRequestURLKey] = operation.request.URL;
 //    if (operation.error != nil) userInfo[NSUnderlyingErrorKey] = operation.error;
     
-    if let scopes = response.allHeaderFields[Client.Constant.oAuthScopesHeaderField] as? String {
+    if let scopes = response.allHeaderFields[Constant.oAuthScopesHeaderField] as? String {
       userInfo[ErrorKey.OAuthScopesStringKey.rawValue] = scopes
     }
     
-    return NSError(domain: Client.Constant.errorDomain, code: errorCode, userInfo: userInfo)
+    return NSError(domain: Constant.errorDomain, code: errorCode, userInfo: userInfo)
   }
   
   private static func evalutedUserInfo(error: NSError, response: NSHTTPURLResponse) -> JSONDictionary {
