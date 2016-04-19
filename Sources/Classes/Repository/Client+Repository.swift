@@ -205,4 +205,55 @@ public extension Client {
       return Parser.one($0.jsonArray)
     }
   }
+
+  // Fetches all branches of a specific repository owned by the given `owner` and named `name`.
+  //
+  // name  - The name of the repository, must be a non-empty string.
+  // owner - The owner of the repository, must be a non-empty string.
+  //
+  // Returns a signal of zero or one OCTBranch.
+  public func fetchBranches(repositoryName: String, owner: String) -> Observable<Branch> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "repos/\(owner)/\(repositoryName)/branches"
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
+
+  // Fetches all open pull requests (returned as issues) of a specific
+  // repository owned by the given `owner` and named `name`.
+  //
+  // name  - The name of the repository, must be a non-empty string.
+  // owner - The owner of the repository, must be a non-empty string.
+  //
+  // Returns a signal of zero or one OCTPullRequest.
+  public func fetchOpenPullRequests(repositoryName: String, owner: String) -> Observable<PullRequest> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "repos/\(owner)/\(repositoryName)/pulls"
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
+
+  // Fetches all closed pull requests (returned as issues) of a specific
+  // repository owned by the given `owner` and named `name`.
+  //
+  // name  - The name of the repository, must be a non-empty string.
+  // owner - The owner of the repository, must be a non-empty string.
+  //
+  // Returns a signal of zero or one OCTPullRequest.
+  public func fetchClosedPullRequests(repositoryName: String, owner: String) -> Observable<PullRequest> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "repos/\(owner)/\(repositoryName)/pulls"
+      $0.parameters["state"] = "closed"
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
 }

@@ -45,7 +45,7 @@ class ClientRepositorySpec: QuickSpec {
               expect(repository.SSHURLString).to(equal("git@github.com:octokit/octokit.objc.git"))
               expect(repository.HTTPSURL).to(equal(NSURL(string:"https://github.com/octokit/octokit.objc.git")))
               expect(repository.gitURL).to(equal(NSURL(string:"git://github.com/octokit/octokit.objc.git")))
-              expect(repository.htmlURL).to(equal(NSURL(string:"https://github.com/octokit/octokit.objc")))
+              expect(repository.HTMLURL).to(equal(NSURL(string:"https://github.com/octokit/octokit.objc")))
               expectation.fulfill()
             default:
               break
@@ -145,7 +145,7 @@ class ClientRepositorySpec: QuickSpec {
             expect(repository.SSHURLString).to(equal("git@github.com:octocat/ThisIsATest.git"))
             expect(repository.HTTPSURL).to(equal(NSURL(string: "https://github.com/octocat/ThisIsATest.git")))
             expect(repository.gitURL).to(equal(NSURL(string: "git://github.com/octocat/ThisIsATest.git")))
-            expect(repository.htmlURL).to(equal(NSURL(string: "https://github.com/octocat/ThisIsATest")))
+            expect(repository.HTMLURL).to(equal(NSURL(string: "https://github.com/octocat/ThisIsATest")))
             
             expectation.fulfill()
           }
@@ -199,7 +199,7 @@ class ClientRepositorySpec: QuickSpec {
             expect(repository.SSHURLString).to(equal("git@github.com:octocat/ThisIsATest.git"))
             expect(repository.HTTPSURL).to(equal(NSURL(string: "https://github.com/octocat/ThisIsATest.git")))
             expect(repository.gitURL).to(equal(NSURL(string: "git://github.com/octocat/ThisIsATest.git")))
-            expect(repository.htmlURL).to(equal(NSURL(string: "https://github.com/octocat/ThisIsATest")))
+            expect(repository.HTMLURL).to(equal(NSURL(string: "https://github.com/octocat/ThisIsATest")))
             
             expectation.fulfill()
           }

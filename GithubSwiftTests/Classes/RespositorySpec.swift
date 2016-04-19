@@ -30,7 +30,7 @@ class RepositorySpec: QuickSpec {
         expect(repository.ownerLogin).to(equal("octocat"))
         expect(repository.datePushed).to(equal(Formatter.date(string: "2011-01-26 19:06:43 +0000")))
         expect(repository.HTTPSURL).to(equal(NSURL(string: "https://github.com/octocat/Hello-World.git")))
-        expect(repository.htmlURL).to(equal(NSURL(string: "https://github.com/octocat/Hello-World")))
+        expect(repository.HTMLURL).to(equal(NSURL(string: "https://github.com/octocat/Hello-World")))
         expect(repository.SSHURLString).to(equal("gitgithub.com:octocat/Hello-World.git"))
         expect(repository.defaultBranch).to(equal("master"))
         expect(repository.watchersCount).to(equal(1403))

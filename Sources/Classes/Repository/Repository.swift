@@ -75,7 +75,7 @@ public class Repository: Object {
   public private(set) var gitURL: NSURL?
   
   // The URL for visiting this repository on the web.
-  public private(set) var htmlURL: NSURL?
+  public private(set) var HTMLURL: NSURL?
   
   // The default branch's name. For empty repositories, this will be nil.
   public private(set) var defaultBranch: String = ""
@@ -125,7 +125,7 @@ public class Repository: Object {
     self.HTTPSURL <- map.transform("clone_url", transformer: Transformer.stringToURL)
     self.SSHURLString <- map.property("ssh_url")
     self.gitURL <- map.transform("git_url", transformer: Transformer.stringToURL)
-    self.htmlURL <- map.transform("html_url", transformer: Transformer.stringToURL)
+    self.HTMLURL <- map.transform("html_url", transformer: Transformer.stringToURL)
     self.defaultBranch <- map.property("default_branch")
     self.textMatches <- map.property("text_matches")
     self.forkParent <- map.relation("parent")

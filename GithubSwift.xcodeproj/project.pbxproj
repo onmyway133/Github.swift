@@ -166,6 +166,10 @@
 		D2A0651C1CB8698E005A0AC7 /* TestURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A0651A1CB8698E005A0AC7 /* TestURLOpener.swift */; };
 		D2BABA371CC6D1DD00245C3D /* UserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BABA361CC6D1DD00245C3D /* UserSpec.swift */; };
 		D2BABA381CC6D1DD00245C3D /* UserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BABA361CC6D1DD00245C3D /* UserSpec.swift */; };
+		D2BABA3A1CC6DF2100245C3D /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BABA391CC6DF2100245C3D /* Branch.swift */; };
+		D2BABA3B1CC6DF2100245C3D /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BABA391CC6DF2100245C3D /* Branch.swift */; };
+		D2BABA3E1CC6DF3D00245C3D /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BABA3D1CC6DF3D00245C3D /* PullRequest.swift */; };
+		D2BABA3F1CC6DF3D00245C3D /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BABA3D1CC6DF3D00245C3D /* PullRequest.swift */; };
 		D2F182FF1CC6D11700F10478 /* standard_user.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F182FE1CC6D11700F10478 /* standard_user.json */; };
 		D2F183001CC6D11700F10478 /* standard_user.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F182FE1CC6D11700F10478 /* standard_user.json */; };
 		D2F183021CC6D12600F10478 /* enterprise_user.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F183011CC6D12600F10478 /* enterprise_user.json */; };
@@ -281,6 +285,8 @@
 		D2A065171CB868FB005A0AC7 /* URLOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		D2A0651A1CB8698E005A0AC7 /* TestURLOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestURLOpener.swift; sourceTree = "<group>"; };
 		D2BABA361CC6D1DD00245C3D /* UserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSpec.swift; sourceTree = "<group>"; };
+		D2BABA391CC6DF2100245C3D /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		D2BABA3D1CC6DF3D00245C3D /* PullRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequest.swift; sourceTree = "<group>"; };
 		D2F182FE1CC6D11700F10478 /* standard_user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = standard_user.json; sourceTree = "<group>"; };
 		D2F183011CC6D12600F10478 /* enterprise_user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = enterprise_user.json; sourceTree = "<group>"; };
 		D2F473EB1CBC1E5B00057D9C /* ResponseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSpec.swift; sourceTree = "<group>"; };
@@ -386,6 +392,7 @@
 		D21D1B091CADC5A400BD068E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D2BABA3C1CC6DF3600245C3D /* PullRequest */,
 				D20617C91CBC357800B738F8 /* Content */,
 				D24FD85A1CB97A66008C4EEC /* User */,
 				D29013851CB1546D00EFADE5 /* Authentication */,
@@ -440,6 +447,7 @@
 			children = (
 				D21D1B1B1CADC5A400BD068E /* Repository.swift */,
 				D290134D1CAFF9FE00EFADE5 /* Client+Repository.swift */,
+				D2BABA391CC6DF2100245C3D /* Branch.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -585,6 +593,14 @@
 				D29013891CB154DC00EFADE5 /* AccessToken.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		D2BABA3C1CC6DF3600245C3D /* PullRequest */ = {
+			isa = PBXGroup;
+			children = (
+				D2BABA3D1CC6DF3D00245C3D /* PullRequest.swift */,
+			);
+			path = PullRequest;
 			sourceTree = "<group>";
 		};
 		D5B2E8951C3A780C00C0327D = {
@@ -921,10 +937,12 @@
 				D290136C1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
 				D21D1B3C1CADC5A400BD068E /* User.swift in Sources */,
 				D29013871CB154D500EFADE5 /* Authorization.swift in Sources */,
+				D2BABA3A1CC6DF2100245C3D /* Branch.swift in Sources */,
 				D29013831CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
 				D290136F1CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CB1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013721CB066FC00EFADE5 /* Password.swift in Sources */,
+				D2BABA3E1CC6DF3D00245C3D /* PullRequest.swift in Sources */,
 				D21D1B281CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B341CADC5A400BD068E /* Entity.swift in Sources */,
 				D21D1B3E1CADC5A400BD068E /* Repository.swift in Sources */,
@@ -990,10 +1008,12 @@
 				D290136D1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
 				D21D1B3D1CADC5A400BD068E /* User.swift in Sources */,
 				D29013881CB154D500EFADE5 /* Authorization.swift in Sources */,
+				D2BABA3B1CC6DF2100245C3D /* Branch.swift in Sources */,
 				D29013841CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
 				D29013701CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CC1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013731CB066FC00EFADE5 /* Password.swift in Sources */,
+				D2BABA3F1CC6DF3D00245C3D /* PullRequest.swift in Sources */,
 				D21D1B291CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B351CADC5A400BD068E /* Entity.swift in Sources */,
 				D21D1B3F1CADC5A400BD068E /* Repository.swift in Sources */,

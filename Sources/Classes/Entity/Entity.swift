@@ -37,7 +37,7 @@ public class Entity: Object {
   public private(set) var avatarURL: NSURL?
   
   // The web URL for this account.
-  public private(set) var htmlURL: NSURL?
+  public private(set) var HTMLURL: NSURL?
   
   // A reference to a blog associated with this account.
   public private(set) var blog: String = ""
@@ -84,7 +84,7 @@ public class Entity: Object {
     repositories <- map.relations("repositories")
     email <- map.property("email")
     avatarURL <- map.transform("avatar_url", transformer: Transformer.stringToURL)
-    htmlURL <- map.transform("html_url", transformer: Transformer.stringToURL)
+    HTMLURL <- map.transform("html_url", transformer: Transformer.stringToURL)
     blog <- map.property("blog")
     company <- map.property("company")
     location <- map.property("location")
