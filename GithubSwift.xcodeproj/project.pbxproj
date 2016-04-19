@@ -164,6 +164,12 @@
 		D2A065191CB868FB005A0AC7 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A065171CB868FB005A0AC7 /* URLOpener.swift */; };
 		D2A0651B1CB8698E005A0AC7 /* TestURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A0651A1CB8698E005A0AC7 /* TestURLOpener.swift */; };
 		D2A0651C1CB8698E005A0AC7 /* TestURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A0651A1CB8698E005A0AC7 /* TestURLOpener.swift */; };
+		D2BABA371CC6D1DD00245C3D /* UserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BABA361CC6D1DD00245C3D /* UserSpec.swift */; };
+		D2BABA381CC6D1DD00245C3D /* UserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BABA361CC6D1DD00245C3D /* UserSpec.swift */; };
+		D2F182FF1CC6D11700F10478 /* standard_user.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F182FE1CC6D11700F10478 /* standard_user.json */; };
+		D2F183001CC6D11700F10478 /* standard_user.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F182FE1CC6D11700F10478 /* standard_user.json */; };
+		D2F183021CC6D12600F10478 /* enterprise_user.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F183011CC6D12600F10478 /* enterprise_user.json */; };
+		D2F183031CC6D12600F10478 /* enterprise_user.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F183011CC6D12600F10478 /* enterprise_user.json */; };
 		D2F473EC1CBC1E5B00057D9C /* ResponseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F473EB1CBC1E5B00057D9C /* ResponseSpec.swift */; };
 		D2F473ED1CBC1E5B00057D9C /* ResponseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F473EB1CBC1E5B00057D9C /* ResponseSpec.swift */; };
 		D2F473EF1CBC221D00057D9C /* OrganizationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F473EE1CBC221D00057D9C /* OrganizationSpec.swift */; };
@@ -274,6 +280,9 @@
 		D2A0650E1CB85D55005A0AC7 /* NSURL+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Extensions.swift"; sourceTree = "<group>"; };
 		D2A065171CB868FB005A0AC7 /* URLOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		D2A0651A1CB8698E005A0AC7 /* TestURLOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestURLOpener.swift; sourceTree = "<group>"; };
+		D2BABA361CC6D1DD00245C3D /* UserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSpec.swift; sourceTree = "<group>"; };
+		D2F182FE1CC6D11700F10478 /* standard_user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = standard_user.json; sourceTree = "<group>"; };
+		D2F183011CC6D12600F10478 /* enterprise_user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = enterprise_user.json; sourceTree = "<group>"; };
 		D2F473EB1CBC1E5B00057D9C /* ResponseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSpec.swift; sourceTree = "<group>"; };
 		D2F473EE1CBC221D00057D9C /* OrganizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationSpec.swift; sourceTree = "<group>"; };
 		D2F473F11CBC24D700057D9C /* RespositorySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RespositorySpec.swift; sourceTree = "<group>"; };
@@ -493,6 +502,7 @@
 				D2F473EB1CBC1E5B00057D9C /* ResponseSpec.swift */,
 				D2F473EE1CBC221D00057D9C /* OrganizationSpec.swift */,
 				D2F473F11CBC24D700057D9C /* RespositorySpec.swift */,
+				D2BABA361CC6D1DD00245C3D /* UserSpec.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -520,6 +530,8 @@
 				D21D1B5D1CADC5CF00BD068E /* user.json */,
 				D21D1B5E1CADC5CF00BD068E /* user_starred.json */,
 				D2F473F61CBC2FFF00057D9C /* repository1.json */,
+				D2F182FE1CC6D11700F10478 /* standard_user.json */,
+				D2F183011CC6D12600F10478 /* enterprise_user.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -796,9 +808,11 @@
 				D21D1B791CADC5CF00BD068E /* page2.json in Resources */,
 				D21D1B651CADC5CF00BD068E /* authorizations.json in Resources */,
 				D21D1B7D1CADC5CF00BD068E /* rate_limit.json in Resources */,
+				D2F182FF1CC6D11700F10478 /* standard_user.json in Resources */,
 				D21D1B7B1CADC5CF00BD068E /* page3.json in Resources */,
 				D21D1B831CADC5CF00BD068E /* tree.json in Resources */,
 				D21D1B671CADC5CF00BD068E /* authorizations_existing.json in Resources */,
+				D2F183021CC6D12600F10478 /* enterprise_user.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,9 +844,11 @@
 				D21D1B7A1CADC5CF00BD068E /* page2.json in Resources */,
 				D21D1B661CADC5CF00BD068E /* authorizations.json in Resources */,
 				D21D1B7E1CADC5CF00BD068E /* rate_limit.json in Resources */,
+				D2F183001CC6D11700F10478 /* standard_user.json in Resources */,
 				D21D1B7C1CADC5CF00BD068E /* page3.json in Resources */,
 				D21D1B841CADC5CF00BD068E /* tree.json in Resources */,
 				D21D1B681CADC5CF00BD068E /* authorizations_existing.json in Resources */,
+				D2F183031CC6D12600F10478 /* enterprise_user.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,6 +957,7 @@
 				D2F473EF1CBC221D00057D9C /* OrganizationSpec.swift in Sources */,
 				D2F473F41CBC294E00057D9C /* RespositorySpec.swift in Sources */,
 				D2F473EC1CBC1E5B00057D9C /* ResponseSpec.swift in Sources */,
+				D2BABA371CC6D1DD00245C3D /* UserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1026,7 @@
 				D2F473F01CBC221D00057D9C /* OrganizationSpec.swift in Sources */,
 				D2F473F51CBC294F00057D9C /* RespositorySpec.swift in Sources */,
 				D2F473ED1CBC1E5B00057D9C /* ResponseSpec.swift in Sources */,
+				D2BABA381CC6D1DD00245C3D /* UserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,14 @@
+{
+  "type": "User",
+	"public_repos": 0,
+	"public_gists": 0,
+	"html_url": "http://10.168.1.109/jspahrsummers",
+	"gravatar_id": "cac992bb300ed4f3ed5c2a6049e552f9",
+	"following": 0,
+	"avatar_url": "https://secure.gravatar.com/avatar/cac992bb300ed4f3ed5c2a6049e552f9?d=http://10.168.1.109%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+	"url": "https://10.168.1.109/api/v3/users/jspahrsummers",
+	"followers": 0,
+	"created_at": "2012-10-09T03:06:59Z",
+	"login": "jspahrsummers",
+	"id": 2
+}
