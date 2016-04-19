@@ -56,11 +56,11 @@ public extension Client {
   // repositories will only be included if the client is `authenticated`. If no
   // `user` is set, the signal will error immediately.
   public func fetchUserStarredRepositories() -> Observable<[Repository]> {
-    let requestDecriptor = RequestDescriptor().then {
+    let requestDescriptor = RequestDescriptor().then {
       $0.path = "starred"
     }
     
-    return enqueueUser(requestDecriptor).map {
+    return enqueueUser(requestDescriptor).map {
       return Parser.all($0.jsonArray)
     }
   }
@@ -77,13 +77,13 @@ public extension Client {
   /// repositories will not be included.
   public func fetchStarredRepositories(user: User, offset: Int = 0,
                                        perPage: Int = Constant.defaultPerPage) -> Observable<[Repository]> {
-    let requestDecriptor = RequestDescriptor().then {
+    let requestDescriptor = RequestDescriptor().then {
       $0.path = "/users/\(user.login)/starred"
       $0.offset = offset
       $0.perPage = perPage
     }
 
-    return enqueue(requestDecriptor).map {
+    return enqueue(requestDescriptor).map {
       return Parser.all($0.jsonArray)
     }
   }
@@ -94,11 +94,11 @@ public extension Client {
   // repositories will only be included if the client is `authenticated` and the
   // `user` has permission to see them.
   public func fetchRepositories(organization: Organization) -> Observable<[Repository]> {
-    let requestDecriptor = RequestDescriptor().then {
+    let requestDescriptor = RequestDescriptor().then {
       $0.path = "orgs/\(organization.login)/repos"
     }
 
-    return enqueue(requestDecriptor).map {
+    return enqueue(requestDescriptor).map {
       return Parser.all($0.jsonArray)
     }
   }
@@ -108,13 +108,13 @@ public extension Client {
   // Returns a signal which sends the new OCTRepository. If the client is not
   // `authenticated`, the signal will error immediately.
   public func createRepository(name: String,
-                               organization: Organization?, team: Team?,
-                               description: String?, isPrivate: Bool) -> Observable<Repository> {
+                               organization: Organization? = nil, team: Team? = nil,
+                               description: String? = nil, isPrivate: Bool = false) -> Observable<Repository> {
     if !isAuthenticated {
       return Observable<Repository>.error(Error.authenticationRequiredError())
     }
 
-    let requestDecriptor = RequestDescriptor().then {
+    let requestDescriptor = RequestDescriptor().then {
       $0.method = .POST
 
       if let organization = organization {
@@ -137,7 +137,55 @@ public extension Client {
       }
     }
 
-    return enqueue(requestDecriptor).map {
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
+
+  // Fetches the content at `relativePath` at the given `reference` from the
+  // `repository`.
+  //
+  // In case `relativePath` is `nil` the contents of the repository root will be
+  // sent.
+  //
+  // repository   - The repository from which the file should be fetched.
+  // relativePath - The relative path (from the repository root) of the file that
+  //                should be fetched, may be `nil`.
+  // reference    - The name of the commit, branch or tag, may be `nil` in which
+  //                case it defaults to the default repo branch.
+  //
+  // Returns a signal which will send zero or more OCTContents depending on if the
+  // relative path resolves at all or, resolves to a file or directory.
+  public func fetchContent(relativePath: String? = nil, repository: Repository,
+                           reference: String? = nil) -> Observable<Content> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/contents/\(relativePath ?? "")"
+
+      if let reference = reference {
+        $0.parameters["ref"] = reference
+      }
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
+
+  // Fetches the readme of a `repository`.
+  //
+  // repository - The repository for which the readme should be fetched.
+  //
+  // Returns a signal which will send zero or one OCTContent.
+  public func fetchReadme(repository: Repository, reference: String? = nil) -> Observable<Content> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/readme"
+
+      if let reference = reference {
+        $0.parameters["ref"] = reference
+      }
+    }
+
+    return enqueue(requestDescriptor).map {
       return Parser.one($0.jsonArray)
     }
   }
