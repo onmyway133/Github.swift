@@ -86,4 +86,66 @@ public extension Client {
       return Parser.all($0.jsonArray)
     }
   }
+
+  /// Check if the current `user` are following a user.
+  ///
+  /// user - The specified user. This must not be nil.
+  ///
+  /// Returns a signal, which will send a NSNumber valued @YES or @NO.
+  /// If the client is not `authenticated`, the signal will error immediately.
+  public func doesFollow(user: User) -> Observable<Bool> {
+    if !isAuthenticated {
+      return Observable<Bool>.error(Error.authenticationRequiredError())
+    }
+
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "/following/\(user.login)"
+    }
+
+    return enqueueUser(requestDescriptor).map {
+      return $0.statusCode == 204
+    }
+  }
+
+  /// Follow the given `user`.
+  ///
+  /// user - The user to follow. Cannot be nil.
+  ///
+  /// Returns a signal, which will send completed on success. If the client
+  /// is not `authenticated`, the signal will error immediately.
+  public func follow(user: User) -> Observable<User> {
+    if !isAuthenticated {
+      return Observable<User>.error(Error.authenticationRequiredError())
+    }
+
+    let requestDescriptor = RequestDescriptor().then {
+      $0.method = .PUT
+      $0.path = "/following/\(user.login)"
+    }
+
+    return enqueueUser(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
+
+  /// Unfollow the given `user`.
+  ///
+  /// user - The user to unfollow. Cannot be nil.
+  ///
+  /// Returns a signal, which will send completed on success. If the client
+  /// is not `authenticated`, the signal will error immediately.
+  public func unfollow(user: User) -> Observable<User> {
+    if !isAuthenticated {
+      return Observable<User>.error(Error.authenticationRequiredError())
+    }
+
+    let requestDescriptor = RequestDescriptor().then {
+      $0.method = .DELETE
+      $0.path = "/following/\(user.login)"
+    }
+
+    return enqueueUser(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
 }
