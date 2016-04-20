@@ -113,12 +113,20 @@
 		D22723DC1CC80AE10093AA53 /* Client+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723DA1CC80AE10093AA53 /* Client+Search.swift */; };
 		D22723DE1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723DD1CC80BB10093AA53 /* RepositorySearchResult.swift */; };
 		D22723DF1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723DD1CC80BB10093AA53 /* RepositorySearchResult.swift */; };
-		D22723E11CC80CD30093AA53 /* PullRequestComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723E01CC80CD30093AA53 /* PullRequestComment.swift */; };
-		D22723E21CC80CD30093AA53 /* PullRequestComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723E01CC80CD30093AA53 /* PullRequestComment.swift */; };
 		D22723E51CC80D560093AA53 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723E41CC80D560093AA53 /* Issue.swift */; };
 		D22723E61CC80D560093AA53 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723E41CC80D560093AA53 /* Issue.swift */; };
 		D22723E81CC80D5D0093AA53 /* Client+Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723E71CC80D5D0093AA53 /* Client+Issue.swift */; };
 		D22723E91CC80D5D0093AA53 /* Client+Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723E71CC80D5D0093AA53 /* Client+Issue.swift */; };
+		D22723EC1CC8229F0093AA53 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723EB1CC8229F0093AA53 /* Comment.swift */; };
+		D22723ED1CC8229F0093AA53 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723EB1CC8229F0093AA53 /* Comment.swift */; };
+		D22723EF1CC823BA0093AA53 /* IssueComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723EE1CC823BA0093AA53 /* IssueComment.swift */; };
+		D22723F01CC823BA0093AA53 /* IssueComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723EE1CC823BA0093AA53 /* IssueComment.swift */; };
+		D22723F21CC824140093AA53 /* PullRequestComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F11CC824140093AA53 /* PullRequestComment.swift */; };
+		D22723F31CC824140093AA53 /* PullRequestComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F11CC824140093AA53 /* PullRequestComment.swift */; };
+		D22723F51CC824390093AA53 /* ReviewComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F41CC824390093AA53 /* ReviewComment.swift */; };
+		D22723F61CC824390093AA53 /* ReviewComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F41CC824390093AA53 /* ReviewComment.swift */; };
+		D22723F81CC8267D0093AA53 /* CommitComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F71CC8267D0093AA53 /* CommitComment.swift */; };
+		D22723F91CC8267D0093AA53 /* CommitComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F71CC8267D0093AA53 /* CommitComment.swift */; };
 		D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
@@ -272,9 +280,13 @@
 		D22723D61CC8079D0093AA53 /* GitCommitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommitFile.swift; sourceTree = "<group>"; };
 		D22723DA1CC80AE10093AA53 /* Client+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Search.swift"; sourceTree = "<group>"; };
 		D22723DD1CC80BB10093AA53 /* RepositorySearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySearchResult.swift; sourceTree = "<group>"; };
-		D22723E01CC80CD30093AA53 /* PullRequestComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestComment.swift; sourceTree = "<group>"; };
 		D22723E41CC80D560093AA53 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		D22723E71CC80D5D0093AA53 /* Client+Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Issue.swift"; sourceTree = "<group>"; };
+		D22723EB1CC8229F0093AA53 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		D22723EE1CC823BA0093AA53 /* IssueComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueComment.swift; sourceTree = "<group>"; };
+		D22723F11CC824140093AA53 /* PullRequestComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestComment.swift; sourceTree = "<group>"; };
+		D22723F41CC824390093AA53 /* ReviewComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewComment.swift; sourceTree = "<group>"; };
+		D22723F71CC8267D0093AA53 /* CommitComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitComment.swift; sourceTree = "<group>"; };
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
 		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
@@ -599,6 +611,11 @@
 		D22723EA1CC80DBD0093AA53 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				D22723F11CC824140093AA53 /* PullRequestComment.swift */,
+				D22723EB1CC8229F0093AA53 /* Comment.swift */,
+				D22723EE1CC823BA0093AA53 /* IssueComment.swift */,
+				D22723F41CC824390093AA53 /* ReviewComment.swift */,
+				D22723F71CC8267D0093AA53 /* CommitComment.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -658,7 +675,6 @@
 			isa = PBXGroup;
 			children = (
 				D2BABA3D1CC6DF3D00245C3D /* PullRequest.swift */,
-				D22723E01CC80CD30093AA53 /* PullRequestComment.swift */,
 			);
 			path = PullRequest;
 			sourceTree = "<group>";
@@ -983,11 +999,12 @@
 				D20617CE1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
 				D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */,
 				D22723DE1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
-				D22723E11CC80CD30093AA53 /* PullRequestComment.swift in Sources */,
 				D29013931CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
+				D22723F81CC8267D0093AA53 /* CommitComment.swift in Sources */,
 				D20617D71CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
 				D29013901CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
+				D22723EF1CC823BA0093AA53 /* IssueComment.swift in Sources */,
 				D21D1B441CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D22723D41CC8054D0093AA53 /* GitCommit.swift in Sources */,
 				D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */,
@@ -999,6 +1016,7 @@
 				D21D1B401CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D290136C1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
 				D21D1B3C1CADC5A400BD068E /* User.swift in Sources */,
+				D22723F51CC824390093AA53 /* ReviewComment.swift in Sources */,
 				D29013871CB154D500EFADE5 /* Authorization.swift in Sources */,
 				D2BABA3A1CC6DF2100245C3D /* Branch.swift in Sources */,
 				D22723D71CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
@@ -1007,6 +1025,7 @@
 				D20617CB1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013721CB066FC00EFADE5 /* Password.swift in Sources */,
 				D2BABA3E1CC6DF3D00245C3D /* PullRequest.swift in Sources */,
+				D22723EC1CC8229F0093AA53 /* Comment.swift in Sources */,
 				D22723E81CC80D5D0093AA53 /* Client+Issue.swift in Sources */,
 				D21D1B281CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B341CADC5A400BD068E /* Entity.swift in Sources */,
@@ -1019,6 +1038,7 @@
 				D21D1B421CADC5A400BD068E /* Server.swift in Sources */,
 				D22723DB1CC80AE10093AA53 /* Client+Search.swift in Sources */,
 				D21D1B301CADC5A400BD068E /* Client.swift in Sources */,
+				D22723F21CC824140093AA53 /* PullRequestComment.swift in Sources */,
 				D290138A1CB154DC00EFADE5 /* AccessToken.swift in Sources */,
 				D22723E51CC80D560093AA53 /* Issue.swift in Sources */,
 			);
@@ -1061,11 +1081,12 @@
 				D20617CF1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
 				D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */,
 				D22723DF1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
-				D22723E21CC80CD30093AA53 /* PullRequestComment.swift in Sources */,
 				D29013941CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
+				D22723F91CC8267D0093AA53 /* CommitComment.swift in Sources */,
 				D20617D81CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
 				D29013911CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
+				D22723F01CC823BA0093AA53 /* IssueComment.swift in Sources */,
 				D21D1B451CADC5A400BD068E /* ServerMetadata.swift in Sources */,
 				D22723D51CC8054D0093AA53 /* GitCommit.swift in Sources */,
 				D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */,
@@ -1077,6 +1098,7 @@
 				D21D1B411CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D290136D1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
 				D21D1B3D1CADC5A400BD068E /* User.swift in Sources */,
+				D22723F61CC824390093AA53 /* ReviewComment.swift in Sources */,
 				D29013881CB154D500EFADE5 /* Authorization.swift in Sources */,
 				D2BABA3B1CC6DF2100245C3D /* Branch.swift in Sources */,
 				D22723D81CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
@@ -1085,6 +1107,7 @@
 				D20617CC1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013731CB066FC00EFADE5 /* Password.swift in Sources */,
 				D2BABA3F1CC6DF3D00245C3D /* PullRequest.swift in Sources */,
+				D22723ED1CC8229F0093AA53 /* Comment.swift in Sources */,
 				D22723E91CC80D5D0093AA53 /* Client+Issue.swift in Sources */,
 				D21D1B291CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B351CADC5A400BD068E /* Entity.swift in Sources */,
@@ -1097,6 +1120,7 @@
 				D21D1B431CADC5A400BD068E /* Server.swift in Sources */,
 				D22723DC1CC80AE10093AA53 /* Client+Search.swift in Sources */,
 				D21D1B311CADC5A400BD068E /* Client.swift in Sources */,
+				D22723F31CC824140093AA53 /* PullRequestComment.swift in Sources */,
 				D290138B1CB154DC00EFADE5 /* AccessToken.swift in Sources */,
 				D22723E61CC80D560093AA53 /* Issue.swift in Sources */,
 			);
