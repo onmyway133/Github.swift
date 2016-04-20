@@ -107,6 +107,8 @@
 		D21D1B8C1CADCFD900BD068E /* Tailor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21D1AFC1CADC3BE00BD068E /* Tailor.framework */; };
 		D22723D41CC8054D0093AA53 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723D31CC8054D0093AA53 /* GitCommit.swift */; };
 		D22723D51CC8054D0093AA53 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723D31CC8054D0093AA53 /* GitCommit.swift */; };
+		D22723D71CC8079D0093AA53 /* GitCommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723D61CC8079D0093AA53 /* GitCommitFile.swift */; };
+		D22723D81CC8079D0093AA53 /* GitCommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723D61CC8079D0093AA53 /* GitCommitFile.swift */; };
 		D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
@@ -257,6 +259,7 @@
 		D21D1B5D1CADC5CF00BD068E /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		D21D1B5E1CADC5CF00BD068E /* user_starred.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_starred.json; sourceTree = "<group>"; };
 		D22723D31CC8054D0093AA53 /* GitCommit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
+		D22723D61CC8079D0093AA53 /* GitCommitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommitFile.swift; sourceTree = "<group>"; };
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
 		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
@@ -552,6 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				D22723D31CC8054D0093AA53 /* GitCommit.swift */,
+				D22723D61CC8079D0093AA53 /* GitCommitFile.swift */,
 			);
 			path = Commit;
 			sourceTree = "<group>";
@@ -951,6 +955,7 @@
 				D21D1B3C1CADC5A400BD068E /* User.swift in Sources */,
 				D29013871CB154D500EFADE5 /* Authorization.swift in Sources */,
 				D2BABA3A1CC6DF2100245C3D /* Branch.swift in Sources */,
+				D22723D71CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
 				D29013831CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
 				D290136F1CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CB1CBC358700B738F8 /* Content.swift in Sources */,
@@ -1023,6 +1028,7 @@
 				D21D1B3D1CADC5A400BD068E /* User.swift in Sources */,
 				D29013881CB154D500EFADE5 /* Authorization.swift in Sources */,
 				D2BABA3B1CC6DF2100245C3D /* Branch.swift in Sources */,
+				D22723D81CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
 				D29013841CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
 				D29013701CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CC1CBC358700B738F8 /* Content.swift in Sources */,
