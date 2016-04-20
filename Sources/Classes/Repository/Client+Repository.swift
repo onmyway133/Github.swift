@@ -123,18 +123,12 @@ public extension Client {
         $0.path = "user/repos"
       }
 
-      $0.parameters = [
+      $0.parameters = ([
         "name": name,
-        "private": isPrivate
-      ]
-
-      if let description = description {
-        $0.parameters["description"] = description
-      }
-
-      if let team = team {
-        $0.parameters["team_id"] = team.objectID
-      }
+        "private": isPrivate,
+        "description": description,
+        "team_id": team?.objectID
+      ] as [String: AnyObject?]).dropNils()
     }
 
     return enqueue(requestDescriptor).map {
@@ -293,15 +287,12 @@ public extension Client {
     let requestDescriptor = RequestDescriptor().then {
       $0.method = .POST
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/pulls"
-      $0.parameters = [
+      $0.parameters = ([
         "title": title,
         "head": headBranch,
-        "base": baseBranch
-      ]
-
-      if let body = body {
-        $0.parameters["body"] = body
-      }
+        "base": baseBranch,
+        "body": body
+      ] as [String: AnyObject?]).dropNils()
     }
 
     return enqueue(requestDescriptor).map {
@@ -325,7 +316,6 @@ public extension Client {
     return enqueue(requestDescriptor).map {
       return Parser.all($0.jsonArray)
     }
-
   }
 
   // Fetches a single commit specified by the `SHA` from a `repository`.

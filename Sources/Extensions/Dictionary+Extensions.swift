@@ -22,3 +22,29 @@ public extension Dictionary {
     return T(rawValue: value)
   }
 }
+
+public protocol OptionalType {
+  associatedtype Wrapped
+  var asOptional : Wrapped? { get }
+}
+
+extension Optional : OptionalType {
+  public var asOptional : Wrapped? {
+    return self
+  }
+}
+
+public extension Dictionary where Value: OptionalType {
+  func dropNils() -> Dictionary<String, AnyObject> {
+
+    var result: [String: AnyObject] = [:]
+
+    forEach {
+      if let unwrapped = $1.asOptional as? AnyObject, key = $0 as? String {
+        result[key] = unwrapped
+      }
+    }
+
+    return result
+  }
+}

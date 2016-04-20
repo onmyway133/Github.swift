@@ -22,8 +22,6 @@ public struct Formatter {
     return NSDate(ISO8601String: string)
   }
   
-  
-  
   public static func string(date date: NSDate) -> String {
     return basicFormatter.stringFromDate(date)
   }

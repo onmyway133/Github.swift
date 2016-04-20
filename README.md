@@ -70,6 +70,11 @@ return enqueue(requestDescriptor).map {
 
 - Make pull requests
 
+#### Issue
+
+- Create issue
+- Fetch issues
+
 #### Organization (in progress)
 
 - Fetch organizations
