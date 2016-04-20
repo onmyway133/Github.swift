@@ -212,13 +212,13 @@ public extension Client {
   // owner - The owner of the repository, must be a non-empty string.
   //
   // Returns a signal of zero or one OCTBranch.
-  public func fetchBranches(repositoryName: String, owner: String) -> Observable<Branch> {
+  public func fetchBranches(repositoryName: String, owner: String) -> Observable<[Branch]> {
     let requestDescriptor = RequestDescriptor().then {
       $0.path = "repos/\(owner)/\(repositoryName)/branches"
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.all($0.jsonArray)
     }
   }
 
@@ -229,13 +229,13 @@ public extension Client {
   // owner - The owner of the repository, must be a non-empty string.
   //
   // Returns a signal of zero or one OCTPullRequest.
-  public func fetchOpenPullRequests(repositoryName: String, owner: String) -> Observable<PullRequest> {
+  public func fetchOpenPullRequests(repositoryName: String, owner: String) -> Observable<[PullRequest]> {
     let requestDescriptor = RequestDescriptor().then {
       $0.path = "repos/\(owner)/\(repositoryName)/pulls"
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.all($0.jsonArray)
     }
   }
 
@@ -246,10 +246,97 @@ public extension Client {
   // owner - The owner of the repository, must be a non-empty string.
   //
   // Returns a signal of zero or one OCTPullRequest.
-  public func fetchClosedPullRequests(repositoryName: String, owner: String) -> Observable<PullRequest> {
+  public func fetchClosedPullRequests(repositoryName: String, owner: String) -> Observable<[PullRequest]> {
     let requestDescriptor = RequestDescriptor().then {
       $0.path = "repos/\(owner)/\(repositoryName)/pulls"
       $0.parameters["state"] = "closed"
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.all($0.jsonArray)
+    }
+  }
+
+  // Fetches a single pull request on a specific repository owned by the
+  // given `owner` and named `name` and with the pull request number 'number'.
+  //
+  // name   - The name of the repository, must be a non-empty string.
+  // owner  - The owner of the repository, must be a non-empty string.
+  // number - The pull request number on the repository, must be integer
+  //
+  // Returns a signal of zero or one OCTPullRequest.
+  public func fetchPullRequest(repositoryName: String, owner: String, number: Int) -> Observable<Repository> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "repos/\(owner)/\(repositoryName)/pulls/\(number)"
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
+
+  /// Create a pull request in the repository.
+  ///
+  /// repository - The repository on which the pull request will be created.
+  ///              Cannot be nil.
+  /// title      - The title for the pull request. Cannot be nil.
+  /// body       - The body for the pull request. May be nil.
+  /// baseBranch - The name of the branch into which the changes will be merged.
+  ///              Cannot be nil.
+  /// headBranch - The name of the branch which will be brought into `baseBranch`.
+  ///              Cannot be nil.
+  ///
+  /// Returns a signal of an OCTPullRequest.
+  public func createPullRequest(repository: Repository, title: String,
+                                body: String? = nil, baseBranch: String, headBranch: String) -> Observable<PullRequest> {
+
+    let requestDescriptor = RequestDescriptor().then {
+      $0.method = .POST
+      $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/pulls"
+      $0.parameters = [
+        "title": title,
+        "head": headBranch,
+        "base": baseBranch
+      ]
+
+      if let body = body {
+        $0.parameters["body"] = body
+      }
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
+
+  // Fetches commits of the given `repository` filtered by `SHA`.
+  // If no SHA is given, the commit history of all branches is returned.
+  //
+  // repository  - The repository to fetch from.
+  // SHA         - SHA or branch to start listing commits from.
+  //
+  // Returns a signal of zero or one OCTGitCommit.
+  public func fetchCommits(repository: Repository, SHA: String) -> Observable<[GitCommit]> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/commits"
+      $0.parameters["sha"] = SHA
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.all($0.jsonArray)
+    }
+
+  }
+
+  // Fetches a single commit specified by the `SHA` from a `repository`.
+  //
+  // repository  - The repository to fetch from.
+  // SHA         - The SHA of the commit.
+  //
+  // Returns a signal of zero or one OCTGitCommit.
+  public func fetchCommit(repository: Repository, SHA: String) -> Observable<GitCommit> {
+    let requestDescriptor = RequestDescriptor().then {
+      $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/commits/\(SHA)"
     }
 
     return enqueue(requestDescriptor).map {
