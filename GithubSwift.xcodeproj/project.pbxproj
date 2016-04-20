@@ -41,12 +41,8 @@
 		D21D1B331CADC5A400BD068E /* RequestDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B131CADC5A400BD068E /* RequestDescriptor.swift */; };
 		D21D1B341CADC5A400BD068E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B151CADC5A400BD068E /* Entity.swift */; };
 		D21D1B351CADC5A400BD068E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B151CADC5A400BD068E /* Entity.swift */; };
-		D21D1B361CADC5A400BD068E /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B161CADC5A400BD068E /* Organization.swift */; };
-		D21D1B371CADC5A400BD068E /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B161CADC5A400BD068E /* Organization.swift */; };
 		D21D1B381CADC5A400BD068E /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B171CADC5A400BD068E /* Plan.swift */; };
 		D21D1B391CADC5A400BD068E /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B171CADC5A400BD068E /* Plan.swift */; };
-		D21D1B3A1CADC5A400BD068E /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B181CADC5A400BD068E /* Team.swift */; };
-		D21D1B3B1CADC5A400BD068E /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B181CADC5A400BD068E /* Team.swift */; };
 		D21D1B3C1CADC5A400BD068E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B191CADC5A400BD068E /* User.swift */; };
 		D21D1B3D1CADC5A400BD068E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B191CADC5A400BD068E /* User.swift */; };
 		D21D1B3E1CADC5A400BD068E /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D1B1B1CADC5A400BD068E /* Repository.swift */; };
@@ -129,6 +125,12 @@
 		D22723F91CC8267D0093AA53 /* CommitComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F71CC8267D0093AA53 /* CommitComment.swift */; };
 		D22723FC1CC827840093AA53 /* Client+Watching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723FB1CC827840093AA53 /* Client+Watching.swift */; };
 		D22723FD1CC827840093AA53 /* Client+Watching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723FB1CC827840093AA53 /* Client+Watching.swift */; };
+		D22724011CC828BC0093AA53 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723FF1CC828BC0093AA53 /* Organization.swift */; };
+		D22724021CC828BC0093AA53 /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723FF1CC828BC0093AA53 /* Organization.swift */; };
+		D22724031CC828BC0093AA53 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724001CC828BC0093AA53 /* Team.swift */; };
+		D22724041CC828BC0093AA53 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724001CC828BC0093AA53 /* Team.swift */; };
+		D22724061CC828C50093AA53 /* Client+Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724051CC828C50093AA53 /* Client+Organization.swift */; };
+		D22724071CC828C50093AA53 /* Client+Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724051CC828C50093AA53 /* Client+Organization.swift */; };
 		D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
@@ -248,9 +250,7 @@
 		D21D1B121CADC5A400BD068E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D21D1B131CADC5A400BD068E /* RequestDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDescriptor.swift; sourceTree = "<group>"; };
 		D21D1B151CADC5A400BD068E /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
-		D21D1B161CADC5A400BD068E /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		D21D1B171CADC5A400BD068E /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
-		D21D1B181CADC5A400BD068E /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		D21D1B191CADC5A400BD068E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D21D1B1B1CADC5A400BD068E /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		D21D1B1D1CADC5A400BD068E /* Client+Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Server.swift"; sourceTree = "<group>"; };
@@ -290,6 +290,9 @@
 		D22723F41CC824390093AA53 /* ReviewComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewComment.swift; sourceTree = "<group>"; };
 		D22723F71CC8267D0093AA53 /* CommitComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitComment.swift; sourceTree = "<group>"; };
 		D22723FB1CC827840093AA53 /* Client+Watching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Watching.swift"; sourceTree = "<group>"; };
+		D22723FF1CC828BC0093AA53 /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
+		D22724001CC828BC0093AA53 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		D22724051CC828C50093AA53 /* Client+Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Organization.swift"; sourceTree = "<group>"; };
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
 		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
@@ -428,6 +431,7 @@
 		D21D1B091CADC5A400BD068E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D22723FE1CC828A00093AA53 /* Organization */,
 				D22723FA1CC827770093AA53 /* Watching */,
 				D22723EA1CC80DBD0093AA53 /* Comment */,
 				D22723E31CC80D510093AA53 /* Issue */,
@@ -475,9 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				D21D1B151CADC5A400BD068E /* Entity.swift */,
-				D21D1B161CADC5A400BD068E /* Organization.swift */,
 				D21D1B171CADC5A400BD068E /* Plan.swift */,
-				D21D1B181CADC5A400BD068E /* Team.swift */,
 				D21D1B191CADC5A400BD068E /* User.swift */,
 			);
 			path = Entity;
@@ -630,6 +632,16 @@
 				D22723FB1CC827840093AA53 /* Client+Watching.swift */,
 			);
 			path = Watching;
+			sourceTree = "<group>";
+		};
+		D22723FE1CC828A00093AA53 /* Organization */ = {
+			isa = PBXGroup;
+			children = (
+				D22723FF1CC828BC0093AA53 /* Organization.swift */,
+				D22724001CC828BC0093AA53 /* Team.swift */,
+				D22724051CC828C50093AA53 /* Client+Organization.swift */,
+			);
+			path = Organization;
 			sourceTree = "<group>";
 		};
 		D24FD85A1CB97A66008C4EEC /* User */ = {
@@ -1000,7 +1012,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21D1B3A1CADC5A400BD068E /* Team.swift in Sources */,
 				D21D1B461CADC5A400BD068E /* Transformer.swift in Sources */,
 				D29013691CB0507300EFADE5 /* Notification.swift in Sources */,
 				D20617D41CBC365600B738F8 /* SymlinkContent.swift in Sources */,
@@ -1009,6 +1020,7 @@
 				D29013761CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D29013791CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D20617CE1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
+				D22724011CC828BC0093AA53 /* Organization.swift in Sources */,
 				D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */,
 				D22723DE1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
 				D29013931CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
@@ -1018,6 +1030,7 @@
 				D29013901CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
 				D22723EF1CC823BA0093AA53 /* IssueComment.swift in Sources */,
 				D21D1B441CADC5A400BD068E /* ServerMetadata.swift in Sources */,
+				D22724031CC828BC0093AA53 /* Team.swift in Sources */,
 				D22723D41CC8054D0093AA53 /* GitCommit.swift in Sources */,
 				D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */,
 				D2A065181CB868FB005A0AC7 /* URLOpener.swift in Sources */,
@@ -1042,11 +1055,11 @@
 				D21D1B281CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B341CADC5A400BD068E /* Entity.swift in Sources */,
 				D21D1B3E1CADC5A400BD068E /* Repository.swift in Sources */,
+				D22724061CC828C50093AA53 /* Client+Organization.swift in Sources */,
 				D21D1B321CADC5A400BD068E /* RequestDescriptor.swift in Sources */,
 				D2A0650F1CB85D55005A0AC7 /* NSURL+Extensions.swift in Sources */,
 				D290134E1CAFF9FE00EFADE5 /* Client+Repository.swift in Sources */,
 				D29013621CB04A9100EFADE5 /* Client+Constant.swift in Sources */,
-				D21D1B361CADC5A400BD068E /* Organization.swift in Sources */,
 				D22723FC1CC827840093AA53 /* Client+Watching.swift in Sources */,
 				D21D1B421CADC5A400BD068E /* Server.swift in Sources */,
 				D22723DB1CC80AE10093AA53 /* Client+Search.swift in Sources */,
@@ -1083,7 +1096,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21D1B3B1CADC5A400BD068E /* Team.swift in Sources */,
 				D21D1B471CADC5A400BD068E /* Transformer.swift in Sources */,
 				D290136A1CB0507300EFADE5 /* Notification.swift in Sources */,
 				D20617D51CBC365600B738F8 /* SymlinkContent.swift in Sources */,
@@ -1092,6 +1104,7 @@
 				D29013771CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D20617CF1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
+				D22724021CC828BC0093AA53 /* Organization.swift in Sources */,
 				D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */,
 				D22723DF1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
 				D29013941CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
@@ -1101,6 +1114,7 @@
 				D29013911CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
 				D22723F01CC823BA0093AA53 /* IssueComment.swift in Sources */,
 				D21D1B451CADC5A400BD068E /* ServerMetadata.swift in Sources */,
+				D22724041CC828BC0093AA53 /* Team.swift in Sources */,
 				D22723D51CC8054D0093AA53 /* GitCommit.swift in Sources */,
 				D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */,
 				D2A065191CB868FB005A0AC7 /* URLOpener.swift in Sources */,
@@ -1125,11 +1139,11 @@
 				D21D1B291CADC5A400BD068E /* Client+Config.swift in Sources */,
 				D21D1B351CADC5A400BD068E /* Entity.swift in Sources */,
 				D21D1B3F1CADC5A400BD068E /* Repository.swift in Sources */,
+				D22724071CC828C50093AA53 /* Client+Organization.swift in Sources */,
 				D21D1B331CADC5A400BD068E /* RequestDescriptor.swift in Sources */,
 				D2A065101CB85D55005A0AC7 /* NSURL+Extensions.swift in Sources */,
 				D290134F1CAFF9FE00EFADE5 /* Client+Repository.swift in Sources */,
 				D29013631CB04A9200EFADE5 /* Client+Constant.swift in Sources */,
-				D21D1B371CADC5A400BD068E /* Organization.swift in Sources */,
 				D22723FD1CC827840093AA53 /* Client+Watching.swift in Sources */,
 				D21D1B431CADC5A400BD068E /* Server.swift in Sources */,
 				D22723DC1CC80AE10093AA53 /* Client+Search.swift in Sources */,

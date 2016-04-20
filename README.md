@@ -75,7 +75,7 @@ return enqueue(requestDescriptor).map {
 - Create issue
 - Fetch issues
 
-#### Organization (in progress)
+#### Organization
 
 - Fetch organizations
 - Fetch teams
