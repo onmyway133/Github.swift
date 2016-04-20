@@ -133,6 +133,16 @@
 		D22724071CC828C50093AA53 /* Client+Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724051CC828C50093AA53 /* Client+Organization.swift */; };
 		D227240A1CC82A970093AA53 /* Client+Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724091CC82A970093AA53 /* Client+Activity.swift */; };
 		D227240B1CC82A970093AA53 /* Client+Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724091CC82A970093AA53 /* Client+Activity.swift */; };
+		D227240E1CC82BC00093AA53 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227240D1CC82BC00093AA53 /* Gist.swift */; };
+		D227240F1CC82BC00093AA53 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D227240D1CC82BC00093AA53 /* Gist.swift */; };
+		D22724111CC82BC70093AA53 /* Client+Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724101CC82BC70093AA53 /* Client+Gist.swift */; };
+		D22724121CC82BC70093AA53 /* Client+Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724101CC82BC70093AA53 /* Client+Gist.swift */; };
+		D22724141CC82E210093AA53 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724131CC82E210093AA53 /* GistFile.swift */; };
+		D22724151CC82E210093AA53 /* GistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724131CC82E210093AA53 /* GistFile.swift */; };
+		D22724171CC82EA30093AA53 /* GistFileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724161CC82EA30093AA53 /* GistFileEdit.swift */; };
+		D22724181CC82EA30093AA53 /* GistFileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724161CC82EA30093AA53 /* GistFileEdit.swift */; };
+		D227241A1CC82FD50093AA53 /* GistEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724191CC82FD50093AA53 /* GistEdit.swift */; };
+		D227241B1CC82FD50093AA53 /* GistEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724191CC82FD50093AA53 /* GistEdit.swift */; };
 		D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
@@ -296,6 +306,11 @@
 		D22724001CC828BC0093AA53 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		D22724051CC828C50093AA53 /* Client+Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Organization.swift"; sourceTree = "<group>"; };
 		D22724091CC82A970093AA53 /* Client+Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Activity.swift"; sourceTree = "<group>"; };
+		D227240D1CC82BC00093AA53 /* Gist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
+		D22724101CC82BC70093AA53 /* Client+Gist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Gist.swift"; sourceTree = "<group>"; };
+		D22724131CC82E210093AA53 /* GistFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
+		D22724161CC82EA30093AA53 /* GistFileEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistFileEdit.swift; sourceTree = "<group>"; };
+		D22724191CC82FD50093AA53 /* GistEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistEdit.swift; sourceTree = "<group>"; };
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
 		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
@@ -434,6 +449,7 @@
 		D21D1B091CADC5A400BD068E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D227240C1CC82BBB0093AA53 /* Gist */,
 				D22724081CC82A910093AA53 /* Activity */,
 				D22723FE1CC828A00093AA53 /* Organization */,
 				D22723FA1CC827770093AA53 /* Watching */,
@@ -654,6 +670,18 @@
 				D22724091CC82A970093AA53 /* Client+Activity.swift */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		D227240C1CC82BBB0093AA53 /* Gist */ = {
+			isa = PBXGroup;
+			children = (
+				D227240D1CC82BC00093AA53 /* Gist.swift */,
+				D22724101CC82BC70093AA53 /* Client+Gist.swift */,
+				D22724131CC82E210093AA53 /* GistFile.swift */,
+				D22724161CC82EA30093AA53 /* GistFileEdit.swift */,
+				D22724191CC82FD50093AA53 /* GistEdit.swift */,
+			);
+			path = Gist;
 			sourceTree = "<group>";
 		};
 		D24FD85A1CB97A66008C4EEC /* User */ = {
@@ -1025,10 +1053,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D1B461CADC5A400BD068E /* Transformer.swift in Sources */,
+				D22724141CC82E210093AA53 /* GistFile.swift in Sources */,
 				D29013691CB0507300EFADE5 /* Notification.swift in Sources */,
 				D20617D41CBC365600B738F8 /* SymlinkContent.swift in Sources */,
 				D29013571CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138D1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
+				D22724171CC82EA30093AA53 /* GistFileEdit.swift in Sources */,
 				D29013761CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D29013791CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D20617CE1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
@@ -1053,11 +1083,14 @@
 				D21D1B241CADC5A400BD068E /* Object.swift in Sources */,
 				D21D1B401CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D290136C1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
+				D227240E1CC82BC00093AA53 /* Gist.swift in Sources */,
 				D21D1B3C1CADC5A400BD068E /* User.swift in Sources */,
 				D22723F51CC824390093AA53 /* ReviewComment.swift in Sources */,
 				D29013871CB154D500EFADE5 /* Authorization.swift in Sources */,
+				D227241A1CC82FD50093AA53 /* GistEdit.swift in Sources */,
 				D2BABA3A1CC6DF2100245C3D /* Branch.swift in Sources */,
 				D22723D71CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
+				D22724111CC82BC70093AA53 /* Client+Gist.swift in Sources */,
 				D29013831CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
 				D290136F1CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CB1CBC358700B738F8 /* Content.swift in Sources */,
@@ -1110,10 +1143,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D1B471CADC5A400BD068E /* Transformer.swift in Sources */,
+				D22724151CC82E210093AA53 /* GistFile.swift in Sources */,
 				D290136A1CB0507300EFADE5 /* Notification.swift in Sources */,
 				D20617D51CBC365600B738F8 /* SymlinkContent.swift in Sources */,
 				D29013581CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138E1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
+				D22724181CC82EA30093AA53 /* GistFileEdit.swift in Sources */,
 				D29013771CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D20617CF1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
@@ -1138,11 +1173,14 @@
 				D21D1B251CADC5A400BD068E /* Object.swift in Sources */,
 				D21D1B411CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D290136D1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
+				D227240F1CC82BC00093AA53 /* Gist.swift in Sources */,
 				D21D1B3D1CADC5A400BD068E /* User.swift in Sources */,
 				D22723F61CC824390093AA53 /* ReviewComment.swift in Sources */,
 				D29013881CB154D500EFADE5 /* Authorization.swift in Sources */,
+				D227241B1CC82FD50093AA53 /* GistEdit.swift in Sources */,
 				D2BABA3B1CC6DF2100245C3D /* Branch.swift in Sources */,
 				D22723D81CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
+				D22724121CC82BC70093AA53 /* Client+Gist.swift in Sources */,
 				D29013841CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
 				D29013701CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CC1CBC358700B738F8 /* Content.swift in Sources */,
