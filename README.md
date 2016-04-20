@@ -84,11 +84,11 @@ return enqueue(requestDescriptor).map {
 
 - Search repositories
 
-#### Event (in progress)
+#### Event
 
 - Fetch user events
 
-#### Gists (in progress)
+#### Gists
 
 - Fetch gists
 
@@ -98,7 +98,7 @@ return enqueue(requestDescriptor).map {
 - Create blob
 - Create commit
 
-#### Activity (in progress)
+#### Activity
 
 - Star
 - Unstar
