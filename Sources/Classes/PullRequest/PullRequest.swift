@@ -106,7 +106,7 @@ public class PullRequest: Object {
     self.closedDate <- map.transform("closed_at", transformer: Transformer.stringToDate)
     self.mergedDate <- map.transform("merged_at", transformer: Transformer.stringToDate)
 
-    // self.state
+    self.state <- map.`enum`("state")
 
     let head = map.dictionary("head")
     let base = map.dictionary("base")
