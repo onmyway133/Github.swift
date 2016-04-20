@@ -10,21 +10,21 @@ import Foundation
 import Tailor
 import Sugar
 
-// The type of the notification.
-//
-// OCTNotificationTypeUnknown     - An unknown type of notification.
-// OCTNotificationTypeIssue       - A new issue, or a new comment on one.
-// OCTNotificationTypePullRequest - A new pull request, or a new comment on one.
-// OCTNotificationTypeCommit      - A new comment on a commit.
-public enum NotificationType: String {
-  case Unknown = ""
-  case Issue = "Issue"
-  case PullRequest = "PullRequest"
-  case Commit = "Commit"
-}
-
 // A notification of some type of activity.
 public class Notification: Object {
+
+  // The type of the notification.
+  //
+  // OCTNotificationTypeUnknown     - An unknown type of notification.
+  // OCTNotificationTypeIssue       - A new issue, or a new comment on one.
+  // OCTNotificationTypePullRequest - A new pull request, or a new comment on one.
+  // OCTNotificationTypeCommit      - A new comment on a commit.
+  public enum Type: String {
+    case Unknown = ""
+    case Issue = "Issue"
+    case PullRequest = "PullRequest"
+    case Commit = "Commit"
+  }
   
   // The title of the notification.
   public private(set) var title: String = ""
@@ -43,7 +43,7 @@ public class Notification: Object {
   public private(set) var latestCommentURL: NSURL?
   
   // The notification type.
-  public private(set) var type: NotificationType = .Unknown
+  public private(set) var type: Type = .Unknown
   
   // The repository to which the notification belongs.
   public private(set) var repository: Repository?
@@ -63,14 +63,8 @@ public class Notification: Object {
     self.threadURL <- map.transform("url", transformer: Transformer.stringToURL)
     self.subjectURL <- subject?.transform("url", transformer: Transformer.stringToURL)
     self.latestCommentURL <- subject?.transform("latest_comment_url", transformer: Transformer.stringToURL)
-    self.type = subject?.transform("type", transformer: Transformer.stringToNotificationType) ?? .Unknown
+    self.type = subject?.`enum`("type") ?? .Unknown
     self.repository = map.relation("repository")
     self.lastUpdatedDate = map.transform("updated_at", transformer: Transformer.stringToDate)
-  }
-}
-
-public extension Transformer {
-  public static func stringToNotificationType(string: String?) -> NotificationType? {
-    return NotificationType(rawValue: string ?? "")
   }
 }
