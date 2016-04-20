@@ -109,6 +109,10 @@
 		D22723D51CC8054D0093AA53 /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723D31CC8054D0093AA53 /* GitCommit.swift */; };
 		D22723D71CC8079D0093AA53 /* GitCommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723D61CC8079D0093AA53 /* GitCommitFile.swift */; };
 		D22723D81CC8079D0093AA53 /* GitCommitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723D61CC8079D0093AA53 /* GitCommitFile.swift */; };
+		D22723DB1CC80AE10093AA53 /* Client+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723DA1CC80AE10093AA53 /* Client+Search.swift */; };
+		D22723DC1CC80AE10093AA53 /* Client+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723DA1CC80AE10093AA53 /* Client+Search.swift */; };
+		D22723DE1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723DD1CC80BB10093AA53 /* RepositorySearchResult.swift */; };
+		D22723DF1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723DD1CC80BB10093AA53 /* RepositorySearchResult.swift */; };
 		D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
@@ -260,6 +264,8 @@
 		D21D1B5E1CADC5CF00BD068E /* user_starred.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_starred.json; sourceTree = "<group>"; };
 		D22723D31CC8054D0093AA53 /* GitCommit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
 		D22723D61CC8079D0093AA53 /* GitCommitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommitFile.swift; sourceTree = "<group>"; };
+		D22723DA1CC80AE10093AA53 /* Client+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Search.swift"; sourceTree = "<group>"; };
+		D22723DD1CC80BB10093AA53 /* RepositorySearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySearchResult.swift; sourceTree = "<group>"; };
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
 		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
@@ -398,6 +404,7 @@
 		D21D1B091CADC5A400BD068E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D22723D91CC80AD60093AA53 /* Search */,
 				D22723D21CC805440093AA53 /* Commit */,
 				D2BABA3C1CC6DF3600245C3D /* PullRequest */,
 				D20617C91CBC357800B738F8 /* Content */,
@@ -558,6 +565,15 @@
 				D22723D61CC8079D0093AA53 /* GitCommitFile.swift */,
 			);
 			path = Commit;
+			sourceTree = "<group>";
+		};
+		D22723D91CC80AD60093AA53 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D22723DA1CC80AE10093AA53 /* Client+Search.swift */,
+				D22723DD1CC80BB10093AA53 /* RepositorySearchResult.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		D24FD85A1CB97A66008C4EEC /* User */ = {
@@ -938,6 +954,7 @@
 				D29013791CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D20617CE1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
 				D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */,
+				D22723DE1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
 				D29013931CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D20617D71CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
@@ -970,6 +987,7 @@
 				D29013621CB04A9100EFADE5 /* Client+Constant.swift in Sources */,
 				D21D1B361CADC5A400BD068E /* Organization.swift in Sources */,
 				D21D1B421CADC5A400BD068E /* Server.swift in Sources */,
+				D22723DB1CC80AE10093AA53 /* Client+Search.swift in Sources */,
 				D21D1B301CADC5A400BD068E /* Client.swift in Sources */,
 				D290138A1CB154DC00EFADE5 /* AccessToken.swift in Sources */,
 			);
@@ -1011,6 +1029,7 @@
 				D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D20617CF1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
 				D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */,
+				D22723DF1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
 				D29013941CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D20617D81CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
@@ -1043,6 +1062,7 @@
 				D29013631CB04A9200EFADE5 /* Client+Constant.swift in Sources */,
 				D21D1B371CADC5A400BD068E /* Organization.swift in Sources */,
 				D21D1B431CADC5A400BD068E /* Server.swift in Sources */,
+				D22723DC1CC80AE10093AA53 /* Client+Search.swift in Sources */,
 				D21D1B311CADC5A400BD068E /* Client.swift in Sources */,
 				D290138B1CB154DC00EFADE5 /* AccessToken.swift in Sources */,
 			);

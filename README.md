@@ -66,7 +66,7 @@ return enqueue(requestDescriptor).map {
 - Fetch issues
 - Watch
 
-#### Pull request (in progress)
+#### Pull request
 
 - Make pull requests
 
@@ -75,7 +75,7 @@ return enqueue(requestDescriptor).map {
 - Fetch organizations
 - Fetch teams
 
-#### Search (in progress)
+#### Search
 
 - Search repositories
 
