@@ -127,6 +127,8 @@
 		D22723F61CC824390093AA53 /* ReviewComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F41CC824390093AA53 /* ReviewComment.swift */; };
 		D22723F81CC8267D0093AA53 /* CommitComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F71CC8267D0093AA53 /* CommitComment.swift */; };
 		D22723F91CC8267D0093AA53 /* CommitComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723F71CC8267D0093AA53 /* CommitComment.swift */; };
+		D22723FC1CC827840093AA53 /* Client+Watching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723FB1CC827840093AA53 /* Client+Watching.swift */; };
+		D22723FD1CC827840093AA53 /* Client+Watching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22723FB1CC827840093AA53 /* Client+Watching.swift */; };
 		D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
@@ -287,6 +289,7 @@
 		D22723F11CC824140093AA53 /* PullRequestComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestComment.swift; sourceTree = "<group>"; };
 		D22723F41CC824390093AA53 /* ReviewComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewComment.swift; sourceTree = "<group>"; };
 		D22723F71CC8267D0093AA53 /* CommitComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitComment.swift; sourceTree = "<group>"; };
+		D22723FB1CC827840093AA53 /* Client+Watching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Watching.swift"; sourceTree = "<group>"; };
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
 		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
@@ -425,6 +428,7 @@
 		D21D1B091CADC5A400BD068E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D22723FA1CC827770093AA53 /* Watching */,
 				D22723EA1CC80DBD0093AA53 /* Comment */,
 				D22723E31CC80D510093AA53 /* Issue */,
 				D22723D91CC80AD60093AA53 /* Search */,
@@ -618,6 +622,14 @@
 				D22723F71CC8267D0093AA53 /* CommitComment.swift */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		D22723FA1CC827770093AA53 /* Watching */ = {
+			isa = PBXGroup;
+			children = (
+				D22723FB1CC827840093AA53 /* Client+Watching.swift */,
+			);
+			path = Watching;
 			sourceTree = "<group>";
 		};
 		D24FD85A1CB97A66008C4EEC /* User */ = {
@@ -1035,6 +1047,7 @@
 				D290134E1CAFF9FE00EFADE5 /* Client+Repository.swift in Sources */,
 				D29013621CB04A9100EFADE5 /* Client+Constant.swift in Sources */,
 				D21D1B361CADC5A400BD068E /* Organization.swift in Sources */,
+				D22723FC1CC827840093AA53 /* Client+Watching.swift in Sources */,
 				D21D1B421CADC5A400BD068E /* Server.swift in Sources */,
 				D22723DB1CC80AE10093AA53 /* Client+Search.swift in Sources */,
 				D21D1B301CADC5A400BD068E /* Client.swift in Sources */,
@@ -1117,6 +1130,7 @@
 				D290134F1CAFF9FE00EFADE5 /* Client+Repository.swift in Sources */,
 				D29013631CB04A9200EFADE5 /* Client+Constant.swift in Sources */,
 				D21D1B371CADC5A400BD068E /* Organization.swift in Sources */,
+				D22723FD1CC827840093AA53 /* Client+Watching.swift in Sources */,
 				D21D1B431CADC5A400BD068E /* Server.swift in Sources */,
 				D22723DC1CC80AE10093AA53 /* Client+Search.swift in Sources */,
 				D21D1B311CADC5A400BD068E /* Client.swift in Sources */,
