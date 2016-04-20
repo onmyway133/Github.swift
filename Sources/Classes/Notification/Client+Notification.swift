@@ -34,17 +34,58 @@ public extension Client {
     let requestDescriptor = RequestDescriptor().then {
       $0.path = "notifications"
       $0.etag = etag
-      $0.parameters = [
-        "all": includeRead
-      ]
-      
-      if let updatedSince = updatedSince {
-        $0.parameters["since"] = Formatter.string(date: updatedSince)
-      }
+      $0.parameters = ([
+        "all": includeRead,
+        "since": updatedSince.map { Formatter.string(date: $0) }
+      ] as [String: AnyObject?]).dropNils()
     }
     
     return self.enqueue(requestDescriptor).map {
       return Parser.all($0.jsonArray)
+    }
+  }
+
+  // Mark a notification thread as having been read.
+  //
+  // threadURL - The API URL of the thread to mark as read. Cannot be nil.
+  //
+  // Returns a signal which will send completed on success. If the client is not
+  // `authenticated`, the signal will error immediately.
+  public func markNotificationThreadAsRead(threadURL: NSURL) -> Observable<()> {
+    if !isAuthenticated {
+      return Observable<()>.error(Error.authenticationRequiredError())
+    }
+
+    let requestDescriptor = RequestDescriptor().then {
+      $0.method = .PATCH
+      $0.URL = threadURL
+      $0.parameters["read"] = true
+    }
+
+    return enqueue(requestDescriptor).map { _ in
+      return ()
+    }
+  }
+
+  // Mutes all further notifications from a thread.
+  //
+  // threadURL - The API URL of the thread to mute. Cannot be nil.
+  //
+  // Returns a signal which will send completed on success. If the client is not
+  // `authenticated`, the signal will error immediately.
+  public func muteNotificationThreadAsRead(threadURL: NSURL) -> Observable<()> {
+    if !isAuthenticated {
+      return Observable<()>.error(Error.authenticationRequiredError())
+    }
+
+    let requestDescriptor = RequestDescriptor().then {
+      $0.method = .PUT
+      $0.URL = threadURL.URLByAppendingPathComponent("subscription")
+      $0.parameters["ignored"] = true
+    }
+
+    return enqueue(requestDescriptor).map { _ in
+      return ()
     }
   }
 }

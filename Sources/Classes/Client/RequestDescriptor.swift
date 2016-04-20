@@ -18,6 +18,9 @@ public class RequestDescriptor {
   public var etag: String?
   public var fetchAllPages: Bool = true
 
+  // There are cases a provided URL is required
+  public var URL: NSURL?
+
   /// offset  - Allows you to specify an offset at which items will begin being returned.
   public var offset: Int = 0
 
@@ -30,6 +33,10 @@ public class RequestDescriptor {
   }
   
   public func URLString(baseURL: NSURL) -> NSURL {
+    if let URL = URL {
+      return URL
+    }
+
     let escapedPath = path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
     return baseURL.URLByAppendingPathComponent(escapedPath ?? "")
   }
