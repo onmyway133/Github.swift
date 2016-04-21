@@ -14,7 +14,7 @@ import Sugar
 public class Gist: Object {
 
   // The OCTGistFiles in the gist, keyed by filename.
-  public private(set) var files: [GistFile] = []
+  public private(set) var files: [String: GistFile] = [:]
 
   // The date at which the gist was originally created.
   public private(set) var creationDate: NSDate?
@@ -27,5 +27,6 @@ public class Gist: Object {
 
     self.creationDate <- map.transform("created_at", transformer: Transformer.stringToDate)
     self.HTMLURL <- map.transform("html_url", transformer: Transformer.stringToURL)
+    self.files <- map.directory("files")
   }
 }

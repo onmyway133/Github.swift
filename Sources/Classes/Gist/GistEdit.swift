@@ -17,7 +17,7 @@ public class GistEdit: Mappable {
   public private(set) var gistDescription: String = ""
 
   // Files to modify, represented as OCTGistFileEdits keyed by filename.
-  public private(set) var filesToModify: [GistFileEdit] = []
+  public private(set) var filesToModify: [String: GistFileEdit] = [:]
 
   // Files to add, represented as OCTGistFileEdits.
   //
@@ -32,7 +32,19 @@ public class GistEdit: Mappable {
   //
   // This dictionary contains OCTGistFileEdits keyed by filename. Deleted
   // filenames will have an NSNull value.
-  public private(set) var fileChanges: [GistFileEdit] = []
+  public var fileChanges: [String: GistFileEdit?] {
+    var files: [String: GistFileEdit?] = [:]
+
+    files.update(filesToModify)
+    filesToAdd.forEach {
+      files[$0.filename] = $0
+    }
+    filenamesToDelete.forEach {
+      files[$0] = nil
+    }
+
+    return files
+  }
 
   // Whether this gist should be public.
   public private(set) var isPublicGist: Bool = true
