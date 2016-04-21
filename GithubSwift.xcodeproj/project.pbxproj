@@ -143,6 +143,8 @@
 		D22724181CC82EA30093AA53 /* GistFileEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724161CC82EA30093AA53 /* GistFileEdit.swift */; };
 		D227241A1CC82FD50093AA53 /* GistEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724191CC82FD50093AA53 /* GistEdit.swift */; };
 		D227241B1CC82FD50093AA53 /* GistEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22724191CC82FD50093AA53 /* GistEdit.swift */; };
+		D22829B01CC983D500466A1C /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22829AF1CC983D500466A1C /* JSONEncodable.swift */; };
+		D22829B11CC983D500466A1C /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22829AF1CC983D500466A1C /* JSONEncodable.swift */; };
 		D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85B1CB97A71008C4EEC /* Client+User.swift */; };
 		D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */; };
@@ -311,6 +313,7 @@
 		D22724131CC82E210093AA53 /* GistFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistFile.swift; sourceTree = "<group>"; };
 		D22724161CC82EA30093AA53 /* GistFileEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistFileEdit.swift; sourceTree = "<group>"; };
 		D22724191CC82FD50093AA53 /* GistEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistEdit.swift; sourceTree = "<group>"; };
+		D22829AF1CC983D500466A1C /* JSONEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodable.swift; sourceTree = "<group>"; };
 		D24FD85B1CB97A71008C4EEC /* Client+User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+User.swift"; sourceTree = "<group>"; };
 		D24FD85E1CB99C7C008C4EEC /* ServerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSpec.swift; sourceTree = "<group>"; };
 		D24FD8611CB9A271008C4EEC /* AuthorizationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationSpec.swift; sourceTree = "<group>"; };
@@ -544,6 +547,7 @@
 				D21D1B221CADC5A400BD068E /* Transformer */,
 				D29013781CB06F6700EFADE5 /* Helper.swift */,
 				D2A065171CB868FB005A0AC7 /* URLOpener.swift */,
+				D22829AF1CC983D500466A1C /* JSONEncodable.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1065,6 +1069,7 @@
 				D22724011CC828BC0093AA53 /* Organization.swift in Sources */,
 				D24FD85C1CB97A71008C4EEC /* Client+User.swift in Sources */,
 				D22723DE1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
+				D22829B01CC983D500466A1C /* JSONEncodable.swift in Sources */,
 				D29013931CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D22723F81CC8267D0093AA53 /* CommitComment.swift in Sources */,
@@ -1155,6 +1160,7 @@
 				D22724021CC828BC0093AA53 /* Organization.swift in Sources */,
 				D24FD85D1CB97A71008C4EEC /* Client+User.swift in Sources */,
 				D22723DF1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
+				D22829B11CC983D500466A1C /* JSONEncodable.swift in Sources */,
 				D29013941CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D22723F91CC8267D0093AA53 /* CommitComment.swift in Sources */,

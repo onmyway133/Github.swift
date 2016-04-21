@@ -54,3 +54,9 @@ public class GistEdit: Mappable {
     self.isPublicGist <- map.property("public")
   }
 }
+
+extension GistEdit: JSONEncodable {
+  public func toJSON() -> JSONDictionary {
+    return [:]
+  }
+}

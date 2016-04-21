@@ -35,4 +35,49 @@ public extension Client {
       return Parser.all($0.jsonArray)
     }
   }
+
+  // Creates a gist using the given changes.
+  //
+  // edit - The changes to use for creating the gist. This must not be nil.
+  //
+  // Returns a signal which will send the created OCTGist and complete. If the client
+  // is not `authenticated`, the signal will error immediately.
+  public func createGist(edit: GistEdit) -> Observable<Gist> {
+    if !isAuthenticated {
+      return Observable<Gist>.error(Error.authenticationRequiredError())
+    }
+
+    let requestDescriptor = RequestDescriptor().then {
+      $0.method = .POST
+      $0.path = "gists"
+      $0.parameters = edit.toJSON()
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
+
+  // Edits one or more files within a gist.
+  //
+  // edit - The changes to make to the gist. This must not be nil.
+  // gist - The gist to modify. This must not be nil.
+  //
+  // Returns a signal which will send the updated OCTGist and complete. If the client
+  // is not `authenticated`, the signal will error immediately.
+  public func apply(edit: GistEdit, gist: Gist) -> Observable<Gist> {
+    if !isAuthenticated {
+      return Observable<Gist>.error(Error.authenticationRequiredError())
+    }
+
+    let requestDescriptor = RequestDescriptor().then {
+      $0.method = .PATCH
+      $0.path = "gists/\(gist.objectID)"
+      $0.parameters = edit.toJSON()
+    }
+
+    return enqueue(requestDescriptor).map {
+      return Parser.one($0.jsonArray)
+    }
+  }
 }
