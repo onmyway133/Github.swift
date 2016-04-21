@@ -177,9 +177,18 @@ class TestMappable: XCTestCase {
   func testImmutableObjectMapping() {
     let immutableStruct: TestImmutable
     do {
-      immutableStruct = try TestImmutable(["firstName" : "foo" , "lastName" : "bar"])
+      immutableStruct = try TestImmutable(["firstName" : "foo" ,
+        "lastName" : "bar",
+        "job" : ["name" : "Musician"],
+        "hobbies" : [["name" : "Musician"]]
+        ])
+      let expectedJob = Job(["name" : "Musician"])
+
       XCTAssertEqual(immutableStruct.firstName, "foo")
       XCTAssertEqual(immutableStruct.lastName, "bar")
+      XCTAssertEqual(immutableStruct.job.name, expectedJob.name)
+      XCTAssertEqual(immutableStruct.hobbies.count, 1)
+      XCTAssertEqual(immutableStruct.hobbies[0].name, expectedJob.name)
     } catch {
       print(error)
     }
@@ -220,5 +229,41 @@ class TestMappable: XCTestCase {
     XCTAssertEqual(multiTypeStruct.people.first?.firstName, TestPersonStruct(["firstName" : "foo"]).firstName)
     XCTAssertEqual(multiTypeStruct.peopleDictionary["Mini"]?.firstName, TestPersonStruct(["firstName" : "Mini"]).firstName)
     XCTAssertEqual(multiTypeStruct.people[1].firstName, "bar")
+  }
+
+  func testEnum() {
+    enum State: String {
+      case Open = "open"
+      case Closed = "closed"
+    }
+
+    enum Priority: Int {
+      case Low = 0
+      case Medium = 1
+      case High = 2
+    }
+
+    struct Issue: Mappable {
+      var name: String = ""
+      var state: State = .Closed
+      var priority: Priority = .Low
+
+      init(_ map: JSONDictionary) {
+        self.name <- map.property("name")
+        self.state <- map.`enum`("state")
+        self.priority <- map.`enum`("priority")
+      }
+    }
+
+    let json = [
+      "name": "Swift 3 support",
+      "state": "open",
+      "priority": 2
+    ]
+
+    let issue = Issue(json)
+    XCTAssertEqual(issue.name, "Swift 3 support")
+    XCTAssertEqual(issue.state, State.Open)
+    XCTAssertEqual(issue.priority, Priority.High)
   }
 }

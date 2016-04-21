@@ -90,7 +90,7 @@ protocol ObserverType {
 }
 ```
 
-**When a sequence sends the `Complete` or `Error` event all internal resources that compute sequence elements will be freed.**
+**When a sequence sends the `Completed` or `Error` event all internal resources that compute sequence elements will be freed.**
 
 **To cancel production of sequence elements and free resources immediately, call `dispose` on the returned subscription.**
 
@@ -590,7 +590,7 @@ Almost all operators are demonstrated in [Playgrounds](../Rx.playground).
 
 To use playgrounds please open `Rx.xcworkspace`, build `RxSwift-OSX` scheme and then open playgrounds in `Rx.xcworkspace` tree view.
 
-In case you need an operator, and don't know how to find it there a [decision tree of operators]() http://reactivex.io/documentation/operators.html#tree).
+In case you need an operator, and don't know how to find it there a [decision tree of operators](http://reactivex.io/documentation/operators.html#tree).
 
 [Supported RxSwift operators](API.md#rxswift-supported-operators) are also grouped by function they perform, so that can also help.
 
@@ -1099,12 +1099,12 @@ NSURLSession.sharedSession().rx_response(myNSURLRequest)
                 return just(transform(data))
             }
             else {
-                return failWith(yourNSError)
+                return Observable.error(yourNSError)
             }
         }
         else {
             rxFatalError("response = nil")
-            return failWith(yourNSError)
+            return Observable.error(yourNSError)
         }
     }
     .subscribe { event in

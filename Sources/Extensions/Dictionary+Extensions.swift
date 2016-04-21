@@ -14,13 +14,6 @@ public extension Dictionary {
       self.updateValue(value, forKey: key)
     }
   }
-
-  func `enum`<T: RawRepresentable>(name: String) -> T? {
-    guard let key = name as? Key,
-      value = self[key] as? T.RawValue else { return nil }
-
-    return T(rawValue: value)
-  }
 }
 
 public protocol OptionalType {

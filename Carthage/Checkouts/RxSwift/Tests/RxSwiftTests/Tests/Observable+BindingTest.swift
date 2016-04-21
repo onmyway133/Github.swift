@@ -15,6 +15,181 @@ class ObservableBindingTest : RxTest {
     
 }
 
+// multicast
+extension ObservableBindingTest {
+    func testMulticast_Cold_Completed() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(40, 0),
+            next(90, 1),
+            next(150, 2),
+            next(210, 3),
+            next(240, 4),
+            next(270, 5),
+            next(330, 6),
+            next(340, 7),
+            completed(390)
+            ])
+
+        let res = scheduler.start {
+            xs.multicast({ PublishSubject<Int>() }) { $0 }
+        }
+
+        XCTAssertEqual(res.events, [
+            next(210, 3),
+            next(240, 4),
+            next(270, 5),
+            next(330, 6),
+            next(340, 7),
+            completed(390)
+            ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            Subscription(200, 390)
+            ])
+    }
+
+    func testMulticast_Cold_Error() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(40, 0),
+            next(90, 1),
+            next(150, 2),
+            next(210, 3),
+            next(240, 4),
+            next(270, 5),
+            next(330, 6),
+            next(340, 7),
+            error(390, testError)
+            ])
+
+        let res = scheduler.start {
+            xs.multicast({ PublishSubject<Int>() }) { $0 }
+        }
+
+        XCTAssertEqual(res.events, [
+            next(210, 3),
+            next(240, 4),
+            next(270, 5),
+            next(330, 6),
+            next(340, 7),
+            error(390, testError)
+            ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            Subscription(200, 390)
+            ])
+    }
+
+    func testMulticast_Cold_Dispose() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(40, 0),
+            next(90, 1),
+            next(150, 2),
+            next(210, 3),
+            next(240, 4),
+            next(270, 5),
+            next(330, 6),
+            next(340, 7),
+            ])
+
+        let res = scheduler.start {
+            xs.multicast({ PublishSubject<Int>() }) { $0 }
+        }
+
+        XCTAssertEqual(res.events, [
+            next(210, 3),
+            next(240, 4),
+            next(270, 5),
+            next(330, 6),
+            next(340, 7),
+            ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            Subscription(200, 1000)
+            ])
+    }
+
+    func testMulticast_Cold_Zip() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(40, 0),
+            next(90, 1),
+            next(150, 2),
+            next(210, 3),
+            next(240, 4),
+            next(270, 5),
+            next(330, 6),
+            next(340, 7),
+            completed(390)
+            ])
+
+        let res = scheduler.start {
+            xs.multicast({ PublishSubject<Int>() }) { Observable.zip($0, $0) { a, b in a + b } }
+        }
+
+        XCTAssertEqual(res.events, [
+            next(210, 6),
+            next(240, 8),
+            next(270, 10),
+            next(330, 12),
+            next(340, 14),
+            completed(390)
+            ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            Subscription(200, 390)
+            ])
+    }
+
+    func testMulticast_SubjectSelectorThrows() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(210, 1),
+            next(240, 2),
+            completed(300)
+            ])
+
+        let res = scheduler.start {
+            xs.multicast({ () throws -> PublishSubject<Int> in throw testError }) { $0 }
+        }
+
+        XCTAssertEqual(res.events, [
+            error(200, testError)
+            ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            ])
+    }
+
+    func testMulticast_SelectorThrows() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(210, 1),
+            next(240, 2),
+            completed(300)
+            ])
+
+        let res = scheduler.start {
+            xs.multicast({ PublishSubject<Int>() }) { _ -> Observable<Int> in throw testError }
+        }
+
+        XCTAssertEqual(res.events, [
+            error(200, testError)
+            ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            ])
+    }
+}
+
 // refCount
 extension ObservableBindingTest {
     func testRefCount_DeadlockSimple() {
@@ -676,227 +851,227 @@ extension ObservableBindingTest {
             Subscription(650, 800),
             ])
     }
-	
-	func testReplayAll_Basic() {
-		let scheduler = TestScheduler(initialClock: 0)
-		
-		let xs = scheduler.createHotObservable([
-			next(110, 7),
-			next(220, 3),
-			next(280, 4),
-			next(290, 1),
-			next(340, 8),
-			next(360, 5),
-			next(370, 6),
-			next(390, 7),
-			next(410, 13),
-			next(430, 2),
-			next(450, 9),
-			next(520, 11),
-			next(560, 20),
-			error(600, testError)
-			])
-		
-		var ys: ConnectableObservable<Int>! = nil
-		var subscription: Disposable! = nil
-		var connection: Disposable! = nil
-		let res = scheduler.createObserver(Int)
-		
-		scheduler.scheduleAt(Defaults.created) { ys = xs.replayAll() }
-		scheduler.scheduleAt(450, action: { subscription = ys.subscribe(res) })
-		scheduler.scheduleAt(Defaults.disposed) { subscription.dispose() }
-		
-		scheduler.scheduleAt(200) { connection = ys.connect() }
-		scheduler.scheduleAt(400) { connection.dispose() }
-		
-		scheduler.scheduleAt(500) { connection = ys.connect() }
-		scheduler.scheduleAt(550) { connection.dispose() }
-		
-		scheduler.scheduleAt(650) { connection = ys.connect() }
-		scheduler.scheduleAt(800) { connection.dispose() }
-		
-		scheduler.start()
-		
-		XCTAssertEqual(res.events, [
-			next(450, 3),
-			next(450, 4),
-			next(450, 1),
-			next(450, 8),
-			next(450, 5),
-			next(450, 6),
-			next(450, 7),
-			next(520, 11),
-			])
-		
-		XCTAssertEqual(xs.subscriptions, [
-			Subscription(200, 400),
-			Subscription(500, 550),
-			Subscription(650, 800)
-			])
-	}
 
-	
-	func testReplayAll_Error() {
-		let scheduler = TestScheduler(initialClock: 0)
-		
-		let xs = scheduler.createHotObservable([
-			next(110, 7),
-			next(220, 3),
-			next(280, 4),
-			next(290, 1),
-			next(340, 8),
-			next(360, 5),
-			next(370, 6),
-			next(390, 7),
-			next(410, 13),
-			next(430, 2),
-			next(450, 9),
-			next(520, 11),
-			next(560, 20),
-			error(600, testError)
-			])
-		
-		var ys: ConnectableObservable<Int>! = nil
-		var subscription: Disposable! = nil
-		var connection: Disposable! = nil
-		let res = scheduler.createObserver(Int)
-		
-		scheduler.scheduleAt(Defaults.created) { ys = xs.replayAll() }
-		scheduler.scheduleAt(450, action: { subscription = ys.subscribe(res) })
-		scheduler.scheduleAt(Defaults.disposed) { subscription.dispose() }
-		
-		scheduler.scheduleAt(300) { connection = ys.connect() }
-		scheduler.scheduleAt(400) { connection.dispose() }
-		
-		scheduler.scheduleAt(500) { connection = ys.connect() }
-		scheduler.scheduleAt(800) { connection.dispose() }
-		
-		scheduler.start()
-		
-		XCTAssertEqual(res.events, [
-			next(450, 8),
-			next(450, 5),
-			next(450, 6),
-			next(450, 7),
-			next(520, 11),
-			next(560, 20),
-			error(600, testError),
-			])
-		
-		XCTAssertEqual(xs.subscriptions, [
-			Subscription(300, 400),
-			Subscription(500, 600),
-			])
-	}
-	
-	func testReplayAll_Complete() {
-		let scheduler = TestScheduler(initialClock: 0)
-		
-		let xs = scheduler.createHotObservable([
-			next(110, 7),
-			next(220, 3),
-			next(280, 4),
-			next(290, 1),
-			next(340, 8),
-			next(360, 5),
-			next(370, 6),
-			next(390, 7),
-			next(410, 13),
-			next(430, 2),
-			next(450, 9),
-			next(520, 11),
-			next(560, 20),
-			completed(600)
-			])
-		
-		var ys: ConnectableObservable<Int>! = nil
-		var subscription: Disposable! = nil
-		var connection: Disposable! = nil
-		let res = scheduler.createObserver(Int)
-		
-		scheduler.scheduleAt(Defaults.created) { ys = xs.replayAll() }
-		scheduler.scheduleAt(450, action: { subscription = ys.subscribe(res) })
-		scheduler.scheduleAt(Defaults.disposed) { subscription.dispose() }
-		
-		scheduler.scheduleAt(300) { connection = ys.connect() }
-		scheduler.scheduleAt(400) { connection.dispose() }
-		
-		scheduler.scheduleAt(500) { connection = ys.connect() }
-		scheduler.scheduleAt(800) { connection.dispose() }
-		
-		scheduler.start()
-		
-		XCTAssertEqual(res.events, [
-			next(450, 8),
-			next(450, 5),
-			next(450, 6),
-			next(450, 7),
-			next(520, 11),
-			next(560, 20),
-			completed(600)
-			])
-		
-		XCTAssertEqual(xs.subscriptions, [
-			Subscription(300, 400),
-			Subscription(500, 600),
-			])
-	}
-	
-	func testReplayAll_Dispose() {
-		let scheduler = TestScheduler(initialClock: 0)
-		
-		let xs = scheduler.createHotObservable([
-			next(110, 7),
-			next(220, 3),
-			next(280, 4),
-			next(290, 1),
-			next(340, 8),
-			next(360, 5),
-			next(370, 6),
-			next(390, 7),
-			next(410, 13),
-			next(430, 2),
-			next(450, 9),
-			next(520, 11),
-			next(560, 20),
-			completed(600)
-			])
-		
-		var ys: ConnectableObservable<Int>! = nil
-		var subscription: Disposable! = nil
-		var connection: Disposable! = nil
-		let res = scheduler.createObserver(Int)
-		
-		scheduler.scheduleAt(Defaults.created) { ys = xs.replayAll() }
-		scheduler.scheduleAt(450, action: { subscription = ys.subscribe(res) })
-		scheduler.scheduleAt(475) { subscription.dispose() }
-		
-		scheduler.scheduleAt(250) { connection = ys.connect() }
-		scheduler.scheduleAt(400) { connection.dispose() }
-		
-		scheduler.scheduleAt(500) { connection = ys.connect() }
-		scheduler.scheduleAt(550) { connection.dispose() }
-		
-		scheduler.scheduleAt(650) { connection = ys.connect() }
-		scheduler.scheduleAt(800) { connection.dispose() }
-		
-		scheduler.start()
-		
-		XCTAssertEqual(res.events, [
-			next(450, 4),
-			next(450, 1),
-			next(450, 8),
-			next(450, 5),
-			next(450, 6),
-			next(450, 7),
-			])
-		
-		XCTAssertEqual(xs.subscriptions, [
-			Subscription(250, 400),
-			Subscription(500, 550),
-			Subscription(650, 800),
-			])
-	}
+    func testReplayAll_Basic() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(110, 7),
+            next(220, 3),
+            next(280, 4),
+            next(290, 1),
+            next(340, 8),
+            next(360, 5),
+            next(370, 6),
+            next(390, 7),
+            next(410, 13),
+            next(430, 2),
+            next(450, 9),
+            next(520, 11),
+            next(560, 20),
+            error(600, testError)
+        ])
+
+        var ys: ConnectableObservable<Int>! = nil
+        var subscription: Disposable! = nil
+        var connection: Disposable! = nil
+        let res = scheduler.createObserver(Int)
+
+        scheduler.scheduleAt(Defaults.created) { ys = xs.replayAll() }
+        scheduler.scheduleAt(450, action: { subscription = ys.subscribe(res) })
+        scheduler.scheduleAt(Defaults.disposed) { subscription.dispose() }
+
+        scheduler.scheduleAt(200) { connection = ys.connect() }
+        scheduler.scheduleAt(400) { connection.dispose() }
+
+        scheduler.scheduleAt(500) { connection = ys.connect() }
+        scheduler.scheduleAt(550) { connection.dispose() }
+
+        scheduler.scheduleAt(650) { connection = ys.connect() }
+        scheduler.scheduleAt(800) { connection.dispose() }
+
+        scheduler.start()
+
+        XCTAssertEqual(res.events, [
+            next(450, 3),
+            next(450, 4),
+            next(450, 1),
+            next(450, 8),
+            next(450, 5),
+            next(450, 6),
+            next(450, 7),
+            next(520, 11),
+        ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            Subscription(200, 400),
+            Subscription(500, 550),
+            Subscription(650, 800)
+        ])
+    }
+
+
+    func testReplayAll_Error() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(110, 7),
+            next(220, 3),
+            next(280, 4),
+            next(290, 1),
+            next(340, 8),
+            next(360, 5),
+            next(370, 6),
+            next(390, 7),
+            next(410, 13),
+            next(430, 2),
+            next(450, 9),
+            next(520, 11),
+            next(560, 20),
+            error(600, testError)
+        ])
+
+        var ys: ConnectableObservable<Int>! = nil
+        var subscription: Disposable! = nil
+        var connection: Disposable! = nil
+        let res = scheduler.createObserver(Int)
+
+        scheduler.scheduleAt(Defaults.created) { ys = xs.replayAll() }
+        scheduler.scheduleAt(450, action: { subscription = ys.subscribe(res) })
+        scheduler.scheduleAt(Defaults.disposed) { subscription.dispose() }
+
+        scheduler.scheduleAt(300) { connection = ys.connect() }
+        scheduler.scheduleAt(400) { connection.dispose() }
+
+        scheduler.scheduleAt(500) { connection = ys.connect() }
+        scheduler.scheduleAt(800) { connection.dispose() }
+
+        scheduler.start()
+
+        XCTAssertEqual(res.events, [
+            next(450, 8),
+            next(450, 5),
+            next(450, 6),
+            next(450, 7),
+            next(520, 11),
+            next(560, 20),
+            error(600, testError),
+        ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            Subscription(300, 400),
+            Subscription(500, 600),
+        ])
+    }
+
+    func testReplayAll_Complete() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(110, 7),
+            next(220, 3),
+            next(280, 4),
+            next(290, 1),
+            next(340, 8),
+            next(360, 5),
+            next(370, 6),
+            next(390, 7),
+            next(410, 13),
+            next(430, 2),
+            next(450, 9),
+            next(520, 11),
+            next(560, 20),
+            completed(600)
+        ])
+
+        var ys: ConnectableObservable<Int>! = nil
+        var subscription: Disposable! = nil
+        var connection: Disposable! = nil
+        let res = scheduler.createObserver(Int)
+
+        scheduler.scheduleAt(Defaults.created) { ys = xs.replayAll() }
+        scheduler.scheduleAt(450, action: { subscription = ys.subscribe(res) })
+        scheduler.scheduleAt(Defaults.disposed) { subscription.dispose() }
+
+        scheduler.scheduleAt(300) { connection = ys.connect() }
+        scheduler.scheduleAt(400) { connection.dispose() }
+
+        scheduler.scheduleAt(500) { connection = ys.connect() }
+        scheduler.scheduleAt(800) { connection.dispose() }
+
+        scheduler.start()
+
+        XCTAssertEqual(res.events, [
+            next(450, 8),
+            next(450, 5),
+            next(450, 6),
+            next(450, 7),
+            next(520, 11),
+            next(560, 20),
+            completed(600)
+        ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            Subscription(300, 400),
+            Subscription(500, 600),
+        ])
+    }
+
+    func testReplayAll_Dispose() {
+        let scheduler = TestScheduler(initialClock: 0)
+
+        let xs = scheduler.createHotObservable([
+            next(110, 7),
+            next(220, 3),
+            next(280, 4),
+            next(290, 1),
+            next(340, 8),
+            next(360, 5),
+            next(370, 6),
+            next(390, 7),
+            next(410, 13),
+            next(430, 2),
+            next(450, 9),
+            next(520, 11),
+            next(560, 20),
+            completed(600)
+        ])
+
+        var ys: ConnectableObservable<Int>! = nil
+        var subscription: Disposable! = nil
+        var connection: Disposable! = nil
+        let res = scheduler.createObserver(Int)
+
+        scheduler.scheduleAt(Defaults.created) { ys = xs.replayAll() }
+        scheduler.scheduleAt(450, action: { subscription = ys.subscribe(res) })
+        scheduler.scheduleAt(475) { subscription.dispose() }
+
+        scheduler.scheduleAt(250) { connection = ys.connect() }
+        scheduler.scheduleAt(400) { connection.dispose() }
+
+        scheduler.scheduleAt(500) { connection = ys.connect() }
+        scheduler.scheduleAt(550) { connection.dispose() }
+
+        scheduler.scheduleAt(650) { connection = ys.connect() }
+        scheduler.scheduleAt(800) { connection.dispose() }
+
+        scheduler.start()
+
+        XCTAssertEqual(res.events, [
+            next(450, 4),
+            next(450, 1),
+            next(450, 8),
+            next(450, 5),
+            next(450, 6),
+            next(450, 7),
+        ])
+
+        XCTAssertEqual(xs.subscriptions, [
+            Subscription(250, 400),
+            Subscription(500, 550),
+            Subscription(650, 800),
+        ])
+    }
 }
 
 
