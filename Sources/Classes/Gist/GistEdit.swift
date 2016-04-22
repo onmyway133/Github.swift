@@ -59,6 +59,25 @@ public class GistEdit: Mappable {
 
 extension GistEdit: JSONEncodable {
   public func toJSON() -> JSONDictionary {
-    return [:]
+    let filesJSON: JSONArray = fileChanges.map { key, fileEdit in
+      if let fileEdit = fileEdit {
+        return [
+          key: [
+            "filename": fileEdit.filename,
+            "content": fileEdit.content
+          ]
+        ]
+      } else {
+        return [
+          key: ""
+        ]
+      }
+    }
+
+    return [
+      "public": isPublicGist,
+      "description": gistDescription,
+      "files": filesJSON
+    ]
   }
 }
