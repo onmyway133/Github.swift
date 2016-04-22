@@ -258,6 +258,22 @@
 		D2F488221CCACE0D005DD009 /* RefEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488201CCACE0D005DD009 /* RefEvent.swift */; };
 		D2F488241CCACE21005DD009 /* CommitCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488231CCACE21005DD009 /* CommitCommentEvent.swift */; };
 		D2F488251CCACE21005DD009 /* CommitCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488231CCACE21005DD009 /* CommitCommentEvent.swift */; };
+		D2F4882E1CCADA87005DD009 /* Client+Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4882D1CCADA87005DD009 /* Client+Git.swift */; };
+		D2F4882F1CCADA87005DD009 /* Client+Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4882D1CCADA87005DD009 /* Client+Git.swift */; };
+		D2F488311CCADAA0005DD009 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488301CCADAA0005DD009 /* Commit.swift */; };
+		D2F488321CCADAA0005DD009 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488301CCADAA0005DD009 /* Commit.swift */; };
+		D2F488341CCADAA6005DD009 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488331CCADAA6005DD009 /* Tree.swift */; };
+		D2F488351CCADAA6005DD009 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488331CCADAA6005DD009 /* Tree.swift */; };
+		D2F488371CCADAAA005DD009 /* Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488361CCADAAA005DD009 /* Ref.swift */; };
+		D2F488381CCADAAA005DD009 /* Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488361CCADAAA005DD009 /* Ref.swift */; };
+		D2F4883B1CCADAC6005DD009 /* TreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4883A1CCADAC6005DD009 /* TreeEntry.swift */; };
+		D2F4883C1CCADAC6005DD009 /* TreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4883A1CCADAC6005DD009 /* TreeEntry.swift */; };
+		D2F4883E1CCADAD4005DD009 /* CommitTreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4883D1CCADAD4005DD009 /* CommitTreeEntry.swift */; };
+		D2F4883F1CCADAD4005DD009 /* CommitTreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4883D1CCADAD4005DD009 /* CommitTreeEntry.swift */; };
+		D2F488411CCADADC005DD009 /* ContentTreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488401CCADADC005DD009 /* ContentTreeEntry.swift */; };
+		D2F488421CCADADC005DD009 /* ContentTreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488401CCADADC005DD009 /* ContentTreeEntry.swift */; };
+		D2F488441CCADAE7005DD009 /* BlobTreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488431CCADAE7005DD009 /* BlobTreeEntry.swift */; };
+		D2F488451CCADAE7005DD009 /* BlobTreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488431CCADAE7005DD009 /* BlobTreeEntry.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -407,6 +423,14 @@
 		D2F4881D1CCACE08005DD009 /* PushEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEvent.swift; sourceTree = "<group>"; };
 		D2F488201CCACE0D005DD009 /* RefEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefEvent.swift; sourceTree = "<group>"; };
 		D2F488231CCACE21005DD009 /* CommitCommentEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitCommentEvent.swift; sourceTree = "<group>"; };
+		D2F4882D1CCADA87005DD009 /* Client+Git.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Git.swift"; sourceTree = "<group>"; };
+		D2F488301CCADAA0005DD009 /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		D2F488331CCADAA6005DD009 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		D2F488361CCADAAA005DD009 /* Ref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ref.swift; sourceTree = "<group>"; };
+		D2F4883A1CCADAC6005DD009 /* TreeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeEntry.swift; sourceTree = "<group>"; };
+		D2F4883D1CCADAD4005DD009 /* CommitTreeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTreeEntry.swift; sourceTree = "<group>"; };
+		D2F488401CCADADC005DD009 /* ContentTreeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTreeEntry.swift; sourceTree = "<group>"; };
+		D2F488431CCADAE7005DD009 /* BlobTreeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobTreeEntry.swift; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -506,6 +530,7 @@
 		D21D1B091CADC5A400BD068E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D2F4882C1CCADA75005DD009 /* Git */,
 				D2F487FE1CCACB05005DD009 /* Event */,
 				D2F487F71CCAC4E0005DD009 /* Key */,
 				D227240C1CC82BBB0093AA53 /* Gist */,
@@ -835,6 +860,29 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		D2F4882C1CCADA75005DD009 /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				D2F488391CCADABD005DD009 /* Tree */,
+				D2F4882D1CCADA87005DD009 /* Client+Git.swift */,
+				D2F488301CCADAA0005DD009 /* Commit.swift */,
+				D2F488331CCADAA6005DD009 /* Tree.swift */,
+				D2F488361CCADAAA005DD009 /* Ref.swift */,
+			);
+			path = Git;
+			sourceTree = "<group>";
+		};
+		D2F488391CCADABD005DD009 /* Tree */ = {
+			isa = PBXGroup;
+			children = (
+				D2F4883A1CCADAC6005DD009 /* TreeEntry.swift */,
+				D2F4883D1CCADAD4005DD009 /* CommitTreeEntry.swift */,
+				D2F488401CCADADC005DD009 /* ContentTreeEntry.swift */,
+				D2F488431CCADAE7005DD009 /* BlobTreeEntry.swift */,
+			);
+			path = Tree;
+			sourceTree = "<group>";
+		};
 		D5B2E8951C3A780C00C0327D = {
 			isa = PBXGroup;
 			children = (
@@ -1148,8 +1196,10 @@
 			files = (
 				D21D1B461CADC5A400BD068E /* Transformer.swift in Sources */,
 				D22724141CC82E210093AA53 /* GistFile.swift in Sources */,
+				D2F488311CCADAA0005DD009 /* Commit.swift in Sources */,
 				D29013691CB0507300EFADE5 /* Notification.swift in Sources */,
 				D20617D41CBC365600B738F8 /* SymlinkContent.swift in Sources */,
+				D2F488341CCADAA6005DD009 /* Tree.swift in Sources */,
 				D29013571CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138D1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
 				D2F488061CCACCF5005DD009 /* ForkEvent.swift in Sources */,
@@ -1168,13 +1218,16 @@
 				D2F488091CCACD6A005DD009 /* WatchEvent.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D22723F81CC8267D0093AA53 /* CommitComment.swift in Sources */,
+				D2F4883B1CCADAC6005DD009 /* TreeEntry.swift in Sources */,
 				D20617D71CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
+				D2F488411CCADADC005DD009 /* ContentTreeEntry.swift in Sources */,
 				D2F488241CCACE21005DD009 /* CommitCommentEvent.swift in Sources */,
 				D227240A1CC82A970093AA53 /* Client+Activity.swift in Sources */,
 				D2F488031CCACB0F005DD009 /* Client+Event.swift in Sources */,
 				D29013901CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
 				D22723EF1CC823BA0093AA53 /* IssueComment.swift in Sources */,
 				D21D1B441CADC5A400BD068E /* ServerMetadata.swift in Sources */,
+				D2F4882E1CCADA87005DD009 /* Client+Git.swift in Sources */,
 				D22724031CC828BC0093AA53 /* Team.swift in Sources */,
 				D22723D41CC8054D0093AA53 /* GitCommit.swift in Sources */,
 				D290134A1CAFAD7F00EFADE5 /* Response.swift in Sources */,
@@ -1187,6 +1240,8 @@
 				D2F488181CCACDEE005DD009 /* PullRequestEvent.swift in Sources */,
 				D21D1B401CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D290136C1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
+				D2F4883E1CCADAD4005DD009 /* CommitTreeEntry.swift in Sources */,
+				D2F488371CCADAAA005DD009 /* Ref.swift in Sources */,
 				D227240E1CC82BC00093AA53 /* Gist.swift in Sources */,
 				D21D1B3C1CADC5A400BD068E /* User.swift in Sources */,
 				D22723F51CC824390093AA53 /* ReviewComment.swift in Sources */,
@@ -1196,6 +1251,7 @@
 				D22723D71CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
 				D22724111CC82BC70093AA53 /* Client+Gist.swift in Sources */,
 				D29013831CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
+				D2F488441CCADAE7005DD009 /* BlobTreeEntry.swift in Sources */,
 				D290136F1CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CB1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013721CB066FC00EFADE5 /* Password.swift in Sources */,
@@ -1256,8 +1312,10 @@
 			files = (
 				D21D1B471CADC5A400BD068E /* Transformer.swift in Sources */,
 				D22724151CC82E210093AA53 /* GistFile.swift in Sources */,
+				D2F488321CCADAA0005DD009 /* Commit.swift in Sources */,
 				D290136A1CB0507300EFADE5 /* Notification.swift in Sources */,
 				D20617D51CBC365600B738F8 /* SymlinkContent.swift in Sources */,
+				D2F488351CCADAA6005DD009 /* Tree.swift in Sources */,
 				D29013581CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138E1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
 				D2F488071CCACCF5005DD009 /* ForkEvent.swift in Sources */,
@@ -1276,13 +1334,16 @@
 				D2F4880A1CCACD6A005DD009 /* WatchEvent.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D22723F91CC8267D0093AA53 /* CommitComment.swift in Sources */,
+				D2F4883C1CCADAC6005DD009 /* TreeEntry.swift in Sources */,
 				D20617D81CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
+				D2F488421CCADADC005DD009 /* ContentTreeEntry.swift in Sources */,
 				D2F488251CCACE21005DD009 /* CommitCommentEvent.swift in Sources */,
 				D227240B1CC82A970093AA53 /* Client+Activity.swift in Sources */,
 				D2F488041CCACB0F005DD009 /* Client+Event.swift in Sources */,
 				D29013911CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
 				D22723F01CC823BA0093AA53 /* IssueComment.swift in Sources */,
 				D21D1B451CADC5A400BD068E /* ServerMetadata.swift in Sources */,
+				D2F4882F1CCADA87005DD009 /* Client+Git.swift in Sources */,
 				D22724041CC828BC0093AA53 /* Team.swift in Sources */,
 				D22723D51CC8054D0093AA53 /* GitCommit.swift in Sources */,
 				D290134B1CAFAD7F00EFADE5 /* Response.swift in Sources */,
@@ -1295,6 +1356,8 @@
 				D2F488191CCACDEE005DD009 /* PullRequestEvent.swift in Sources */,
 				D21D1B411CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D290136D1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
+				D2F4883F1CCADAD4005DD009 /* CommitTreeEntry.swift in Sources */,
+				D2F488381CCADAAA005DD009 /* Ref.swift in Sources */,
 				D227240F1CC82BC00093AA53 /* Gist.swift in Sources */,
 				D21D1B3D1CADC5A400BD068E /* User.swift in Sources */,
 				D22723F61CC824390093AA53 /* ReviewComment.swift in Sources */,
@@ -1304,6 +1367,7 @@
 				D22723D81CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
 				D22724121CC82BC70093AA53 /* Client+Gist.swift in Sources */,
 				D29013841CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
+				D2F488451CCADAE7005DD009 /* BlobTreeEntry.swift in Sources */,
 				D29013701CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CC1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013731CB066FC00EFADE5 /* Password.swift in Sources */,

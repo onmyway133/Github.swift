@@ -92,7 +92,7 @@ return enqueue(requestDescriptor).map {
 
 - Fetch gists
 
-#### Git (in progress)
+#### Git
 
 - Create tree
 - Create blob
