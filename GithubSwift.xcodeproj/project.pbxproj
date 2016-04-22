@@ -236,6 +236,28 @@
 		D2F488011CCACB09005DD009 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F487FF1CCACB09005DD009 /* Event.swift */; };
 		D2F488031CCACB0F005DD009 /* Client+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488021CCACB0F005DD009 /* Client+Event.swift */; };
 		D2F488041CCACB0F005DD009 /* Client+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488021CCACB0F005DD009 /* Client+Event.swift */; };
+		D2F488061CCACCF5005DD009 /* ForkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488051CCACCF5005DD009 /* ForkEvent.swift */; };
+		D2F488071CCACCF5005DD009 /* ForkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488051CCACCF5005DD009 /* ForkEvent.swift */; };
+		D2F488091CCACD6A005DD009 /* WatchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488081CCACD6A005DD009 /* WatchEvent.swift */; };
+		D2F4880A1CCACD6A005DD009 /* WatchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488081CCACD6A005DD009 /* WatchEvent.swift */; };
+		D2F4880C1CCACD91005DD009 /* PublicEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4880B1CCACD91005DD009 /* PublicEvent.swift */; };
+		D2F4880D1CCACD91005DD009 /* PublicEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4880B1CCACD91005DD009 /* PublicEvent.swift */; };
+		D2F4880F1CCACDC9005DD009 /* IssueEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4880E1CCACDC9005DD009 /* IssueEvent.swift */; };
+		D2F488101CCACDC9005DD009 /* IssueEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4880E1CCACDC9005DD009 /* IssueEvent.swift */; };
+		D2F488121CCACDD4005DD009 /* MemberEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488111CCACDD4005DD009 /* MemberEvent.swift */; };
+		D2F488131CCACDD4005DD009 /* MemberEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488111CCACDD4005DD009 /* MemberEvent.swift */; };
+		D2F488151CCACDE7005DD009 /* IssueCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488141CCACDE7005DD009 /* IssueCommentEvent.swift */; };
+		D2F488161CCACDE7005DD009 /* IssueCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488141CCACDE7005DD009 /* IssueCommentEvent.swift */; };
+		D2F488181CCACDEE005DD009 /* PullRequestEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488171CCACDEE005DD009 /* PullRequestEvent.swift */; };
+		D2F488191CCACDEE005DD009 /* PullRequestEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488171CCACDEE005DD009 /* PullRequestEvent.swift */; };
+		D2F4881B1CCACDFD005DD009 /* PullRequestCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4881A1CCACDFD005DD009 /* PullRequestCommentEvent.swift */; };
+		D2F4881C1CCACDFD005DD009 /* PullRequestCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4881A1CCACDFD005DD009 /* PullRequestCommentEvent.swift */; };
+		D2F4881E1CCACE08005DD009 /* PushEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4881D1CCACE08005DD009 /* PushEvent.swift */; };
+		D2F4881F1CCACE08005DD009 /* PushEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4881D1CCACE08005DD009 /* PushEvent.swift */; };
+		D2F488211CCACE0D005DD009 /* RefEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488201CCACE0D005DD009 /* RefEvent.swift */; };
+		D2F488221CCACE0D005DD009 /* RefEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488201CCACE0D005DD009 /* RefEvent.swift */; };
+		D2F488241CCACE21005DD009 /* CommitCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488231CCACE21005DD009 /* CommitCommentEvent.swift */; };
+		D2F488251CCACE21005DD009 /* CommitCommentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488231CCACE21005DD009 /* CommitCommentEvent.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -374,6 +396,17 @@
 		D2F487FB1CCAC509005DD009 /* PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		D2F487FF1CCACB09005DD009 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D2F488021CCACB0F005DD009 /* Client+Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Event.swift"; sourceTree = "<group>"; };
+		D2F488051CCACCF5005DD009 /* ForkEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForkEvent.swift; sourceTree = "<group>"; };
+		D2F488081CCACD6A005DD009 /* WatchEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchEvent.swift; sourceTree = "<group>"; };
+		D2F4880B1CCACD91005DD009 /* PublicEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicEvent.swift; sourceTree = "<group>"; };
+		D2F4880E1CCACDC9005DD009 /* IssueEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueEvent.swift; sourceTree = "<group>"; };
+		D2F488111CCACDD4005DD009 /* MemberEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberEvent.swift; sourceTree = "<group>"; };
+		D2F488141CCACDE7005DD009 /* IssueCommentEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueCommentEvent.swift; sourceTree = "<group>"; };
+		D2F488171CCACDEE005DD009 /* PullRequestEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestEvent.swift; sourceTree = "<group>"; };
+		D2F4881A1CCACDFD005DD009 /* PullRequestCommentEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestCommentEvent.swift; sourceTree = "<group>"; };
+		D2F4881D1CCACE08005DD009 /* PushEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEvent.swift; sourceTree = "<group>"; };
+		D2F488201CCACE0D005DD009 /* RefEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefEvent.swift; sourceTree = "<group>"; };
+		D2F488231CCACE21005DD009 /* CommitCommentEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitCommentEvent.swift; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -787,6 +820,17 @@
 			children = (
 				D2F487FF1CCACB09005DD009 /* Event.swift */,
 				D2F488021CCACB0F005DD009 /* Client+Event.swift */,
+				D2F488051CCACCF5005DD009 /* ForkEvent.swift */,
+				D2F488081CCACD6A005DD009 /* WatchEvent.swift */,
+				D2F4880B1CCACD91005DD009 /* PublicEvent.swift */,
+				D2F4880E1CCACDC9005DD009 /* IssueEvent.swift */,
+				D2F488111CCACDD4005DD009 /* MemberEvent.swift */,
+				D2F488141CCACDE7005DD009 /* IssueCommentEvent.swift */,
+				D2F488171CCACDEE005DD009 /* PullRequestEvent.swift */,
+				D2F4881A1CCACDFD005DD009 /* PullRequestCommentEvent.swift */,
+				D2F4881D1CCACE08005DD009 /* PushEvent.swift */,
+				D2F488201CCACE0D005DD009 /* RefEvent.swift */,
+				D2F488231CCACE21005DD009 /* CommitCommentEvent.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -1108,7 +1152,11 @@
 				D20617D41CBC365600B738F8 /* SymlinkContent.swift in Sources */,
 				D29013571CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138D1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
+				D2F488061CCACCF5005DD009 /* ForkEvent.swift in Sources */,
 				D22724171CC82EA30093AA53 /* GistFileEdit.swift in Sources */,
+				D2F488211CCACE0D005DD009 /* RefEvent.swift in Sources */,
+				D2F488121CCACDD4005DD009 /* MemberEvent.swift in Sources */,
+				D2F4881B1CCACDFD005DD009 /* PullRequestCommentEvent.swift in Sources */,
 				D29013761CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D29013791CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D20617CE1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
@@ -1117,9 +1165,11 @@
 				D22723DE1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
 				D22829B01CC983D500466A1C /* JSONEncodable.swift in Sources */,
 				D29013931CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
+				D2F488091CCACD6A005DD009 /* WatchEvent.swift in Sources */,
 				D21D1B2E1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D22723F81CC8267D0093AA53 /* CommitComment.swift in Sources */,
 				D20617D71CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
+				D2F488241CCACE21005DD009 /* CommitCommentEvent.swift in Sources */,
 				D227240A1CC82A970093AA53 /* Client+Activity.swift in Sources */,
 				D2F488031CCACB0F005DD009 /* Client+Event.swift in Sources */,
 				D29013901CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
@@ -1131,8 +1181,10 @@
 				D2A065181CB868FB005A0AC7 /* URLOpener.swift in Sources */,
 				D20617D11CBC365000B738F8 /* FileContent.swift in Sources */,
 				D21D1B2A1CADC5A400BD068E /* Error.swift in Sources */,
+				D2F4881E1CCACE08005DD009 /* PushEvent.swift in Sources */,
 				D21D1B381CADC5A400BD068E /* Plan.swift in Sources */,
 				D21D1B241CADC5A400BD068E /* Object.swift in Sources */,
+				D2F488181CCACDEE005DD009 /* PullRequestEvent.swift in Sources */,
 				D21D1B401CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D290136C1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
 				D227240E1CC82BC00093AA53 /* Gist.swift in Sources */,
@@ -1147,7 +1199,9 @@
 				D290136F1CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CB1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013721CB066FC00EFADE5 /* Password.swift in Sources */,
+				D2F488151CCACDE7005DD009 /* IssueCommentEvent.swift in Sources */,
 				D2BABA3E1CC6DF3D00245C3D /* PullRequest.swift in Sources */,
+				D2F4880C1CCACD91005DD009 /* PublicEvent.swift in Sources */,
 				D22723EC1CC8229F0093AA53 /* Comment.swift in Sources */,
 				D22723E81CC80D5D0093AA53 /* Client+Issue.swift in Sources */,
 				D21D1B281CADC5A400BD068E /* Client+Config.swift in Sources */,
@@ -1161,6 +1215,7 @@
 				D29013621CB04A9100EFADE5 /* Client+Constant.swift in Sources */,
 				D22723FC1CC827840093AA53 /* Client+Watching.swift in Sources */,
 				D21D1B421CADC5A400BD068E /* Server.swift in Sources */,
+				D2F4880F1CCACDC9005DD009 /* IssueEvent.swift in Sources */,
 				D22723DB1CC80AE10093AA53 /* Client+Search.swift in Sources */,
 				D21D1B301CADC5A400BD068E /* Client.swift in Sources */,
 				D22723F21CC824140093AA53 /* PullRequestComment.swift in Sources */,
@@ -1205,7 +1260,11 @@
 				D20617D51CBC365600B738F8 /* SymlinkContent.swift in Sources */,
 				D29013581CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138E1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
+				D2F488071CCACCF5005DD009 /* ForkEvent.swift in Sources */,
 				D22724181CC82EA30093AA53 /* GistFileEdit.swift in Sources */,
+				D2F488221CCACE0D005DD009 /* RefEvent.swift in Sources */,
+				D2F488131CCACDD4005DD009 /* MemberEvent.swift in Sources */,
+				D2F4881C1CCACDFD005DD009 /* PullRequestCommentEvent.swift in Sources */,
 				D29013771CB06B3300EFADE5 /* Parser.swift in Sources */,
 				D290137A1CB06F6700EFADE5 /* Helper.swift in Sources */,
 				D20617CF1CBC364B00B738F8 /* DirectoryContent.swift in Sources */,
@@ -1214,9 +1273,11 @@
 				D22723DF1CC80BB10093AA53 /* RepositorySearchResult.swift in Sources */,
 				D22829B11CC983D500466A1C /* JSONEncodable.swift in Sources */,
 				D29013941CB1965800EFADE5 /* Dictionary+Extensions.swift in Sources */,
+				D2F4880A1CCACD6A005DD009 /* WatchEvent.swift in Sources */,
 				D21D1B2F1CADC5A400BD068E /* Client+Request.swift in Sources */,
 				D22723F91CC8267D0093AA53 /* CommitComment.swift in Sources */,
 				D20617D81CBC366200B738F8 /* SubmoduleContent.swift in Sources */,
+				D2F488251CCACE21005DD009 /* CommitCommentEvent.swift in Sources */,
 				D227240B1CC82A970093AA53 /* Client+Activity.swift in Sources */,
 				D2F488041CCACB0F005DD009 /* Client+Event.swift in Sources */,
 				D29013911CB159B100EFADE5 /* OptionSetType+Extensions.swift in Sources */,
@@ -1228,8 +1289,10 @@
 				D2A065191CB868FB005A0AC7 /* URLOpener.swift in Sources */,
 				D20617D21CBC365000B738F8 /* FileContent.swift in Sources */,
 				D21D1B2B1CADC5A400BD068E /* Error.swift in Sources */,
+				D2F4881F1CCACE08005DD009 /* PushEvent.swift in Sources */,
 				D21D1B391CADC5A400BD068E /* Plan.swift in Sources */,
 				D21D1B251CADC5A400BD068E /* Object.swift in Sources */,
+				D2F488191CCACDEE005DD009 /* PullRequestEvent.swift in Sources */,
 				D21D1B411CADC5A400BD068E /* Client+Server.swift in Sources */,
 				D290136D1CB0507B00EFADE5 /* Client+Notification.swift in Sources */,
 				D227240F1CC82BC00093AA53 /* Gist.swift in Sources */,
@@ -1244,7 +1307,9 @@
 				D29013701CB0591300EFADE5 /* String+Extensions.swift in Sources */,
 				D20617CC1CBC358700B738F8 /* Content.swift in Sources */,
 				D29013731CB066FC00EFADE5 /* Password.swift in Sources */,
+				D2F488161CCACDE7005DD009 /* IssueCommentEvent.swift in Sources */,
 				D2BABA3F1CC6DF3D00245C3D /* PullRequest.swift in Sources */,
+				D2F4880D1CCACD91005DD009 /* PublicEvent.swift in Sources */,
 				D22723ED1CC8229F0093AA53 /* Comment.swift in Sources */,
 				D22723E91CC80D5D0093AA53 /* Client+Issue.swift in Sources */,
 				D21D1B291CADC5A400BD068E /* Client+Config.swift in Sources */,
@@ -1258,6 +1323,7 @@
 				D29013631CB04A9200EFADE5 /* Client+Constant.swift in Sources */,
 				D22723FD1CC827840093AA53 /* Client+Watching.swift in Sources */,
 				D21D1B431CADC5A400BD068E /* Server.swift in Sources */,
+				D2F488101CCACDC9005DD009 /* IssueEvent.swift in Sources */,
 				D22723DC1CC80AE10093AA53 /* Client+Search.swift in Sources */,
 				D21D1B311CADC5A400BD068E /* Client.swift in Sources */,
 				D22723F31CC824140093AA53 /* PullRequestComment.swift in Sources */,
