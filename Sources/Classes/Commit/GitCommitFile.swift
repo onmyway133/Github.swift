@@ -45,7 +45,7 @@ public class GitCommitFile: Object {
     self.countOfDeletions <- map.property("deletions")
     self.countOfChanges <- map.property("changes")
     self.status <- map.property("status")
-    self.rawURL <- map.transform("raw_url", transformer: Transformer.stringToURL)
-    self.blobURL <- map.transform("blob_url", transformer: Transformer.stringToURL)
+    self.rawURL <- map.transform("raw_url", transformer: NSURL.init(string: ))
+    self.blobURL <- map.transform("blob_url", transformer: NSURL.init(string: ))
   }
 }

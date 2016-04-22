@@ -53,10 +53,10 @@ public class Issue: Object {
   public required init(_ map: JSONDictionary) {
     super.init(map)
 
-    self.URL <- map.transform("url", transformer: Transformer.stringToURL)
-    self.HTMLURL <- map.transform("html_url", transformer: Transformer.stringToURL)
+    self.URL <- map.transform("url", transformer: NSURL.init(string: ))
+    self.HTMLURL <- map.transform("html_url", transformer: NSURL.init(string: ))
     self.title <- map.property("title")
-    self.pullRequestHTMLURL <- map.dictionary("pull_request")?.transform("html_url", transformer: Transformer.stringToURL)
+    self.pullRequestHTMLURL <- map.dictionary("pull_request")?.transform("html_url", transformer: NSURL.init(string: ))
     self.state <- map.`enum`("state")
     self.number <- map.property("number")
   }

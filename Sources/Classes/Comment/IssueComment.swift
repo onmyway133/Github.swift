@@ -19,6 +19,6 @@ public class IssueComment: Comment {
   public required init(_ map: JSONDictionary) {
     super.init(map)
 
-    self.HTMLURL <- map.transform("html_url", transformer: Transformer.stringToURL)
+    self.HTMLURL <- map.transform("html_url", transformer: NSURL.init(string: ))
   }
 }

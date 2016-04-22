@@ -64,7 +64,7 @@ public class GitCommit: Object {
     let author = commit?.dictionary("author")
     let stats = map.dictionary("stats")
 
-    self.commitURL <- map.transform("url", transformer: Transformer.stringToURL)
+    self.commitURL <- map.transform("url", transformer: NSURL.init(string: ))
     self.message <- commit?.property("message")
     self.SHA <- map.property("sha")
     self.committer <- map.relation("commiter")

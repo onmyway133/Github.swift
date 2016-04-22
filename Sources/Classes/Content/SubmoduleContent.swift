@@ -19,6 +19,6 @@ public class SubmoduleContent: Content {
   public required init(_ map: JSONDictionary) {
     super.init(map)
     
-    submoduleGitURL <- map.transform("submodule_git_url", transformer: Transformer.stringToURL)
+    submoduleGitURL <- map.transform("submodule_git_url", transformer: NSURL.init(string: ))
   }
 }

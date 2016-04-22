@@ -26,7 +26,7 @@ public class GistFile: Object {
     super.init(map)
 
     self.filename <- map.property("filename")
-    self.rawURL <- map.transform("raw_url", transformer: Transformer.stringToURL)
+    self.rawURL <- map.transform("raw_url", transformer: NSURL.init(string: ))
     self.size <- map.property("size")
   }
 }

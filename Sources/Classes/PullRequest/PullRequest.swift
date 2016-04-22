@@ -92,11 +92,11 @@ public class PullRequest: Object {
 
     self.objectID <- map.property("number")
 
-    self.URL <- map.transform("url", transformer: Transformer.stringToURL)
-    self.HTMLURL <- map.transform("html_url", transformer: Transformer.stringToURL)
-    self.diffURL <- map.transform("diff_url", transformer: Transformer.stringToURL)
-    self.patchURL <- map.transform("patch_url", transformer: Transformer.stringToURL)
-    self.issueURL <- map.transform("issue_url", transformer: Transformer.stringToURL)
+    self.URL <- map.transform("url", transformer: NSURL.init(string: ))
+    self.HTMLURL <- map.transform("html_url", transformer: NSURL.init(string: ))
+    self.diffURL <- map.transform("diff_url", transformer: NSURL.init(string: ))
+    self.patchURL <- map.transform("patch_url", transformer: NSURL.init(string: ))
+    self.issueURL <- map.transform("issue_url", transformer: NSURL.init(string: ))
     self.user <- map.relation("user")
     self.title <- map.property("title")
     self.body <- map.property("body")

@@ -32,7 +32,7 @@ public class PullRequestComment: IssueComment {
   public required init(_ map: JSONDictionary) {
     super.init(map)
 
-    self.pullRequestAPIURL <- map.dictionary("_links")?.dictionary("pull_request")?.transform("href", transformer: Transformer.stringToURL)
+    self.pullRequestAPIURL <- map.dictionary("_links")?.dictionary("pull_request")?.transform("href", transformer: NSURL.init(string: ))
     self.originalCommitSHA <- map.property("original_commit_id")
     self.originalPosition <- map.property("original_position")
     self.diffHunk <- map.property("diff_hunk")

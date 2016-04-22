@@ -27,6 +27,6 @@ public class Branch: Object {
 
     self.name <- map.property("name")
     self.lastCommitSHA <- map.dictionary("commit")?.property("sha")
-    self.lastCommitURL <- map.dictionary("commit")?.transform("url", transformer: Transformer.stringToURL)
+    self.lastCommitURL <- map.dictionary("commit")?.transform("url", transformer: NSURL.init(string: ))
   }
 }

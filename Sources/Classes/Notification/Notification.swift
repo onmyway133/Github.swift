@@ -60,9 +60,9 @@ public class Notification: Object {
     let subject = map.dictionary("subject")
     
     self.title <- subject?.property("title")
-    self.threadURL <- map.transform("url", transformer: Transformer.stringToURL)
-    self.subjectURL <- subject?.transform("url", transformer: Transformer.stringToURL)
-    self.latestCommentURL <- subject?.transform("latest_comment_url", transformer: Transformer.stringToURL)
+    self.threadURL <- map.transform("url", transformer: NSURL.init(string: ))
+    self.subjectURL <- subject?.transform("url", transformer: NSURL.init(string: ))
+    self.latestCommentURL <- subject?.transform("latest_comment_url", transformer: NSURL.init(string: ))
     self.type = subject?.`enum`("type") ?? .Unknown
     self.repository = map.relation("repository")
     self.lastUpdatedDate = map.transform("updated_at", transformer: Transformer.stringToDate)

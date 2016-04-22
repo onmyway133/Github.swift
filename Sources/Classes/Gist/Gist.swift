@@ -26,7 +26,7 @@ public class Gist: Object {
     super.init(map)
 
     self.creationDate <- map.transform("created_at", transformer: Transformer.stringToDate)
-    self.HTMLURL <- map.transform("html_url", transformer: Transformer.stringToURL)
+    self.HTMLURL <- map.transform("html_url", transformer: NSURL.init(string: ))
     self.files <- map.directory("files")
   }
 }

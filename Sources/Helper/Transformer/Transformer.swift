@@ -12,13 +12,7 @@ public struct Transformer {
   public static func numberToString(number: NSNumber?) -> String {
     return number?.stringValue ?? ""
   }
-  
-  public static func stringToURL(string: String?) -> NSURL? {
-    guard let string = string else { return nil }
-    
-    return NSURL(string: string)
-  }
-  
+
   public static func stringToDate(string: String?) -> NSDate? {
     guard let string = string else { return nil }
     
