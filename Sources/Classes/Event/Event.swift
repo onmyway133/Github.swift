@@ -10,7 +10,7 @@ import Foundation
 import Tailor
 import Sugar
 
-// A class cluster for GitHub events.
+// A self cluster for GitHub events.
 public class Event: Object {
 
   // The name of the repository upon which the event occurred (e.g., `github/Mac`).
@@ -39,5 +39,29 @@ public class Event: Object {
     self.organizationLogin <- map.path("org")?.property("login")
     self.date <- map.transform("created_at", transformer: Transformer.stringToDate)
     self.type <- map.property("type")
+  }
+
+  public static func make(map: JSONDictionary) -> Event {
+    let mapping: [String: Event.Type] = [
+      "CommitCommentEvent": CommitCommentEvent.self,
+      "CreateEvent": RefEvent.self,
+      "DeleteEvent": RefEvent.self,
+      "ForkEvent": ForkEvent.self,
+      "IssueCommentEvent": IssueCommentEvent.self,
+      "IssuesEvent": IssueEvent.self,
+      "MemberEvent": MemberEvent.self,
+      "PublicEvent": PublicEvent.self,
+      "PullRequestEvent": PullRequestEvent.self,
+      "PullRequestReviewCommentEvent": PullRequestCommentEvent.self,
+      "PushEvent": PushEvent.self,
+      "WatchEvent": WatchEvent.self
+    ]
+
+    if let type = map["type"] as? String,
+      eventself = mapping[type] {
+      return eventself.init(map)
+    } else {
+      fatalError()
+    }
   }
 }
