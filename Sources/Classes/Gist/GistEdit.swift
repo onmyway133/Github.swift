@@ -40,7 +40,7 @@ public class GistEdit: Mappable {
       files[$0.filename] = $0
     }
     filenamesToDelete.forEach {
-      files[$0] = nil
+      files[$0] = nil as GistFileEdit?
     }
 
     return files
@@ -59,18 +59,16 @@ public class GistEdit: Mappable {
 
 extension GistEdit: JSONEncodable {
   public func toJSON() -> JSONDictionary {
-    let filesJSON: JSONArray = fileChanges.map { key, fileEdit in
+    var filesJSON: JSONDictionary = [:]
+
+    fileChanges.forEach { key, fileEdit in
       if let fileEdit = fileEdit {
-        return [
-          key: [
-            "filename": fileEdit.filename,
-            "content": fileEdit.content
-          ]
+        filesJSON[key] = [
+          "filename": fileEdit.filename,
+          "content": fileEdit.content
         ]
       } else {
-        return [
-          key: ""
-        ]
+        filesJSON[key] = ""
       }
     }
 

@@ -1,4 +1,4 @@
 github "Quick/Nimble"
-github "Quick/Quick"
+github "Quick/Quick" "master"
 github "kylef/Mockingjay" ~> 1.1
 github "kylef/URITemplate.swift" ~> 1.3
