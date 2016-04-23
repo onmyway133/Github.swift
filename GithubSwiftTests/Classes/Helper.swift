@@ -20,13 +20,13 @@ struct Helper {
     return NSData(contentsOfFile: path)!
   }
   
-  static func readJSON(fileName: String) -> [String: AnyObject] {
+  static func readJSON<T>(fileName: String) -> T {
     let data = Helper.read(fileName)
     if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments),
-      jsonDictionary = json as? [String: AnyObject] {
-      return jsonDictionary
+      JSON = json as? T {
+      return JSON
     } else {
-      return [:]
+      fatalError()
     }
   }
 }

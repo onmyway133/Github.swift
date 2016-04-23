@@ -19,7 +19,7 @@ class BranchSpec: QuickSpec {
 
     describe("branch") {
       it("should initialize") {
-        let branch = Branch(Helper.readJSON("branch"))
+        let branch = Branch(Helper.readJSON("branch") as JSONDictionary)
 
         expect(branch.name).to(equal("master"))
         expect(branch.lastCommitSHA).to(equal("6dcb09b5b57875f334f61aebed695e2e4193db5e"))

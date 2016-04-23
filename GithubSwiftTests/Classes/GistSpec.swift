@@ -20,7 +20,7 @@ class GistSpec: QuickSpec {
     describe("gist") {
       it("should initialize") {
 
-        let gist = Gist(Helper.readJSON("gist"))
+        let gist = Gist(Helper.readJSON("gist") as JSONDictionary)
 
         expect(gist.objectID).to(equal("1"))
         expect(gist.creationDate).to(equal(Formatter.date(string: "2010-04-14 02:15:15 +0000")))

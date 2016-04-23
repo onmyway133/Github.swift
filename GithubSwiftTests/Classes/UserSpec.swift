@@ -19,7 +19,7 @@ class UserSpec: QuickSpec {
 
     describe("github.com user") {
       it("should initialize from an external representation") {
-        let user = User(Helper.readJSON("standard_user"))
+        let user = User(Helper.readJSON("standard_user") as JSONDictionary)
 
         expect(user.server).to(equal(Server.dotComServer))
         expect(user.login).to(equal("octocat"))
@@ -64,7 +64,7 @@ class UserSpec: QuickSpec {
 
       it("should initialize from an external representation") {
         let enterpriseServer = Server(baseURL: baseURL)
-        let user = User(Helper.readJSON("enterprise_user"))
+        let user = User(Helper.readJSON("enterprise_user") as JSONDictionary)
 
         // This is usually set by OCTClient, but we'll do it ourselves here to simulate
         // what OCTClient does.

@@ -18,7 +18,7 @@ class RepositorySpec: QuickSpec {
   override func spec() {
     describe("repository") {
       
-      let json = Helper.readJSON("repository1")
+      let json = Helper.readJSON("repository1") as JSONDictionary
       let repository = Parser.one([json]) as Repository
       
       it("should initialize") {

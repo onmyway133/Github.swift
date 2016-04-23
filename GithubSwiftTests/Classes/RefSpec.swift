@@ -19,7 +19,7 @@ class RefSpec: QuickSpec {
 
     describe("ref") {
       it("should initialize") {
-        let ref = Ref(Helper.readJSON("ref"))
+        let ref = Ref(Helper.readJSON("ref") as JSONDictionary)
 
         expect(ref.name).to(equal("refs/heads/sc/featureA"))
         expect(ref.SHA).to(equal("aa218f56b14c9653891f9e74264a383fa43fefbd"))

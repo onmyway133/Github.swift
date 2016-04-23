@@ -17,9 +17,9 @@ import Sugar
 class TreeSpec: QuickSpec {
   override func spec() {
 
-    describe("gist") {
+    describe("tree") {
       it("should initialize") {
-        let tree = Tree(Helper.readJSON("tree"))
+        let tree = Tree(Helper.readJSON("tree") as JSONDictionary)
 
         expect(tree.SHA).to(equal("HEAD"))
         expect(tree.URL).to(equal(NSURL(string: "https://api.github.com/repos/ReactiveCocoa/ReactiveCocoa/git/trees/HEAD")))
