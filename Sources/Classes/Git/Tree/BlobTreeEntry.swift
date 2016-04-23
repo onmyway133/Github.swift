@@ -11,7 +11,7 @@ import Tailor
 import Sugar
 
 // A blob tree entry.
-public class BlobTreeEntry: TreeEntry {
+public class BlobTreeEntry: ContentTreeEntry {
 
   // The size of the blob in bytes.
   public private(set) var size: Int = 0

@@ -278,6 +278,14 @@
 		D2F488481CCAE147005DD009 /* ContentEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488461CCAE147005DD009 /* ContentEncoding.swift */; };
 		D2F4884A1CCC255D005DD009 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488491CCC255D005DD009 /* Blob.swift */; };
 		D2F4884B1CCC255D005DD009 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488491CCC255D005DD009 /* Blob.swift */; };
+		D2F4884D1CCC2610005DD009 /* RefSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4884C1CCC2610005DD009 /* RefSpec.swift */; };
+		D2F4884E1CCC2610005DD009 /* RefSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4884C1CCC2610005DD009 /* RefSpec.swift */; };
+		D2F488501CCC2615005DD009 /* BranchSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4884F1CCC2615005DD009 /* BranchSpec.swift */; };
+		D2F488511CCC2615005DD009 /* BranchSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4884F1CCC2615005DD009 /* BranchSpec.swift */; };
+		D2F488531CCC261B005DD009 /* TreeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488521CCC261B005DD009 /* TreeSpec.swift */; };
+		D2F488541CCC261B005DD009 /* TreeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488521CCC261B005DD009 /* TreeSpec.swift */; };
+		D2F488561CCC26B2005DD009 /* branch.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F488551CCC26B2005DD009 /* branch.json */; };
+		D2F488571CCC26B2005DD009 /* branch.json in Resources */ = {isa = PBXBuildFile; fileRef = D2F488551CCC26B2005DD009 /* branch.json */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -437,6 +445,10 @@
 		D2F488431CCADAE7005DD009 /* BlobTreeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobTreeEntry.swift; sourceTree = "<group>"; };
 		D2F488461CCAE147005DD009 /* ContentEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentEncoding.swift; sourceTree = "<group>"; };
 		D2F488491CCC255D005DD009 /* Blob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
+		D2F4884C1CCC2610005DD009 /* RefSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefSpec.swift; sourceTree = "<group>"; };
+		D2F4884F1CCC2615005DD009 /* BranchSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchSpec.swift; sourceTree = "<group>"; };
+		D2F488521CCC261B005DD009 /* TreeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeSpec.swift; sourceTree = "<group>"; };
+		D2F488551CCC26B2005DD009 /* branch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = branch.json; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -668,6 +680,9 @@
 				D2BABA361CC6D1DD00245C3D /* UserSpec.swift */,
 				D22829B51CC9859400466A1C /* GistSpec.swift */,
 				D22829B81CC9859B00466A1C /* GistEditSpec.swift */,
+				D2F4884C1CCC2610005DD009 /* RefSpec.swift */,
+				D2F4884F1CCC2615005DD009 /* BranchSpec.swift */,
+				D2F488521CCC261B005DD009 /* TreeSpec.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -698,6 +713,7 @@
 				D2F182FE1CC6D11700F10478 /* standard_user.json */,
 				D2F183011CC6D12600F10478 /* enterprise_user.json */,
 				D22829B21CC984E100466A1C /* gist.json */,
+				D2F488551CCC26B2005DD009 /* branch.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -1112,6 +1128,7 @@
 				D2F473F71CBC2FFF00057D9C /* repository1.json in Resources */,
 				D21D1B791CADC5CF00BD068E /* page2.json in Resources */,
 				D21D1B651CADC5CF00BD068E /* authorizations.json in Resources */,
+				D2F488561CCC26B2005DD009 /* branch.json in Resources */,
 				D21D1B7D1CADC5CF00BD068E /* rate_limit.json in Resources */,
 				D2F182FF1CC6D11700F10478 /* standard_user.json in Resources */,
 				D21D1B7B1CADC5CF00BD068E /* page3.json in Resources */,
@@ -1149,6 +1166,7 @@
 				D2F473F81CBC2FFF00057D9C /* repository1.json in Resources */,
 				D21D1B7A1CADC5CF00BD068E /* page2.json in Resources */,
 				D21D1B661CADC5CF00BD068E /* authorizations.json in Resources */,
+				D2F488571CCC26B2005DD009 /* branch.json in Resources */,
 				D21D1B7E1CADC5CF00BD068E /* rate_limit.json in Resources */,
 				D2F183001CC6D11700F10478 /* standard_user.json in Resources */,
 				D21D1B7C1CADC5CF00BD068E /* page3.json in Resources */,
@@ -1304,11 +1322,14 @@
 				D24FD85F1CB99C7C008C4EEC /* ServerSpec.swift in Sources */,
 				D29013651CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */,
 				D21D1B611CADC5CF00BD068E /* Helper.swift in Sources */,
+				D2F4884D1CCC2610005DD009 /* RefSpec.swift in Sources */,
 				D290135A1CB0446100EFADE5 /* Client+RequestSpec.swift in Sources */,
 				D24FD8661CBA3323008C4EEC /* Client+ServerSpec.swift in Sources */,
 				D290135D1CB0446C00EFADE5 /* Client+RepositorySpec.swift in Sources */,
+				D2F488531CCC261B005DD009 /* TreeSpec.swift in Sources */,
 				D290137F1CB07D3600EFADE5 /* Client+SignInSpec.swift in Sources */,
 				D22829B61CC9859400466A1C /* GistSpec.swift in Sources */,
+				D2F488501CCC2615005DD009 /* BranchSpec.swift in Sources */,
 				D2F473EF1CBC221D00057D9C /* OrganizationSpec.swift in Sources */,
 				D2F473F41CBC294E00057D9C /* RespositorySpec.swift in Sources */,
 				D2F473EC1CBC1E5B00057D9C /* ResponseSpec.swift in Sources */,
@@ -1422,11 +1443,14 @@
 				D24FD8601CB99C7C008C4EEC /* ServerSpec.swift in Sources */,
 				D29013661CB04FBE00EFADE5 /* Client+NotificationSpec.swift in Sources */,
 				D21D1B621CADC5CF00BD068E /* Helper.swift in Sources */,
+				D2F4884E1CCC2610005DD009 /* RefSpec.swift in Sources */,
 				D290135B1CB0446100EFADE5 /* Client+RequestSpec.swift in Sources */,
 				D24FD8671CBA3323008C4EEC /* Client+ServerSpec.swift in Sources */,
 				D290135E1CB0446C00EFADE5 /* Client+RepositorySpec.swift in Sources */,
+				D2F488541CCC261B005DD009 /* TreeSpec.swift in Sources */,
 				D29013801CB07D3600EFADE5 /* Client+SignInSpec.swift in Sources */,
 				D22829B71CC9859400466A1C /* GistSpec.swift in Sources */,
+				D2F488511CCC2615005DD009 /* BranchSpec.swift in Sources */,
 				D2F473F01CBC221D00057D9C /* OrganizationSpec.swift in Sources */,
 				D2F473F51CBC294F00057D9C /* RespositorySpec.swift in Sources */,
 				D2F473ED1CBC1E5B00057D9C /* ResponseSpec.swift in Sources */,
