@@ -276,6 +276,8 @@
 		D2F488451CCADAE7005DD009 /* BlobTreeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488431CCADAE7005DD009 /* BlobTreeEntry.swift */; };
 		D2F488471CCAE147005DD009 /* ContentEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488461CCAE147005DD009 /* ContentEncoding.swift */; };
 		D2F488481CCAE147005DD009 /* ContentEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488461CCAE147005DD009 /* ContentEncoding.swift */; };
+		D2F4884A1CCC255D005DD009 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488491CCC255D005DD009 /* Blob.swift */; };
+		D2F4884B1CCC255D005DD009 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488491CCC255D005DD009 /* Blob.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* GithubSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* GithubSwift.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -434,6 +436,7 @@
 		D2F488401CCADADC005DD009 /* ContentTreeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTreeEntry.swift; sourceTree = "<group>"; };
 		D2F488431CCADAE7005DD009 /* BlobTreeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobTreeEntry.swift; sourceTree = "<group>"; };
 		D2F488461CCAE147005DD009 /* ContentEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentEncoding.swift; sourceTree = "<group>"; };
+		D2F488491CCC255D005DD009 /* Blob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 		D500FD111C3AABED00782D78 /* Playground-iOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-iOS.playground"; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* GithubSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GithubSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -872,6 +875,7 @@
 				D2F488301CCADAA0005DD009 /* Commit.swift */,
 				D2F488331CCADAA6005DD009 /* Tree.swift */,
 				D2F488361CCADAAA005DD009 /* Ref.swift */,
+				D2F488491CCC255D005DD009 /* Blob.swift */,
 			);
 			path = Git;
 			sourceTree = "<group>";
@@ -1207,6 +1211,7 @@
 				D29013571CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138D1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
 				D2F488061CCACCF5005DD009 /* ForkEvent.swift in Sources */,
+				D2F4884A1CCC255D005DD009 /* Blob.swift in Sources */,
 				D22724171CC82EA30093AA53 /* GistFileEdit.swift in Sources */,
 				D2F488211CCACE0D005DD009 /* RefEvent.swift in Sources */,
 				D2F488121CCACDD4005DD009 /* MemberEvent.swift in Sources */,
@@ -1324,6 +1329,7 @@
 				D29013581CB0137600EFADE5 /* Formatter.swift in Sources */,
 				D290138E1CB158E600EFADE5 /* AuthorizationScopes.swift in Sources */,
 				D2F488071CCACCF5005DD009 /* ForkEvent.swift in Sources */,
+				D2F4884B1CCC255D005DD009 /* Blob.swift in Sources */,
 				D22724181CC82EA30093AA53 /* GistFileEdit.swift in Sources */,
 				D2F488221CCACE0D005DD009 /* RefEvent.swift in Sources */,
 				D2F488131CCACDD4005DD009 /* MemberEvent.swift in Sources */,

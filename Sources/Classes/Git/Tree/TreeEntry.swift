@@ -74,3 +74,10 @@ public class TreeEntry: Object {
     }
   }
 }
+
+extension TreeEntry: JSONEncodable {
+  public func toJSON() -> JSONDictionary {
+    // FIXME
+    return [:]
+  }
+}
