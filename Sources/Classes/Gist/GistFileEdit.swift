@@ -13,14 +13,14 @@ import Sugar
 // Changes to a single file, or a new file, within a gist.
 public class GistFileEdit: Mappable {
 
-  // If not nil, the new filename to set for the file.
-  public var filename: String = ""
+  // If not nil, the new fileName to set for the file.
+  public var fileName: String = ""
 
   // If not nil, the new content to set for the file.
   public var content: String = ""
 
   public required init(_ map: JSONDictionary) {
-    self.filename <- map.property("filename")
+    self.fileName <- map.property("fileName")
     self.content <- map.property("content")
   }
 

@@ -25,31 +25,31 @@ class GistEditSpec: QuickSpec {
         edit.isPublicGist = true
 
         let fileEditAdd = GistFileEdit()
-        fileEditAdd.filename = "Add"
+        fileEditAdd.fileName = "Add"
         fileEditAdd.content = "Add Content"
         edit.filesToAdd = [fileEditAdd]
         
-        edit.filenamesToDelete = ["Delete"]
+        edit.fileNamesToDelete = ["Delete"]
 
         let fileEditModify = GistFileEdit()
-        fileEditModify.filename = "Modify"
+        fileEditModify.fileName = "Modify"
         fileEditModify.content = "Modify Content"
         edit.filesToModify = [
-          fileEditModify.filename: fileEditModify,
+          fileEditModify.fileName: fileEditModify,
         ]
 
         let expectedDict = [
           "public": edit.isPublicGist,
           "description": edit.gistDescription,
           "files": [
-            fileEditAdd.filename: [
+            fileEditAdd.fileName: [
               "content": fileEditAdd.content,
-              "filename": fileEditAdd.filename,
+              "fileName": fileEditAdd.fileName,
             ],
-            edit.filenamesToDelete[0]: "",
-            fileEditModify.filename: [
+            edit.fileNamesToDelete[0]: "",
+            fileEditModify.fileName: [
               "content": fileEditModify.content,
-              "filename": fileEditModify.filename,
+              "fileName": fileEditModify.fileName,
             ]
           ]
         ]

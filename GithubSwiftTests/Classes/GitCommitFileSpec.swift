@@ -19,9 +19,16 @@ class GitCommitFileSpec: QuickSpec {
 
     describe("git commit file") {
       it("should initialize") {
-        let ref = Ref(Helper.readJSON("ref") as JSONDictionary)
+        let file = GitCommitFile(Helper.readJSON("git_commit_file") as JSONDictionary)
 
-
+        expect(file.fileName).to(equal("file1.txt"))
+        expect((file.countOfAdditions)).to(equal(10))
+        expect((file.countOfDeletions)).to(equal(2))
+        expect((file.countOfChanges)).to(equal(12))
+        expect(file.status).to(equal("modified"))
+        expect(file.rawURL).to(equal(NSURL(string: "https://github.com/octocat/Hello-World/raw/7ca483543807a51b6079e54ac4cc392bc29ae284/file1.txt")))
+        expect(file.blobURL).to(equal(NSURL(string: "https://github.com/octocat/Hello-World/blob/7ca483543807a51b6079e54ac4cc392bc29ae284/file1.txt")))
+        expect(file.patch).to(equal(" -29,7 +29,7 ....."))
       }
     }
   }

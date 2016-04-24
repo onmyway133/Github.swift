@@ -14,7 +14,7 @@ import Sugar
 public class GistFile: Object {
 
   // The path to this file within the gist.
-  public private(set) var filename: String = ""
+  public private(set) var fileName: String = ""
 
   // A direct URL to the raw file contents.
   public private(set) var rawURL: NSURL?
@@ -25,7 +25,7 @@ public class GistFile: Object {
   public required init(_ map: JSONDictionary) {
     super.init(map)
 
-    self.filename <- map.property("filename")
+    self.fileName <- map.property("fileName")
     self.rawURL <- map.transform("raw_url", transformer: NSURL.init(string: ))
     self.size <- map.property("size")
   }

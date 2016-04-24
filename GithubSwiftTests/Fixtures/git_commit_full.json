@@ -70,7 +70,7 @@
 	},
 	"files": [
 		{
-			"filename": "file1.txt",
+			"fileName": "file1.txt",
 			"additions": 10,
 			"deletions": 2,
 			"changes": 12,

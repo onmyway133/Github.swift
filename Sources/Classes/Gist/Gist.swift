@@ -13,7 +13,7 @@ import Sugar
 // A gist.
 public class Gist: Object {
 
-  // The OCTGistFiles in the gist, keyed by filename.
+  // The OCTGistFiles in the gist, keyed by fileName.
   public private(set) var files: [String: GistFile] = [:]
 
   // The date at which the gist was originally created.

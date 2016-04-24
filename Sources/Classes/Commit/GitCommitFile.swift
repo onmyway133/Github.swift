@@ -13,7 +13,7 @@ import Sugar
 // A file of a commit
 public class GitCommitFile: Object {
 
-  // The filename in the repository.
+  // The fileName in the repository.
   public private(set) var fileName: String = ""
 
   // The number of additions made in the commit.
@@ -40,12 +40,13 @@ public class GitCommitFile: Object {
   public required init(_ map: JSONDictionary) {
     super.init(map)
 
-    self.fileName <- map.property("filename")
+    self.fileName <- map.property("fileName")
     self.countOfAdditions <- map.property("additions")
     self.countOfDeletions <- map.property("deletions")
     self.countOfChanges <- map.property("changes")
     self.status <- map.property("status")
     self.rawURL <- map.transform("raw_url", transformer: NSURL.init(string: ))
     self.blobURL <- map.transform("blob_url", transformer: NSURL.init(string: ))
+    self.patch <- map.property("patch")
   }
 }

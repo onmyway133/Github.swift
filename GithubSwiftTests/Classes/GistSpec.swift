@@ -30,7 +30,7 @@ class GistSpec: QuickSpec {
         let file = gist.files["ring.erl"]!
 
         expect(file).notTo(beNil())
-        expect(file.filename).to(equal("ring.erl"))
+        expect(file.fileName).to(equal("ring.erl"))
         expect(file.rawURL).to(equal(NSURL(string: "https://gist.github.com/raw/365370/8c4d2d43d178df44f4c03a7f2ac0ff512853564e/ring.erl")))
         expect((file.size)).to(equal(932))
       }
