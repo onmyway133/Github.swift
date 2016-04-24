@@ -67,7 +67,7 @@ public class GitCommit: Object {
     self.commitURL <- map.transform("url", transformer: NSURL.init(string: ))
     self.message <- commit?.property("message")
     self.SHA <- map.property("sha")
-    self.committer <- map.relation("commiter")
+    self.committer <- map.relation("committer")
     self.author <- map.relation("author")
     self.commitDate <- author?.transform("date", transformer: Transformer.stringToDate)
     self.countOfAdditions <- stats?.property("additions")
