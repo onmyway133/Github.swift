@@ -21,9 +21,11 @@ class EventSpec: QuickSpec {
       var events: [String: GithubSwift.Event] = [:]
 
       beforeEach {
-        (Helper.readJSON("events") as JSONArray).map({ Event($0) }).forEach {
-          events[$0!.objectID] = $0
+        (Helper.readJSON("events") as JSONArray).flatMap({ GithubSwift.Event.cluster($0) as? GithubSwift.Event }).forEach {
+          events[$0.objectID] = $0
         }
+
+        print(events)
       }
 
       it("OCTCommitCommentEvent should have deserialized") {

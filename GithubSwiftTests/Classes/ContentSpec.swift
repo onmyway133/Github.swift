@@ -21,8 +21,8 @@ class ContentSpec: QuickSpec {
       var contents: [String: Content] = [:]
 
       beforeEach {
-        (Helper.readJSON("content") as JSONArray).map({ Content($0) }).forEach {
-          contents[$0!.name] = $0
+        (Helper.readJSON("content") as JSONArray).flatMap({ Content.cluster($0) as? Content }).forEach {
+          contents[$0.name] = $0
         }
       }
 
