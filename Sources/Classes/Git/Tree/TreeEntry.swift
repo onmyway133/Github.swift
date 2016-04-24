@@ -73,7 +73,7 @@ extension TreeEntry: HierarchyType {
       .Blob: BlobTreeEntry.self,
       ]
 
-    if let type = map["type"] as? TreeEntryType,
+    if let type = TreeEntryType(rawValue: map["type"] as? String ?? ""),
       entryself = mapping[type] {
       return entryself.init(map)
     } else {
