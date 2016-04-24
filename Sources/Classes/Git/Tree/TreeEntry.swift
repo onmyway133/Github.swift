@@ -58,6 +58,11 @@ public class TreeEntry: Object {
     self.type <- map.`enum`("type")
     self.mode <- map.`enum`("mode")
   }
+
+  // MARK: - Hash
+  public override var hashValue: Int {
+    return SHA.hashValue
+  }
 }
 
 extension TreeEntry: HierarchyType {

@@ -180,7 +180,6 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      // FIXME
       return Parser.one($0.jsonArray)
     }
   }
