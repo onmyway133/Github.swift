@@ -28,7 +28,6 @@ public class Tree: Object {
     self.SHA <- map.property("sha")
     self.URL <- map.transform("url", transformer: NSURL.init(string: ))
 
-    // FIXME
-    self.entries <- map.relations("tree")
+    self.entries <- map.relationsHierarchically("tree")
   }
 }

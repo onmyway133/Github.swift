@@ -58,8 +58,10 @@ public class TreeEntry: Object {
     self.type <- map.`enum`("type")
     self.mode <- map.`enum`("mode")
   }
+}
 
-  public static func make(map: JSONDictionary) -> TreeEntry {
+extension TreeEntry: HierarchyType {
+  public static func cluster(map: JSONDictionary) -> AnyObject {
     let mapping: [TreeEntryType: TreeEntry.Type] = [
       .Commit: CommitTreeEntry.self,
       .Tree: ContentTreeEntry.self,

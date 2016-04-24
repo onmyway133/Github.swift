@@ -12,7 +12,11 @@ import Sugar
 
 public struct Parser {
   public static func all<T: Mappable>(jsonArray: JSONArray) -> [T] {
-    return jsonArray.map({T($0)})
+    if let hierarchyType = T.self as? HierarchyType {
+      return jsonArray.flatMap { hierarchyType.dynamicType.cluster($0) as? T }
+    } else {
+      return jsonArray.map { T($0) }
+    }
   }
  
   public static func one<T: Mappable>(jsonArray: JSONArray) -> T {

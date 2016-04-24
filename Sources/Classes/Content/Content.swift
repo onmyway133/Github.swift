@@ -38,15 +38,17 @@ public class Content: Object {
     SHA <- map.property("sha")
     type <- map.property("type")
   }
-  
-  public static func make(map: JSONDictionary) -> Content {
+}
+
+extension Content: HierarchyType {
+  public static func cluster(map: JSONDictionary) -> AnyObject {
     let mapping: [String: Content.Type] = [
       "file": FileContent.self,
       "dir": DirectoryContent.self,
       "symlink": SymlinkContent.self,
       "submodule": SubmoduleContent.self,
-    ]
-    
+      ]
+
     if let type = map["type"] as? String,
       contentClass = mapping[type] {
       return contentClass.init(map)

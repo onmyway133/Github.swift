@@ -37,7 +37,6 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      // FIXME
       return Parser.all($0.jsonArray)
     }
   }
@@ -59,7 +58,6 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      // FIXME
       return Parser.all($0.jsonArray)
     }
   }

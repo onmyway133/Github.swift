@@ -40,8 +40,10 @@ public class Event: Object {
     self.date <- map.transform("created_at", transformer: Transformer.stringToDate)
     self.type <- map.property("type")
   }
+}
 
-  public static func make(map: JSONDictionary) -> Event {
+extension Event: HierarchyType {
+  public static func cluster(map: JSONDictionary) -> AnyObject {
     let mapping: [String: Event.Type] = [
       "CommitCommentEvent": CommitCommentEvent.self,
       "CreateEvent": RefEvent.self,
