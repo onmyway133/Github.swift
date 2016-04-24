@@ -47,17 +47,24 @@ public extension Client {
     mutableURLRequest.HTTPMethod = requestDescriptor.method.rawValue
     
     // Header
+    mutableURLRequest.allHTTPHeaderFields?.update(requestDescriptor.headers)
+
     if let etag = requestDescriptor.etag {
       mutableURLRequest.setValue(etag, forHTTPHeaderField: "If-None-Match")
       
       // If an etag is specified, we want 304 responses to be treated as 304s,
       // not served from NSURLCache with a status of 200.
       mutableURLRequest.cachePolicy = .ReloadIgnoringLocalCacheData
-      
     }
     
     // Request
-    let encodedURLRequest = ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0
+    var encodedURLRequest: NSMutableURLRequest
+    if [.GET, .HEAD, .DELETE].contains(requestDescriptor.method) {
+      encodedURLRequest = ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0
+    } else {
+      encodedURLRequest = ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+    }
+
     return manager.request(encodedURLRequest)
   }
   
@@ -81,9 +88,9 @@ public extension Client {
     
     let observable: Observable<Response> = Observable.create({ (observer) -> Disposable in
       request
-        .validate()
+        .validate(statusCode: 200..<300)
         .response { request, response, data, error in
-        
+
         if NSProcessInfo.processInfo().environment[Constant.responseLoggingEnvironmentKey] != nil {
           print("\(request?.URL)")
         }
@@ -93,17 +100,28 @@ public extension Client {
           observer.onCompleted()
           return
         }
-          
+
+        // Response
+        guard let response = response else {
+          observer.onError(Error.unsupportedVersionError())
+          return
+        }
+
         // Error
         if let error = error {
           observer.onError(Error.transform(error, response: response))
           return
         }
-        
+
         // Data
-        guard let data = data,
-          response = response,
-          json = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
+        guard let data = data where data.length > 0 else {
+          observer.onNext(Response(urlResponse: response, jsonArray: []))
+          observer.onCompleted()
+          return
+        }
+
+        // JSON
+        guard let json = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
           else {
             observer.onError(Error.unsupportedVersionError())
             return

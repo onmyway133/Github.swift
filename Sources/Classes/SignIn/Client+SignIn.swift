@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Sugar
 
 public extension Client {
   
@@ -72,9 +73,9 @@ public extension Client {
     // Request Descriptor
     let path = "authorizations/clients/\(clientID)"
     var params = [
-      "scopes": scopes.values.joinWithSeparator(","),
+      "scopes": scopes.values,
       "client_secret": clientSecret,
-    ]
+    ] as JSONDictionary
     
     if let note = note {
       params["note"] = note

@@ -12,7 +12,7 @@ public struct Config {
 
   // Sets the HTTP User-Agent for the current app. This will have no effect on any
   // clients that have already been created.
-  public static var userAgent: String = ""
+  public static var userAgent: String = "GitHub.swift"
 
   // Sets OAuth client information for the current app.
   //
