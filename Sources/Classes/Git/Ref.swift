@@ -25,7 +25,7 @@ public class Ref: Object {
   public required init(_ map: JSONDictionary) {
     super.init(map)
 
-    self.name <- map.property("name")
+    self.name <- map.property("ref")
     self.SHA <- map.path("object")?.property("sha")
     self.objectURL <- map.path("object")?.transform("url", transformer: NSURL.init(string: ))
   }

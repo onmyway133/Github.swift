@@ -15,4 +15,10 @@ public class SymlinkContent: Content {
   
   // The path to the symlink target.
   public private(set) var target: String = ""
+
+  public required init(_ map: JSONDictionary) {
+    super.init(map)
+
+    self.target <- map.property("target")
+  }
 }

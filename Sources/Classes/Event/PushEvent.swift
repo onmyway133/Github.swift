@@ -40,7 +40,7 @@ public class PushEvent: Event {
     self.distinctCommitCount <- map.path("payload")?.property("distinct_size")
     self.previousHeadSHA <- map.path("payload")?.property("before")
     self.currentHeadSHA <- map.path("payload")?.property("head")
-    self.branchName <- map.path("payload")?.property("ref")
+    self.branchName <- map.path("payload")?.transform("ref", transformer: Transformer.refToBranchName)
     self.commits <- map.path("payload")?.property("commits")
   }
 }
@@ -48,6 +48,6 @@ public class PushEvent: Event {
 public extension Transformer {
   public static func refToBranchName(ref: String) -> String? {
     let branchRefPrefix = "refs/heads/"
-    return ref.hasPrefix(branchRefPrefix) ? nil : ref.substringFromIndex(ref.startIndex.advancedBy(branchRefPrefix.characters.count))
+    return ref.hasPrefix(branchRefPrefix) ? ref.substringFromIndex(ref.startIndex.advancedBy(branchRefPrefix.characters.count)) : nil
   }
 }

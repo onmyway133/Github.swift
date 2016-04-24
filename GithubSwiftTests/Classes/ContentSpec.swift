@@ -53,7 +53,7 @@ class ContentSpec: QuickSpec {
         expect((content.size)).to(equal(0))
         expect(content.path).to(equal("test/qunit"))
         expect(content.SHA).to(equal("6ca3721222109997540bd6d9ccd396902e0ad2f9"))
-        expect(content.submoduleGitURL).to(equal("gitgithub.com:octokit/octokit.objc.git"))
+        expect(content.submoduleGitURL).to(equal(NSURL(string: "git@github.com:octokit/octokit.objc.git")))
       }
 
       it("SymlinkContent should have deserialized") {
