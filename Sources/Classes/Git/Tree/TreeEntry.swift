@@ -11,10 +11,10 @@ import Tailor
 import Sugar
 
 // The types of tree entries.
-//   OCTTreeEntryTypeBlob   - A blob of data.
-//   OCTTreeEntryTypeTree   - A tree of entries.
-//   OCTTreeEntryTypeCommit - A commit.
-public enum TreeEntryType: String {
+//   OCTTreeEntryKindBlob   - A blob of data.
+//   OCTTreeEntryKindTree   - A tree of entries.
+//   OCTTreeEntryKindCommit - A commit.
+public enum TreeEntryKind: String {
   case Blob = "blob"
   case Tree = "tree"
   case Commit = "commit"
@@ -44,7 +44,7 @@ public class TreeEntry: Object {
   public private(set) var path: String = ""
 
   // The type of the entry.
-  public private(set) var type: TreeEntryType = .Commit
+  public private(set) var type: TreeEntryKind = .Commit
 
   // The mode of the entry.
   public private(set) var mode: TreeEntryMode = .File
@@ -67,14 +67,14 @@ public class TreeEntry: Object {
 
 extension TreeEntry: HierarchyType {
   public static func cluster(map: JSONDictionary) -> AnyObject {
-    let mapping: [TreeEntryType: TreeEntry.Type] = [
+    let mapping: [TreeEntryKind: TreeEntry.Type] = [
       .Commit: CommitTreeEntry.self,
       .Tree: ContentTreeEntry.self,
       .Blob: BlobTreeEntry.self,
       ]
 
-    if let type = TreeEntryType(rawValue: map["type"] as? String ?? ""),
-      entryself = mapping[type] {
+    if let kind = TreeEntryKind(rawValue: map["type"] as? String ?? ""),
+      entryself = mapping[kind] {
       return entryself.init(map)
     } else {
       fatalError()

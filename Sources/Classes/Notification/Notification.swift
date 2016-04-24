@@ -19,7 +19,7 @@ public class Notification: Object {
   // OCTNotificationTypeIssue       - A new issue, or a new comment on one.
   // OCTNotificationTypePullRequest - A new pull request, or a new comment on one.
   // OCTNotificationTypeCommit      - A new comment on a commit.
-  public enum Type: String {
+  public enum Kind: String {
     case Unknown = ""
     case Issue = "Issue"
     case PullRequest = "PullRequest"
@@ -43,7 +43,7 @@ public class Notification: Object {
   public private(set) var latestCommentURL: NSURL?
   
   // The notification type.
-  public private(set) var type: Type = .Unknown
+  public private(set) var kind: Kind = .Unknown
   
   // The repository to which the notification belongs.
   public private(set) var repository: Repository?
@@ -63,7 +63,7 @@ public class Notification: Object {
     self.threadURL <- map.transform("url", transformer: NSURL.init(string: ))
     self.subjectURL <- subject?.transform("url", transformer: NSURL.init(string: ))
     self.latestCommentURL <- subject?.transform("latest_comment_url", transformer: NSURL.init(string: ))
-    self.type = subject?.`enum`("type") ?? .Unknown
+    self.kind = subject?.`enum`("type") ?? .Unknown
     self.repository = map.relation("repository")
     self.lastUpdatedDate = map.transform("updated_at", transformer: Transformer.stringToDate)
   }

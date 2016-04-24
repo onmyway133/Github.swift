@@ -41,7 +41,7 @@ class ClientNotificationSpec: QuickSpec {
             expect(notification.threadURL).to(equal(NSURL(string: "https://api.github.com/notifications/threads/1")))
             expect(notification.subjectURL).to(equal(NSURL(string: "https://api.github.com/repos/pengwynn/octokit/issues/123")))
             expect(notification.latestCommentURL).to(equal(NSURL(string: "https://api.github.com/repos/pengwynn/octokit/issues/comments/123")))
-            expect(notification.type).to(equal(GithubSwift.Notification.Type.Issue))
+            expect(notification.kind).to(equal(GithubSwift.Notification.Kind.Issue))
             expect(notification.lastUpdatedDate).to(equal(Formatter.date(string: "2012-09-25T07:54:41-07:00")))
             
             expect(notification.repository).notTo(beNil())

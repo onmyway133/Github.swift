@@ -108,8 +108,8 @@ class EventSpec: QuickSpec {
         expect(event.actorLogin).to(equal("joshaber"))
         expect(event.organizationLogin).to(equal("github"))
 
-        expect((event.refType)).to(equal((RefType.Branch)))
-        expect((event.eventType)).to(equal(RefEventType.Created))
+        expect((event.refKind)).to(equal((RefKind.Branch)))
+        expect((event.eventKind)).to(equal(RefEventKind.Created))
         expect(event.refName).to(equal("perform-selector"))
       }
 

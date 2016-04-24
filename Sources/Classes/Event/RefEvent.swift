@@ -12,13 +12,13 @@ import Sugar
 
 // Represents the type of a git reference.
 //
-// OCTRefTypeUnknown    - An unknown type of reference. Ref events will never
+// OCTRefKindUnknown    - An unknown type of reference. Ref events will never
 //                        be initialized with this value -- they will simply
 //                        fail to be created.
-// OCTRefTypeBranch     - A branch in a repository.
-// OCTRefTypeTag        - A tag in a repository.
-// OCTRefTypeRepository - A repository.
-public enum RefType: String {
+// OCTRefKindBranch     - A branch in a repository.
+// OCTRefKindTag        - A tag in a repository.
+// OCTRefKindRepository - A repository.
+public enum RefKind: String {
   case Unknown
   case Branch = "branch"
   case Tag = "tag"
@@ -32,7 +32,7 @@ public enum RefType: String {
 //                      fail to be created.
 // OCTRefEventCreated - The reference was created on the server.
 // OCTRefEventDeleted - The reference was deleted on the server.
-public enum RefEventType: String {
+public enum RefEventKind: String {
   case Unknown
   case Created = "CreateEvent"
   case Deleted = "DeleteEvent"
@@ -42,10 +42,10 @@ public enum RefEventType: String {
 public class RefEvent: Event {
 
   // The kind of reference that was created or deleted.
-  public private(set) var refType: RefType = .Unknown
+  public private(set) var refKind: RefKind = .Unknown
 
   // The type of event that occurred with the reference.
-  public private(set) var eventType: RefEventType = .Unknown
+  public private(set) var eventKind: RefEventKind = .Unknown
 
   // The short name of this reference (e.g., "master").
   public private (set) var refName: String = ""
@@ -54,7 +54,7 @@ public class RefEvent: Event {
     super.init(map)
 
     self.refName <- map.path("payload")?.property("ref")
-    self.refType <- map.path("payload")?.`enum`("ref_type")
-    self.eventType <- map.`enum`("type")
+    self.refKind <- map.path("payload")?.`enum`("ref_type")
+    self.eventKind <- map.`enum`("type")
   }
 }
