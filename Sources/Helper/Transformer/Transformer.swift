@@ -9,8 +9,8 @@
 import Foundation
 
 public struct Transformer {
-  public static func numberToString(number: NSNumber?) -> String {
-    return number?.stringValue ?? ""
+  public static func numberToString(number: AnyObject) -> String? {
+    return String(number)
   }
 
   public static func stringToDate(string: String?) -> NSDate? {
