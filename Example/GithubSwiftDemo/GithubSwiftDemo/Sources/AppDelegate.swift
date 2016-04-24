@@ -23,4 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     return true
   }
+
+  func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+    Client.completeSignIn(callbackURL: url)
+    return true
+  }
 }

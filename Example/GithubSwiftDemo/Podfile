@@ -2,4 +2,7 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-pod 'GithubSwift', path: '../../'
+target "GithubSwiftDemo" do 
+	pod 'GithubSwift', path: '../../'
+end
+

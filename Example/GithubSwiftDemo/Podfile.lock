@@ -1,5 +1,15 @@
 PODS:
-  - GithubSwift (0.1.0)
+  - Alamofire (3.3.1)
+  - GithubSwift (0.4.0):
+    - Alamofire (~> 3.3)
+    - ISO8601 (~> 0.5)
+    - RxSwift (~> 2.4)
+    - Tailor (~> 0.7)
+  - ISO8601 (0.5.0)
+  - RxSwift (2.4)
+  - Sugar (1.0.13)
+  - Tailor (0.11.0):
+    - Sugar
 
 DEPENDENCIES:
   - GithubSwift (from `../../`)
@@ -9,6 +19,13 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  GithubSwift: 1c3d02b59a7eca66e2d768d1584027ea9639e1f4
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  GithubSwift: 644a362f71e1c5659f3cdee14cb0b766168c5380
+  ISO8601: 25d7a973fa8daf31a50bbd0401d2e7b98e8a7df3
+  RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
+  Sugar: ca8778ac9d076fba1366b889e6bc205f376465e4
+  Tailor: 428bfaa0e01facb5dfb69a3caa4eb6ba45cd3114
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 6f27b05c13662158511e4146933c1e08bef04daf
+
+COCOAPODS: 1.0.0.beta.5
