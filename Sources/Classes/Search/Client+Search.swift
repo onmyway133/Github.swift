@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
 
@@ -22,7 +23,7 @@ public extension Client {
   public func searchRepositories(query: String, orderBy: String? = nil,
                                  ascending: Bool = true) -> Observable<RepositorySearchResult> {
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/search/repositories"
       $0.parameters = [
         "q": query,

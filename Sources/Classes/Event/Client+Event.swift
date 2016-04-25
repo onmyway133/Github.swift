@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
 
@@ -29,7 +30,7 @@ public extension Client {
       return Observable<[Event]>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "users/\(user?.login ?? "")/received_events"
       $0.offset = offset
       $0.perPage = perPage
@@ -51,7 +52,7 @@ public extension Client {
   ///
   /// Returns a signal which sends zero or more OCTEvent objects.
   public func fetchPerformedEvents(user: User, offset: Int, perPage: Int) -> Observable<[Event]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "users/\(user.login)/received_events"
       $0.offset = offset
       $0.perPage = perPage

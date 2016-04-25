@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Tailor
+import Construction
 
 public extension Client {
 
@@ -22,7 +23,7 @@ public extension Client {
   //
   // Returns a signal which will send an OCTTree and complete or error.
   public func fetchTree(reference: String = "HEAD", repository: Repository, recursive: Bool = false) -> Observable<Tree> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/trees/\(reference)"
       if recursive {
         $0.parameters["recursive"] = true
@@ -45,7 +46,7 @@ public extension Client {
   // Returns a signal which will send the created OCTTree and complete, or error.
   public func createTree(entries: [TreeEntry], repository: Repository,
                          basedOnTreeWithSHA sha: String? = nil) -> Observable<Tree> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .POST
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/trees"
       $0.parameters = ([
@@ -67,7 +68,7 @@ public extension Client {
   //
   // Returns a signal which will send an NSData then complete, or error.
   public func fetchBlob(blobSHA: String, repository: Repository) ->Observable<Blob> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/blobs/\(blobSHA)"
       $0.headers["Accept"] = "application/vnd.github.\(Constant.apiVersion).raw"
       $0.fetchAllPages = false
@@ -88,7 +89,7 @@ public extension Client {
   // Returns a signal which will send an NSString of the new blob's SHA then
   // complete, or error.
   public func createBlob(string: String, repository: Repository, encoding: ContentEncoding = .UTF8) -> Observable<String> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/blobs"
       $0.parameters = [
         "content": string,
@@ -109,7 +110,7 @@ public extension Client {
   //
   // Returns a signal which will send an `OCTCommit` then complete, or error.
   public func fetchCommit(commitSHA: String, repository: Repository) -> Observable<Commit> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/commits/\(commitSHA)"
     }
 
@@ -134,7 +135,7 @@ public extension Client {
   public func createCommit(message: String, repository: Repository,
                            pointingToTreeWithSHA treeSHA: String,
                                                  parentCommitSHAs SHAs: [String]) -> Observable<Commit> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .POST
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/commits"
       $0.parameters = [
@@ -155,7 +156,7 @@ public extension Client {
   //
   // Returns a signal which sends zero or more OCTRef objects then complete, or error.
   public func fetchReferences(repository: Repository) -> Observable<[Ref]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/refs"
     }
 
@@ -172,7 +173,7 @@ public extension Client {
   //
   // Returns a signal which will send an OCTRef then complete, or error.
   public func fetchReference(name: String, repository: Repository) -> Observable<Ref> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/refs/\(name)"
     }
 
@@ -193,7 +194,7 @@ public extension Client {
   // Returns a signal which will send the updated OCTRef then complete, or error.
   public func updateReference(name: String, repository: Repository,
                               toSHA SHA: String, force: Bool = false) -> Observable<Ref> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .PATCH
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/git/refs/\(name)"
       $0.parameters = [

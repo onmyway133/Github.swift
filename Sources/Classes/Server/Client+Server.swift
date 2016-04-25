@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
   
@@ -20,7 +21,7 @@ public extension Client {
   // an error will be sent with code `OCTClientErrorUnsupportedServer`.
   public static func fetchMetadata(server: Server) -> Observable<ServerMetadata> {
     let client = Client(server: server)
-    let request = RequestDescriptor().then {
+    let request: RequestDescriptor = construct {
       $0.path = "meta"
     }
     

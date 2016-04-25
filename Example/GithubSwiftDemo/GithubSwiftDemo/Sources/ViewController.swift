@@ -19,7 +19,7 @@ class ViewController: UIViewController {
   func nativeLogin() {
     let _ =
     Client.signIn(user: user, password: "", scopes: [.Repository])
-    .subscribe {
+    .subscribeNext {
       print($0)
     }
   }

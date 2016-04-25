@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
 
@@ -21,7 +22,7 @@ public extension Client {
       return Observable<()>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .DELETE
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/subscription"
     }

@@ -12,6 +12,7 @@ import Quick
 import Nimble
 import Mockingjay
 import RxSwift
+import Construction
 
 class ClientRequestSpec: QuickSpec {
   override func spec() {
@@ -27,7 +28,7 @@ class ClientRequestSpec: QuickSpec {
       }
       
       it("should create a GET request with default parameters") {
-        let requestDescriptor = RequestDescriptor().then {
+        let requestDescriptor: RequestDescriptor = construct {
           $0.path = "rate_limit"
         }
         
@@ -38,7 +39,7 @@ class ClientRequestSpec: QuickSpec {
       }
       
       it("should create a POST request with default parameters") {
-        let requestDescriptor = RequestDescriptor().then {
+        let requestDescriptor: RequestDescriptor = construct {
           $0.method = .POST
           $0.path = "diver/dave"
         }
@@ -52,7 +53,7 @@ class ClientRequestSpec: QuickSpec {
       it("should create a request using etags") {
         let etag = "\"deadbeef\""
         
-        let requestDescriptor = RequestDescriptor().then {
+        let requestDescriptor: RequestDescriptor = construct {
           $0.path = "diver/dan"
           $0.etag = etag
         }
@@ -60,14 +61,14 @@ class ClientRequestSpec: QuickSpec {
         let request = client.makeRequest(requestDescriptor)
         
         expect(request).notTo(beNil())
-        expect(request.request?.URL).to(equal(NSURL(string: "https://api.github.com/diver/dan?per_page=100")!))
+        expect(request.request!.URL).to(equal(NSURL(string: "https://api.github.com/diver/dan?per_page=100")!))
         expect(request.request?.allHTTPHeaderFields?["If-None-Match"] ?? "").to(equal(etag))
       }
       
       it("should GET a JSON dictionary") {
         self.stub(uri("/rate_limit"), builder: jsonData(Helper.read("rate_limit")))
         
-        let requestDescriptor = RequestDescriptor().then {
+        let requestDescriptor: RequestDescriptor = construct {
           $0.path = "rate_limit"
         }
         
@@ -98,7 +99,7 @@ class ClientRequestSpec: QuickSpec {
       it("should conditionally GET a modified JSON dictionary") {
         self.stub(uri("/rate_limit"), builder: jsonData(Helper.read("rate_limit"), status: 200, headers: ["Etag": etag]))
         
-        let requestDescriptor = RequestDescriptor().then {
+        let requestDescriptor: RequestDescriptor = construct {
           $0.path = "rate_limit"
         }
         
@@ -130,7 +131,7 @@ class ClientRequestSpec: QuickSpec {
       it("should conditionally GET an unmodified endpoint") {
         self.stub(uri("/rate_limit"), builder: jsonData(Helper.read("rate_limit"), status: 304))
         
-        let requestDescriptor = RequestDescriptor().then {
+        let requestDescriptor: RequestDescriptor = construct {
           $0.path = "rate_limit"
           $0.etag = etag
         }
@@ -159,7 +160,7 @@ class ClientRequestSpec: QuickSpec {
         self.stub(uri("/items2"), builder: jsonData(Helper.read("page2"), status: 200, headers: ["Link": link2]))
         self.stub(uri("/items3"), builder: jsonData(Helper.read("page3")))
         
-        let requestDescriptor = RequestDescriptor().then {
+        let requestDescriptor: RequestDescriptor = construct {
           $0.path = "items1"
         }
         

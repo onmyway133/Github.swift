@@ -45,8 +45,8 @@ public extension Dictionary {
    - Returns: A mappable object directory, otherwise it returns nil
    */
   func directory<T : Mappable>(name: String) -> [String : T]? {
-    guard let key = name as? Key, value = self[key],
-      dictionary = value as? JSONDictionary
+    guard let key = name as? Key,
+      dictionary = self[key] as? JSONDictionary
       else { return nil }
 
     var directory = [String : T]()
@@ -138,8 +138,8 @@ public extension Dictionary {
    - Returns: A mappable object, otherwise it returns nil
    */
   func relation<T : Mappable>(name: String) -> T? {
-    guard let value = self[name as! Key],
-      dictionary = value as? JSONDictionary
+    guard let key = name as? Key,
+      dictionary = self[key] as? JSONDictionary
       else { return nil }
 
     return T(dictionary)
@@ -161,8 +161,8 @@ public extension Dictionary {
    - Returns: A mappable object, otherwise it returns nil
    */
   func relation<T : SafeMappable>(name: String) -> T? {
-    guard let value = self[name as! Key],
-      dictionary = value as? JSONDictionary
+    guard let key = name as? Key,
+      dictionary = self[key] as? JSONDictionary
       else { return nil }
 
     let result: T?
@@ -197,8 +197,8 @@ public extension Dictionary {
    - Returns: A mappable object array, otherwise it returns nil
    */
   func relations<T : Mappable>(name: String) -> [T]? {
-    guard let key = name as? Key, value = self[key],
-      array = value as? JSONArray
+    guard let key = name as? Key,
+      array = self[key] as? JSONArray
       else { return nil }
 
     return array.map { T($0) }
@@ -220,8 +220,8 @@ public extension Dictionary {
    - Returns: A mappable object array, otherwise it returns nil
    */
   func relations<T : SafeMappable>(name: String) -> [T]? {
-    guard let key = name as? Key, value = self[key],
-      array = value as? JSONArray
+    guard let key = name as? Key,
+      array = self[key] as? JSONArray
       else { return nil }
 
     var result = [T]()
@@ -242,5 +242,34 @@ public extension Dictionary {
       else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
 
     return result
+  }
+}
+
+// MARK: - Relation Hierarchically
+
+public extension Dictionary {
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object, considering hierarchy, otherwise it returns nil
+   */
+  func relationHierarchically<T where T: Mappable, T: HierarchyType>(name: String) -> T? {
+    guard let key = name as? Key,
+      dictionary = self[key] as? JSONDictionary
+      else { return nil }
+
+    return T.cluster(dictionary) as? T
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object array, considering hierarchy, otherwise it returns nil
+   */
+  func relationsHierarchically<T where T: Mappable, T: HierarchyType>(name: String) -> [T]? {
+    guard let key = name as? Key,
+      array = self[key] as? JSONArray
+      else { return nil }
+
+    return array.flatMap { T.cluster($0) as? T }
   }
 }

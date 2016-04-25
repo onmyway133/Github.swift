@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
   
@@ -31,7 +32,7 @@ public extension Client {
       return Observable<[Notification]>.error(Error.authenticationRequiredError())
     }
     
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "notifications"
       $0.etag = etag
       $0.parameters = ([
@@ -56,7 +57,7 @@ public extension Client {
       return Observable<()>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .PATCH
       $0.URL = threadURL
       $0.parameters["read"] = true
@@ -78,7 +79,7 @@ public extension Client {
       return Observable<()>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .PUT
       $0.URL = threadURL.URLByAppendingPathComponent("subscription")
       $0.parameters["ignored"] = true

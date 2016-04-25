@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import RxSwift
 import Sugar
+import Construction
 
 public extension Client {
   func URLString(path: String) -> NSURL {
@@ -39,7 +40,10 @@ public extension Client {
     var parameters = requestDescriptor.parameters
     
     if requestDescriptor.method == .GET {
-      parameters["page"] = requestDescriptor.page
+      if requestDescriptor.offset > 0 {
+        parameters["page"] = requestDescriptor.page
+      }
+
       parameters["per_page"] = requestDescriptor.perPage
     }
     
@@ -135,7 +139,7 @@ public extension Client {
          
            // If we got this far, the etag is out of date, so don't pass it on.
           
-          let nextRequestDescriptor = requestDescriptor
+          var nextRequestDescriptor = requestDescriptor
           nextRequestDescriptor.path = path
           
           nextPageObservable = self.enqueue(nextRequestDescriptor)
@@ -185,8 +189,9 @@ public extension Client {
   // JSON object, then complete. If no `user` is set on the receiver, the signal
   // will error immediately.
   public func enqueueUser(requestDescriptor: RequestDescriptor) -> Observable<Response> {
-    requestDescriptor.then {
-
+    var requestDescriptor = requestDescriptor
+    
+    build(&requestDescriptor) {
       if isAuthenticated {
         $0.path = "user/\($0.path)"
       } else if let user = user {

@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
 
@@ -22,7 +23,7 @@ public extension Client {
       return Observable<(Bool)>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .PUT
       $0.path = "user/starred/\(repository.ownerLogin)/\(repository.name)"
     }
@@ -43,7 +44,7 @@ public extension Client {
       return Observable<()>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .PUT
       $0.path = "user/starred/\(repository.ownerLogin)/\(repository.name)"
     }
@@ -64,7 +65,7 @@ public extension Client {
       return Observable<()>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .DELETE
       $0.path = "user/starred/\(repository.ownerLogin)/\(repository.name)"
     }

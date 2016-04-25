@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Sugar
+import Construction
 
 public extension Client {
   // Fetches the full information of the current `user`.
@@ -17,7 +18,7 @@ public extension Client {
   // levels of information depending on whether the client is `authenticated` or
   // not. If no `user` is set, the signal will error immediately.
   public func fetchUserInfo() -> Observable<User> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = ""
     }
     
@@ -32,7 +33,7 @@ public extension Client {
   ///
   /// Returns a signal which sends a new OCTUser.
   public func fetchUserInfo(user: User) -> Observable<User> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/users/\(user.login)"
     }
     
@@ -53,7 +54,7 @@ public extension Client {
   public func fetchFollowers(user: User, offset: Int = 0,
                              perPage: Int = Constant.defaultPerPage) -> Observable<[User]> {
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/users/\(user.login)/followers"
       $0.offset = offset
       $0.perPage = perPage
@@ -76,7 +77,7 @@ public extension Client {
   public func fetchFollowing(user: User, offset: Int = 0,
                              perPage: Int = Constant.defaultPerPage) -> Observable<[User]> {
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/users/\(user.login)/following"
       $0.offset = offset
       $0.perPage = perPage
@@ -98,7 +99,7 @@ public extension Client {
       return Observable<Bool>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/following/\(user.login)"
     }
 
@@ -118,7 +119,7 @@ public extension Client {
       return Observable<User>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .PUT
       $0.path = "/following/\(user.login)"
     }
@@ -139,7 +140,7 @@ public extension Client {
       return Observable<User>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .DELETE
       $0.path = "/following/\(user.login)"
     }

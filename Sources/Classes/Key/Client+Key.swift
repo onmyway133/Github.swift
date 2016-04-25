@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
 
@@ -21,7 +22,7 @@ public extension Client {
       return Observable<[PublicKey]>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/keys"
     }
 
@@ -39,7 +40,7 @@ public extension Client {
       return Observable<PublicKey>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .POST
       $0.path = "user/keys"
       $0.parameters = [

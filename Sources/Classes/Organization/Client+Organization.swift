@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
 
@@ -17,7 +18,7 @@ public extension Client {
   // organizations will only be included if the client is `authenticated`. If no
   // `user` is set, the signal will error immediately.
   public func fetchUserOrganizations() -> Observable<[Organization]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/orgs"
     }
 
@@ -31,7 +32,7 @@ public extension Client {
   //
   // Returns a signal which sends a new OCTOrganization.
   public func fetchOrganizationInfo(organization: Organization) -> Observable<Organization> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/orgs/\(organization.login)"
     }
 
@@ -45,7 +46,7 @@ public extension Client {
   // Returns a signal which sends zero or more OCTTeam objects. If the client is
   // not `authenticated`, the signal will error immediately.
   public func fetchTeams(organization: Organization) -> Observable<[Team]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/orgs/\(organization.login)/teams"
     }
 

@@ -151,13 +151,8 @@ class ClientSignInSpec: QuickSpec {
         self.stub(uri("/authorizations/clients/\(clientID)"), builder: jsonData(Helper.read("authorizations_existing"), status: 200))
         self.stub(matcher, builder: jsonData(NSData(), status: 204))
        
-        let observable = Client.signIn(user: user, password: "", scopes: .Repository)
-        self.async { expectation in
-          let _ = observable.subscribe { a in
-            expect(deleted).to(beTrue())
-            expectation.fulfill()
-          }
-        }
+        let result = Client.signIn(user: user, password: "", scopes: .Repository).subscribeSync()
+        expect(deleted).to(beTrue())
       }
       
       describe("+authorizeWithServerUsingWebBrowser:scopes:") {

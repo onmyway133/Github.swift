@@ -290,8 +290,6 @@
 		D2F4885A1CCC29CF005DD009 /* ContentSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488581CCC29CF005DD009 /* ContentSpec.swift */; };
 		D2F4885C1CCC2E07005DD009 /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4885B1CCC2E07005DD009 /* EventSpec.swift */; };
 		D2F4885D1CCC2E07005DD009 /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4885B1CCC2E07005DD009 /* EventSpec.swift */; };
-		D2F4885F1CCCB870005DD009 /* HierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4885E1CCCB870005DD009 /* HierarchyType.swift */; };
-		D2F488601CCCB870005DD009 /* HierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4885E1CCCB870005DD009 /* HierarchyType.swift */; };
 		D2F488621CCCC415005DD009 /* CommitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488611CCCC415005DD009 /* CommitSpec.swift */; };
 		D2F488631CCCC415005DD009 /* CommitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488611CCCC415005DD009 /* CommitSpec.swift */; };
 		D2F488651CCCC428005DD009 /* GitCommitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488641CCCC428005DD009 /* GitCommitSpec.swift */; };
@@ -465,7 +463,6 @@
 		D2F488551CCC26B2005DD009 /* branch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = branch.json; sourceTree = "<group>"; };
 		D2F488581CCC29CF005DD009 /* ContentSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSpec.swift; sourceTree = "<group>"; };
 		D2F4885B1CCC2E07005DD009 /* EventSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSpec.swift; sourceTree = "<group>"; };
-		D2F4885E1CCCB870005DD009 /* HierarchyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HierarchyType.swift; sourceTree = "<group>"; };
 		D2F488611CCCC415005DD009 /* CommitSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitSpec.swift; sourceTree = "<group>"; };
 		D2F488641CCCC428005DD009 /* GitCommitSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommitSpec.swift; sourceTree = "<group>"; };
 		D2F488671CCCC434005DD009 /* GitCommitFileSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommitFileSpec.swift; sourceTree = "<group>"; };
@@ -669,7 +666,6 @@
 				D2A065171CB868FB005A0AC7 /* URLOpener.swift */,
 				D22829AF1CC983D500466A1C /* JSONEncodable.swift */,
 				D2F488461CCAE147005DD009 /* ContentEncoding.swift */,
-				D2F4885E1CCCB870005DD009 /* HierarchyType.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1305,7 +1301,6 @@
 				D29013871CB154D500EFADE5 /* Authorization.swift in Sources */,
 				D227241A1CC82FD50093AA53 /* GistEdit.swift in Sources */,
 				D2BABA3A1CC6DF2100245C3D /* Branch.swift in Sources */,
-				D2F4885F1CCCB870005DD009 /* HierarchyType.swift in Sources */,
 				D22723D71CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
 				D22724111CC82BC70093AA53 /* Client+Gist.swift in Sources */,
 				D29013831CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,
@@ -1432,7 +1427,6 @@
 				D29013881CB154D500EFADE5 /* Authorization.swift in Sources */,
 				D227241B1CC82FD50093AA53 /* GistEdit.swift in Sources */,
 				D2BABA3B1CC6DF2100245C3D /* Branch.swift in Sources */,
-				D2F488601CCCB870005DD009 /* HierarchyType.swift in Sources */,
 				D22723D81CC8079D0093AA53 /* GitCommitFile.swift in Sources */,
 				D22724121CC82BC70093AA53 /* Client+Gist.swift in Sources */,
 				D29013841CB07D7300EFADE5 /* Client+SignIn.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Construction
 
 public extension Client {
 
@@ -37,7 +38,7 @@ public extension Client {
                           assignee: String? = nil, milestone: Int? = nil,
                           labels: [String]? = nil, repository: Repository) -> Observable<Issue> {
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .POST
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/issues"
       $0.parameters = ([
@@ -68,7 +69,7 @@ public extension Client {
   public func fetchIssues(repository: Repository, state: ClientIssueState = .All,
                           etag: String? = nil, since: NSDate? = nil) -> Observable<[Issue]> {
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/issues"
       $0.parameters = ([
         "state": state.rawValue,

@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Sugar
+import Construction
 
 public extension Client {
   
@@ -18,7 +19,7 @@ public extension Client {
   // repositories will only be included if the client is `authenticated`. If no
   // `user` is set, the signal will error immediately.
   public func fetchUserRepositories() -> Observable<[Repository]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/repos"
     }
     
@@ -39,7 +40,7 @@ public extension Client {
   /// repositories will not be included.
   public func fetchPublicRepositories(user user: User, offset: Int = 0, perPage: Int = Constant.defaultPerPage) -> Observable<[Repository]> {
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/users/\(user.login)/repos"
       $0.offset = offset
       $0.perPage = perPage
@@ -56,7 +57,7 @@ public extension Client {
   // repositories will only be included if the client is `authenticated`. If no
   // `user` is set, the signal will error immediately.
   public func fetchUserStarredRepositories() -> Observable<[Repository]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "starred"
     }
     
@@ -77,7 +78,7 @@ public extension Client {
   /// repositories will not be included.
   public func fetchStarredRepositories(user: User, offset: Int = 0,
                                        perPage: Int = Constant.defaultPerPage) -> Observable<[Repository]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "/users/\(user.login)/starred"
       $0.offset = offset
       $0.perPage = perPage
@@ -94,7 +95,7 @@ public extension Client {
   // repositories will only be included if the client is `authenticated` and the
   // `user` has permission to see them.
   public func fetchRepositories(organization: Organization) -> Observable<[Repository]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "orgs/\(organization.login)/repos"
     }
 
@@ -114,7 +115,7 @@ public extension Client {
       return Observable<Repository>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .POST
 
       if let organization = organization {
@@ -152,7 +153,7 @@ public extension Client {
   // relative path resolves at all or, resolves to a file or directory.
   public func fetchContent(relativePath: String? = nil, repository: Repository,
                            reference: String? = nil) -> Observable<Content> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/contents/\(relativePath ?? "")"
 
       if let reference = reference {
@@ -171,7 +172,7 @@ public extension Client {
   //
   // Returns a signal which will send zero or one OCTContent.
   public func fetchReadme(repository: Repository, reference: String? = nil) -> Observable<Content> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/readme"
 
       if let reference = reference {
@@ -191,7 +192,7 @@ public extension Client {
   //
   // Returns a signal of zero or one OCTRepository.
   public func fetchRepository(name name: String, owner: String) -> Observable<Repository> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(owner)/\(name)"
     }
 
@@ -207,7 +208,7 @@ public extension Client {
   //
   // Returns a signal of zero or one OCTBranch.
   public func fetchBranches(repositoryName: String, owner: String) -> Observable<[Branch]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(owner)/\(repositoryName)/branches"
     }
 
@@ -224,7 +225,7 @@ public extension Client {
   //
   // Returns a signal of zero or one OCTPullRequest.
   public func fetchOpenPullRequests(repositoryName: String, owner: String) -> Observable<[PullRequest]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(owner)/\(repositoryName)/pulls"
     }
 
@@ -241,7 +242,7 @@ public extension Client {
   //
   // Returns a signal of zero or one OCTPullRequest.
   public func fetchClosedPullRequests(repositoryName: String, owner: String) -> Observable<[PullRequest]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(owner)/\(repositoryName)/pulls"
       $0.parameters["state"] = "closed"
     }
@@ -260,7 +261,7 @@ public extension Client {
   //
   // Returns a signal of zero or one OCTPullRequest.
   public func fetchPullRequest(repositoryName: String, owner: String, number: Int) -> Observable<Repository> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(owner)/\(repositoryName)/pulls/\(number)"
     }
 
@@ -284,7 +285,7 @@ public extension Client {
   public func createPullRequest(repository: Repository, title: String,
                                 body: String? = nil, baseBranch: String, headBranch: String) -> Observable<PullRequest> {
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .POST
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/pulls"
       $0.parameters = ([
@@ -308,7 +309,7 @@ public extension Client {
   //
   // Returns a signal of zero or one OCTGitCommit.
   public func fetchCommits(repository: Repository, SHA: String) -> Observable<[GitCommit]> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/commits"
       $0.parameters["sha"] = SHA
     }
@@ -325,7 +326,7 @@ public extension Client {
   //
   // Returns a signal of zero or one OCTGitCommit.
   public func fetchCommit(repository: Repository, SHA: String) -> Observable<GitCommit> {
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "repos/\(repository.ownerLogin)/\(repository.name)/commits/\(SHA)"
     }
 

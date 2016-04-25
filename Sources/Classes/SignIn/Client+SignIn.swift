@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Sugar
+import Construction
 
 public extension Client {
   
@@ -89,7 +90,7 @@ public extension Client {
       params["fingerprint"] = fingerprint
     }
     
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .PUT
       $0.path = path
       $0.parameters = params
@@ -126,8 +127,8 @@ public extension Client {
       // The `fingerprint` field provided will be used to ensure uniqueness and
       // avoid deleting unrelated tokens.
       if authorization.token.isEmpty {
-        let requestDescriptor = requestDescriptor
-        requestDescriptor.then {
+        var requestDescriptor = requestDescriptor
+        build(&requestDescriptor) {
           $0.path = "authorizations/\(authorization.objectID)"
           $0.method = .DELETE
           
@@ -282,7 +283,7 @@ public extension Client {
       // We're using -requestWithMethod: for its parameter encoding and
       // User-Agent behavior, but we'll replace the key properties so we
       // can POST to another host.
-      let requestDescriptor = RequestDescriptor().then {
+      let requestDescriptor: RequestDescriptor = construct {
         $0.method = .POST
         $0.path = "login/oauth/access_token"
         $0.parameters = params

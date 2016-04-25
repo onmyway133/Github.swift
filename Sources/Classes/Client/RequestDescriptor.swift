@@ -9,8 +9,9 @@
 import Foundation
 import Alamofire
 import Sugar
+import Construction
 
-public class RequestDescriptor {
+public struct RequestDescriptor {
   public var method: Alamofire.Method = .GET
   public var path: String = ""
   public var parameters: [String: AnyObject] = [:]
@@ -55,4 +56,4 @@ public extension RequestDescriptor {
   }
 }
 
-extension RequestDescriptor: Then {}
+extension RequestDescriptor: Initable {}

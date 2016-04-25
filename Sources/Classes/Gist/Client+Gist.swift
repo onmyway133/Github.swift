@@ -8,6 +8,8 @@
 
 import Foundation
 import RxSwift
+import Construction
+import Construction
 
 public extension Client {
 
@@ -23,7 +25,7 @@ public extension Client {
       return Observable<[Gist]>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.path = "gists"
 
       if let since = updatedSince {
@@ -47,7 +49,7 @@ public extension Client {
       return Observable<Gist>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .POST
       $0.path = "gists"
       $0.parameters = edit.toJSON()
@@ -70,7 +72,7 @@ public extension Client {
       return Observable<Gist>.error(Error.authenticationRequiredError())
     }
 
-    let requestDescriptor = RequestDescriptor().then {
+    let requestDescriptor: RequestDescriptor = construct {
       $0.method = .PATCH
       $0.path = "gists/\(gist.objectID)"
       $0.parameters = edit.toJSON()
