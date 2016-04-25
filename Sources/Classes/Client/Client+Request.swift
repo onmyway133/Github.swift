@@ -35,7 +35,6 @@ public extension Client {
   // Returns an NSMutableURLRequest that you can enqueue using
   // -enqueueRequest:resultClass:.
   public func makeRequest(requestDescriptor: RequestDescriptor) -> Request {
-    
     // Parameter
     var parameters = requestDescriptor.parameters
     
@@ -51,7 +50,12 @@ public extension Client {
     mutableURLRequest.HTTPMethod = requestDescriptor.method.rawValue
     
     // Header
-    mutableURLRequest.allHTTPHeaderFields?.update(requestDescriptor.headers)
+    var headers = requestDescriptor.headers
+    if let token = token, (key, value) = Helper.authorizationHeader(token, password: "x-oauth-basic") {
+      headers[key] = value
+    }
+
+    mutableURLRequest.allHTTPHeaderFields?.update(headers)
 
     if let etag = requestDescriptor.etag {
       mutableURLRequest.setValue(etag, forHTTPHeaderField: "If-None-Match")

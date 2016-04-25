@@ -109,7 +109,7 @@ public extension Client {
         let client = Client(unauthenticatedUser: user)
         
         let observable = client.enqueue(requestDescriptor).map {
-          return Parser.one($0.jsonArray) as Authorization
+          return Parser.one($0) as Authorization
         }
       
         return Observable.combineLatest(Observable<Client>.just(client), observable) {
@@ -201,6 +201,7 @@ public extension Client {
       let disposable =
         callBackURLVariable
           .asObservable()
+          .skip(1)
           .flatMap { (url: NSURL?) -> Observable<String> in
             let queryArguments = url?.queryArguments ?? [:]
             
@@ -210,7 +211,6 @@ public extension Client {
               return Observable<String>.empty()
             }
           }
-          .take(1)
           .subscribe(observer)
       
       let scope = scopes.values.joinWithSeparator(",")
@@ -285,7 +285,7 @@ public extension Client {
       // can POST to another host.
       let requestDescriptor: RequestDescriptor = construct {
         $0.method = .POST
-        $0.path = "login/oauth/access_token"
+        $0.URL = server.baseWebURL.URLByAppendingPathComponent("login/oauth/access_token")
         $0.parameters = params
         
         // The `Accept` string we normally use (where we specify the beta
@@ -297,7 +297,7 @@ public extension Client {
       }
       
       let tokenObservable = client.enqueue(requestDescriptor).map {
-        return Parser.one($0.jsonArray) as AccessToken
+        return Parser.one($0) as AccessToken
       }
       
       return

@@ -38,7 +38,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.one($0)
     }
   }
 }

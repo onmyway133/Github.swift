@@ -42,7 +42,7 @@ public extension Client {
     }
     
     return self.enqueue(requestDescriptor).map {
-      return Parser.all($0.jsonArray)
+      return Parser.all($0)
     }
   }
 

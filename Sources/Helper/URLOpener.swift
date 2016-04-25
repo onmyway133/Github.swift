@@ -22,7 +22,11 @@ public class URLOpener: URLOpenerType {
       return NSWorkspace.sharedWorkspace().openURL(url)
     #elseif os(iOS)
       if UIApplication.sharedApplication().canOpenURL(url) {
-        return UIApplication.sharedApplication().openURL(url)
+        // Without this, it takes long time to open Web Browser
+        dispatch_async(dispatch_get_main_queue()) {
+          UIApplication.sharedApplication().openURL(url)
+        }
+        return true
       } else {
         return false
       }

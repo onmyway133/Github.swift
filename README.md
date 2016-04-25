@@ -30,13 +30,13 @@ client.fetchUserStarredRepositories().subscribeNext { repositories in
 Make your own request using `RequestDescriptor`
 
 ```swift
-let requestDescriptor = RequestDescriptor().then {
+let requestDescriptor: RequestDescriptor = construct {
   $0.path = "repos/\(owner)/\(name)"
   $0.etag = "12345"  
 }
 
 return enqueue(requestDescriptor).map {
-  return Parser.one($0.jsonArray)
+  return Parser.one($0)
 }
 ```
 

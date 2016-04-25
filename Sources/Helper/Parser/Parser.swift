@@ -11,16 +11,16 @@ import Tailor
 import Sugar
 
 public struct Parser {
-  public static func all<T: Mappable>(jsonArray: JSONArray) -> [T] {
+  public static func all<T: Mappable>(response: Response) -> [T] {
     if let hierarchyType = T.self as? HierarchyType {
-      return jsonArray.flatMap { hierarchyType.dynamicType.cluster($0) as? T }
+      return response.jsonArray.flatMap { hierarchyType.dynamicType.cluster($0) as? T }
     } else {
-      return jsonArray.map { T($0) }
+      return response.jsonArray.map { T($0) }
     }
   }
  
-  public static func one<T: Mappable>(jsonArray: JSONArray) -> T {
-    let all: [T] = Parser.all(jsonArray)
+  public static func one<T: Mappable>(response: Response) -> T {
+    let all: [T] = Parser.all(response)
     assert(!all.isEmpty)
     return all.first!
   }

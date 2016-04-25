@@ -31,7 +31,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.one($0)
     }
   }
 
@@ -56,7 +56,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.one($0)
     }
   }
 
@@ -75,7 +75,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.one($0)
     }
   }
 
@@ -115,7 +115,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.one($0)
     }
   }
 
@@ -146,7 +146,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.one($0)
     }
   }
 
@@ -161,7 +161,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.all($0.jsonArray)
+      return Parser.all($0)
     }
   }
 
@@ -178,7 +178,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.one($0)
     }
   }
 
@@ -204,7 +204,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.one($0.jsonArray)
+      return Parser.one($0)
     }
 
   }

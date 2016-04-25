@@ -38,7 +38,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.all($0.jsonArray)
+      return Parser.all($0)
     }
   }
 
@@ -59,7 +59,7 @@ public extension Client {
     }
 
     return enqueue(requestDescriptor).map {
-      return Parser.all($0.jsonArray)
+      return Parser.all($0)
     }
   }
 }

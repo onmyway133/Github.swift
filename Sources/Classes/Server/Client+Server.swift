@@ -27,7 +27,7 @@ public extension Client {
     
     return client.enqueue(request)
       .map {
-        return Parser.one($0.jsonArray)
+        return Parser.one($0)
       }.catchError { error in
         let error = error as NSError
         if error.code == ErrorCode.UnsupportedServerScheme.rawValue {
