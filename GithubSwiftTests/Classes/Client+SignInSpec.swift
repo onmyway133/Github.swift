@@ -268,7 +268,7 @@ class ClientSignInSpec: QuickSpec {
           // than the API).
           func matcher(request: NSURLRequest) -> Bool {
             guard request.HTTPMethod == "POST"
-              && request.URL?.host == "api.github.com" // FIXME: It was github.com
+              && request.URL?.host == "github.com"
               && request.URL?.path == "/login/oauth/access_token"
               else { return false }
             
@@ -300,7 +300,7 @@ class ClientSignInSpec: QuickSpec {
           let result = signInAndCallback().subscribeSync()
           
           if let client = result.next {
-            expect(client).notTo(beNil());
+            expect(client).notTo(beNil())
             
             expect(client.user).notTo(beNil())
             expect(client.user!.rawLogin).to(equal(user.rawLogin))

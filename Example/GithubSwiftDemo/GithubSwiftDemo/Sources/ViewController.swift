@@ -13,23 +13,30 @@ class ViewController: UIViewController {
     Config.clientID = "39a577aa1d58f517a462"
     Config.clientSecret = "bd65a95fbf09d59055c5dedc5a49582e4c4e1c81"
 
-//    nativeLogin()
-    oAuthLogin()
+    let _ =
+    Client.signInUsingWebBrowser(Server.dotComServer, scopes: [.Repository])
+      .flatMap { client in
+        return client.fetchUserRepositories()
+      }.subscribeNext { repositories in
+        repositories.forEach { print($0.name)
+      }
+    }
+
   }
 
   func nativeLogin() {
     let _ =
     Client.signIn(user: user, password: "", scopes: [.Repository])
-    .subscribe { event in
-      switch event {
-      case let .Next(client):
-        print(client.token)
-      case let .Error(error):
-        let error = error as NSError
-        print(error)
-      default:
-        break
-      }
+      .subscribe { event in
+        switch event {
+        case let .Next(client):
+          print(client.token)
+        case let .Error(error):
+          let error = error as NSError
+          print(error)
+        default:
+          break
+        }
     }
   }
 

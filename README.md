@@ -19,12 +19,14 @@
 - Client: make request. If associated with a valid token, it is considered authenticated client
 
 ```swift
-let user = User(rawLogin: "onmyway133", server: Server.dotComServer)
-let client = Client(unauthenticatedUser: user)
-
-client.fetchUserStarredRepositories().subscribeNext { repositories in
-  print(repositories)
-}
+let _ =
+  Client.signInUsingWebBrowser(Server.dotComServer, scopes: [.Repository])
+    .flatMap { client in
+      return client.fetchUserRepositories()
+    }.subscribeNext { repositories in
+      repositories.forEach { print($0.name)
+    }
+  }
 ```
 
 Make your own request using `RequestDescriptor`

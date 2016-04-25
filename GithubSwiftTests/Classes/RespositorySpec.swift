@@ -19,7 +19,7 @@ class RepositorySpec: QuickSpec {
     describe("repository") {
       
       let json = Helper.readJSON("repository1") as JSONDictionary
-      let repository = Parser.one([json]) as Repository
+      let repository = Repository(json)
       
       it("should initialize") {
         expect(repository.objectID).to(equal("1296269"))

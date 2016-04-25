@@ -138,13 +138,11 @@ public extension Client {
         // Next
         var nextPageObservable = Observable<Response>.empty()
 
-        if let nextPageURL = Helper.nextPageURL(response),
-          path = nextPageURL.path where requestDescriptor.fetchAllPages {
-         
+        if let nextPageURL = Helper.nextPageURL(response) where requestDescriptor.fetchAllPages {
            // If we got this far, the etag is out of date, so don't pass it on.
           
           var nextRequestDescriptor = requestDescriptor
-          nextRequestDescriptor.path = path
+          nextRequestDescriptor.URL = nextPageURL
           
           nextPageObservable = self.enqueue(nextRequestDescriptor)
         }
@@ -207,6 +205,8 @@ public extension Client {
       if let last = $0.path.characters.last where last == "/" {
         $0.path.removeAtIndex($0.path.endIndex.predecessor())
       }
+
+      $0.path = $0.path.replace("//", with: "/")
     }
     
     return enqueue(requestDescriptor)

@@ -46,7 +46,7 @@ class OrganizationSpec: QuickSpec {
         ]
       ]
       
-      let organization = Parser.one([json]) as Organization
+      let organization = Organization(json)
       
       it("should initialize") {
         expect(organization.login).to(equal("github"))
