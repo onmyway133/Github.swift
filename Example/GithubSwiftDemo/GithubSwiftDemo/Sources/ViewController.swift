@@ -17,11 +17,12 @@ class ViewController: UIViewController {
     Client.signInUsingWebBrowser(Server.dotComServer, scopes: [.Repository])
       .flatMap { client in
         return client.fetchUserRepositories()
-      }.subscribeNext { repositories in
-        repositories.forEach { print($0.name)
+      }
+//      .toArray()
+      .subscribeNext { repositories in
+        repositories.flatMap({$0}).forEach { print($0.name)
       }
     }
-
   }
 
   func nativeLogin() {

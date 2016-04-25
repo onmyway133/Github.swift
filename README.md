@@ -8,11 +8,12 @@
 
 ## Description
 
-- A Swift implementation of [octokit.objc](https://github.com/octokit/octokit.objc), using [RxSwift](https://github.com/ReactiveX/RxSwift) and [Tailor](https://github.com/zenangst/Tailor)
-- Hope it is useful to you, as it is to me
-- Try to use more Swift style
+- A Swift implementation of [octokit.objc](https://github.com/octokit/octokit.objc), using [RxSwift](https://github.com/ReactiveX/RxSwift), [Alamofire](https://github.com/Alamofire/Alamofire) and [Tailor](https://github.com/zenangst/Tailor)
+- Try to use more Swift style as possible
 
 ## Usage
+
+#### Client
 
 - User: identify a user
 - Server: identify server (Github or Github Enterprise)
@@ -29,16 +30,47 @@ let _ =
   }
 ```
 
+#### Request Descriptor
+
 Make your own request using `RequestDescriptor`
 
 ```swift
 let requestDescriptor: RequestDescriptor = construct {
   $0.path = "repos/\(owner)/\(name)"
-  $0.etag = "12345"  
+  $0.etag = "12345"
+  $0.offset = 2
+  $0.perPage = 50
+  $0.parameters["param"] = "value"
+  $0.headers["header"] = "value"
+  $0.method = .PUT  
 }
 
 return enqueue(requestDescriptor).map {
   return Parser.one($0)
+}
+```
+
+#### Pagination
+
+- The `subscribe` gets called many times if there is pagination
+
+```swift
+client
+.fetchUserRepositories()
+.subscribeNext { repositories in
+  // This gets called many times depending pagination
+  repositories.forEach { print($0.name)
+}
+```
+
+- Use `toArray` if we want `subscribe` to be called once with all the values collected
+
+```swift
+client
+.fetchUserRepositories()
+.toArray()
+.subscribeNext { repositories: [[Repository]] in
+  repositories.flatMap({$0}).forEach { print($0.name)
 }
 ```
 
