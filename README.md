@@ -6,6 +6,8 @@
 [![License](https://img.shields.io/cocoapods/l/GithubSwift.svg?style=flat)](http://cocoadocs.org/docsets/GithubSwift)
 [![Platform](https://img.shields.io/cocoapods/p/GithubSwift.svg?style=flat)](http://cocoadocs.org/docsets/GithubSwift)
 
+![](Screenshots/Banner.png)
+
 ## Description
 
 - A Swift implementation of [octokit.objc](https://github.com/octokit/octokit.objc), using [RxSwift](https://github.com/ReactiveX/RxSwift), [Alamofire](https://github.com/Alamofire/Alamofire) and [Tailor](https://github.com/zenangst/Tailor)
