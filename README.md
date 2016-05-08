@@ -34,7 +34,7 @@ let _ =
 
 #### Request Descriptor
 
-Make your own request using `RequestDescriptor`
+Make your own request using `RequestDescriptor` from [Construction](https://github.com/onmyway133/Construction)
 
 ```swift
 let requestDescriptor: RequestDescriptor = construct {
@@ -149,7 +149,7 @@ client
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Github.swift'
+pod 'GithubSwift'
 ```
 
 **GithubSwift** is also available through [Carthage](https://github.com/Carthage/Carthage).
