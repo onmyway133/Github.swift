@@ -34,7 +34,7 @@ let _ =
 
 #### Request Descriptor
 
-Make your own request using `RequestDescriptor` from [Construction](https://github.com/onmyway133/Construction)
+Make your own request using `RequestDescriptor`, using syntax from [Construction](https://github.com/onmyway133/Construction)
 
 ```swift
 let requestDescriptor: RequestDescriptor = construct {
