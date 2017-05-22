@@ -12,6 +12,7 @@
 
 - A Swift implementation of [octokit.objc](https://github.com/octokit/octokit.objc), using [RxSwift](https://github.com/ReactiveX/RxSwift), [Alamofire](https://github.com/Alamofire/Alamofire) and [Tailor](https://github.com/zenangst/Tailor)
 - Try to use more Swift style as possible
+- Note https://developer.github.com/v4/
 
 ## Usage
 
